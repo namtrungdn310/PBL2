@@ -1,0 +1,247 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>OrderWidget</class>
+ <widget class="QWidget" name="OrderWidget">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1024</width>
+    <height>768</height>
+   </rect>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout_Main">
+   <item>
+    <widget class="QWidget" name="centerContainer" native="true">
+     <layout class="QHBoxLayout" name="horizontalLayout_Center">
+      <item>
+       <spacer name="horizontalSpacer_L">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>40</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item>
+       <widget class="QFrame" name="mainCard">
+        <property name="minimumSize">
+         <size>
+          <width>900</width>
+          <height>600</height>
+         </size>
+        </property>
+        <property name="frameShape">
+         <enum>QFrame::StyledPanel</enum>
+        </property>
+        <layout class="QHBoxLayout" name="horizontalLayout_Card">
+         <property name="spacing">
+          <number>0</number>
+         </property>
+         <property name="leftMargin">
+          <number>0</number>
+         </property>
+         <property name="topMargin">
+          <number>0</number>
+         </property>
+         <property name="rightMargin">
+          <number>0</number>
+         </property>
+         <property name="bottomMargin">
+          <number>0</number>
+         </property>
+
+         <item>
+          <widget class="QWidget" name="leftSide" native="true">
+           <layout class="QVBoxLayout" name="verticalLayout_Left">
+            <property name="leftMargin">
+             <number>30</number>
+            </property>
+            <property name="topMargin">
+             <number>30</number>
+            </property>
+            <property name="rightMargin">
+             <number>20</number>
+            </property>
+            <property name="bottomMargin">
+             <number>30</number>
+            </property>
+            <item>
+             <widget class="QLabel" name="lblTitle">
+              <property name="text">
+               <string>CONFIRM ORDER</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QTableWidget" name="tblOrderItems">
+              <property name="selectionMode">
+               <enum>QAbstractItemView::NoSelection</enum>
+              </property>
+              <column><property name="text"><string>Product</string></property></column>
+              <column><property name="text"><string>Size</string></property></column>
+              <column><property name="text"><string>Qty</string></property></column>
+              <column><property name="text"><string>Total</string></property></column>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLabel" name="lblSubtotal">
+              <property name="text">
+               <string>Subtotal: 0 VND</string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </widget>
+         </item>
+
+         <item>
+          <widget class="Line" name="lineSeparator">
+           <property name="orientation">
+            <enum>Qt::Vertical</enum>
+           </property>
+          </widget>
+         </item>
+
+         <item>
+          <widget class="QWidget" name="rightSide" native="true">
+           <property name="minimumSize">
+            <size>
+             <width>320</width>
+             <height>0</height>
+            </size>
+           </property>
+           <layout class="QVBoxLayout" name="verticalLayout_Right">
+            <property name="leftMargin">
+             <number>20</number>
+            </property>
+            <property name="topMargin">
+             <number>40</number>
+            </property>
+            <property name="rightMargin">
+             <number>20</number>
+            </property>
+            <property name="bottomMargin">
+             <number>30</number>
+            </property>
+
+            <item>
+             <widget class="QLabel" name="lblPaymentTitle">
+              <property name="text">
+               <string>PAYMENT DETAILS</string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignCenter</set>
+              </property>
+             </widget>
+            </item>
+
+            <item><spacer name="vSpacer1"><property name="orientation"><enum>Qt::Vertical</enum></property><property name="sizeHint" stdset="0"><size><width>20</width><height>20</height></size></property></spacer></item>
+
+            <item>
+             <widget class="QLabel" name="label_Promo"><property name="text"><string>Select Promotion:</string></property></widget>
+            </item>
+            <item>
+             <widget class="QComboBox" name="cboPromotions"/>
+            </item>
+            <item>
+             <widget class="QLabel" name="lblDiscountVal">
+              <property name="text"><string>-0 VND</string></property>
+              <property name="styleSheet"><string>color: #2ECC71;</string></property>
+              <property name="alignment"><set>Qt::AlignRight</set></property>
+             </widget>
+            </item>
+
+            <item><spacer name="vSpacer2"><property name="orientation"><enum>Qt::Vertical</enum></property><property name="sizeHint" stdset="0"><size><width>20</width><height>10</height></size></property></spacer></item>
+
+            <item>
+             <widget class="QLabel" name="label_Points"><property name="text"><string>Use Loyalty Points:</string></property></widget>
+            </item>
+            <item>
+             <widget class="QSpinBox" name="spinPoints">
+              <property name="singleStep"><number>10</number></property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLabel" name="lblPointHint">
+              <property name="text"><string>(10 pts = 1000 VND)</string></property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLabel" name="lblPointDiscountVal">
+              <property name="text"><string>-0 VND</string></property>
+              <property name="styleSheet"><string>color: #2ECC71;</string></property>
+              <property name="alignment"><set>Qt::AlignRight</set></property>
+             </widget>
+            </item>
+
+            <item><spacer name="vSpacer3"><property name="orientation"><enum>Qt::Vertical</enum></property><property name="sizeHint" stdset="0"><size><width>20</width><height>10</height></size></property></spacer></item>
+
+            <item>
+             <widget class="QLabel" name="label_Method"><property name="text"><string>Payment Method:</string></property></widget>
+            </item>
+            <item>
+             <widget class="QComboBox" name="cboPaymentMethod">
+              <item><property name="text"><string>Cash</string></property></item>
+              <item><property name="text"><string>Credit Card</string></property></item>
+              <item><property name="text"><string>E-Wallet (Momo/ZaloPay)</string></property></item>
+             </widget>
+            </item>
+
+            <item><spacer name="vSpacer4"><property name="orientation"><enum>Qt::Vertical</enum></property><property name="sizeHint" stdset="0"><size><width>20</width><height>40</height></size></property></spacer></item>
+
+            <item>
+             <widget class="QLabel" name="lblFinalTotalLabel"><property name="text"><string>FINAL TOTAL</string></property><property name="alignment"><set>Qt::AlignCenter</set></property></widget>
+            </item>
+            <item>
+             <widget class="QLabel" name="lblFinalTotal">
+              <property name="text"><string>0 VND</string></property>
+              <property name="alignment"><set>Qt::AlignCenter</set></property>
+             </widget>
+            </item>
+
+            <item><spacer name="vSpacer5"><property name="orientation"><enum>Qt::Vertical</enum></property><property name="sizeHint" stdset="0"><size><width>20</width><height>20</height></size></property></spacer></item>
+
+            <item>
+             <widget class="QPushButton" name="btnConfirmPay">
+              <property name="text"><string>CONFIRM PAYMENT</string></property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QPushButton" name="btnBack">
+              <property name="text"><string>Cancel</string></property>
+             </widget>
+            </item>
+
+           </layout>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+      </item>
+      <item>
+       <spacer name="horizontalSpacer_R">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>40</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+     </layout>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+</ui>

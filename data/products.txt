@@ -1,0 +1,10 @@
+1|Áo Sơ mi Oxford Trắng|Vải cotton Oxford dày dặn, form regular fit|599000|Routine|1
+2|Áo Thun Trơn Cotton|Cotton 100% 2 chiều, thoáng mát, co giãn|249000|Coolmate|2
+3|Quần Jeans Ống Suông|Chất denim 13oz, wash màu xanh nhạt|799000|Yody|3
+4|Biti's Hunter Street CKL|Đế Bloom siêu nhẹ, vải dệt cao cấp|999000|Biti's|5
+5|Quần Tây Nam Form Slimfit|Vải Kaki co giãn 4 chiều, ống côn|649000|Owen|4
+6|Ananas Vintas 'Vintage'|Da lộn kết hợp canvas, đế cao su|1190000|Ananas|5
+7|Áo Polo Pique Mắt chim đại bàng|Vải pique co giãn, công nghệ khử mùi|399000|Yody|2
+8|Quần Jeans Rách Nhẹ|Form Skinny, mài rách nhẹ ở gối|749000|Routine|3
+9|Áo Sơ mi Flannel Kẻ Caro|Vải flannel nỉ mềm, giữ ấm tốt|699000|Uniqlo|1
+10|Biti's Hunter Core|Thiết kế thể thao, đệm lót êm ái|750000|Biti's|5

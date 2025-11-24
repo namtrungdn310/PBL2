@@ -1,0 +1,5 @@
+1|Shirts
+2|T-Shirts
+3|Jeans
+4|Trousers
+5|Sneakers

@@ -1,0 +1,268 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>EditCategoriesWidget</class>
+ <widget class="QWidget" name="EditCategoriesWidget">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1024</width>
+    <height>768</height>
+   </rect>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout_Main">
+   <item>
+    <widget class="QWidget" name="centerContainer" native="true">
+     <layout class="QHBoxLayout" name="horizontalLayout_Center">
+      <item>
+       <spacer name="horizontalSpacer_L">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>40</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item>
+       <widget class="QFrame" name="mainCard">
+        <property name="minimumSize">
+         <size>
+          <width>900</width>
+          <height>600</height>
+         </size>
+        </property>
+        <property name="frameShape">
+         <enum>QFrame::StyledPanel</enum>
+        </property>
+        <layout class="QHBoxLayout" name="horizontalLayout_Card">
+         <property name="spacing">
+          <number>0</number>
+         </property>
+         <property name="leftMargin">
+          <number>0</number>
+         </property>
+         <property name="topMargin">
+          <number>0</number>
+         </property>
+         <property name="rightMargin">
+          <number>0</number>
+         </property>
+         <property name="bottomMargin">
+          <number>0</number>
+         </property>
+
+         <item>
+          <widget class="QWidget" name="leftSide" native="true">
+           <layout class="QVBoxLayout" name="verticalLayout_Left">
+            <property name="leftMargin">
+             <number>20</number>
+            </property>
+            <property name="topMargin">
+             <number>20</number>
+            </property>
+            <property name="rightMargin">
+             <number>10</number>
+            </property>
+            <property name="bottomMargin">
+             <number>20</number>
+            </property>
+            <item>
+             <widget class="QLabel" name="lblTitle">
+              <property name="text">
+               <string>CATEGORY LIST</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QTableWidget" name="tblCategories">
+              <property name="selectionBehavior">
+               <enum>QAbstractItemView::SelectRows</enum>
+              </property>
+              <column><property name="text"><string>ID</string></property></column>
+              <column><property name="text"><string>Name</string></property></column>
+              <column><property name="text"><string>Products Count</string></property></column>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLabel" name="lblHint">
+              <property name="text">
+               <string>* Select a category to Edit or Delete</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </widget>
+         </item>
+
+         <item>
+          <widget class="Line" name="lineSeparator">
+           <property name="orientation">
+            <enum>Qt::Vertical</enum>
+           </property>
+          </widget>
+         </item>
+
+         <item>
+          <widget class="QWidget" name="rightSide" native="true">
+           <property name="minimumSize">
+            <size>
+             <width>350</width>
+             <height>0</height>
+            </size>
+           </property>
+           <layout class="QVBoxLayout" name="verticalLayout_Right">
+            <property name="leftMargin">
+             <number>20</number>
+            </property>
+            <property name="topMargin">
+             <number>20</number>
+            </property>
+            <property name="rightMargin">
+             <number>20</number>
+            </property>
+            <property name="bottomMargin">
+             <number>20</number>
+            </property>
+
+            <item>
+             <widget class="QStackedWidget" name="stackActions">
+              <property name="currentIndex">
+               <number>0</number>
+              </property>
+
+              <widget class="QWidget" name="pageForms">
+               <layout class="QVBoxLayout" name="vLayoutForms">
+                <item>
+                 <widget class="QLabel" name="lblManageTitle">
+                  <property name="text">
+                   <string>MANAGE CATEGORY</string>
+                  </property>
+                  <property name="alignment">
+                   <set>Qt::AlignCenter</set>
+                  </property>
+                 </widget>
+                </item>
+                <item><spacer name="sp1"><property name="orientation"><enum>Qt::Vertical</enum></property><property name="sizeHint" stdset="0"><size><width>20</width><height>20</height></size></property></spacer></item>
+
+                <item>
+                 <widget class="QGroupBox" name="grpAdd">
+                  <property name="title"><string>Add New Category</string></property>
+                  <layout class="QVBoxLayout" name="vboxAdd">
+                   <item>
+                    <widget class="QLineEdit" name="txtNewName">
+                     <property name="placeholderText"><string>Enter new category name...</string></property>
+                    </widget>
+                   </item>
+                   <item>
+                    <widget class="QPushButton" name="btnAdd">
+                     <property name="text"><string>Add Category</string></property>
+                    </widget>
+                   </item>
+                  </layout>
+                 </widget>
+                </item>
+
+                <item><spacer name="sp2"><property name="orientation"><enum>Qt::Vertical</enum></property><property name="sizeHint" stdset="0"><size><width>20</width><height>20</height></size></property></spacer></item>
+
+                <item>
+                 <widget class="QGroupBox" name="grpEdit">
+                  <property name="title"><string>Edit Selected</string></property>
+                  <layout class="QVBoxLayout" name="vboxEdit">
+                   <item>
+                    <widget class="QLabel" name="lblSelectedId">
+                     <property name="text"><string>Selected ID: -</string></property>
+                    </widget>
+                   </item>
+                   <item>
+                    <widget class="QLineEdit" name="txtEditName">
+                     <property name="placeholderText"><string>Select category to rename...</string></property>
+                    </widget>
+                   </item>
+                   <item>
+                    <widget class="QPushButton" name="btnRename">
+                     <property name="text"><string>Save Rename</string></property>
+                    </widget>
+                   </item>
+                   <item>
+                    <widget class="QPushButton" name="btnDelete">
+                     <property name="text"><string>Delete Category</string></property>
+                    </widget>
+                   </item>
+                  </layout>
+                 </widget>
+                </item>
+                <item><spacer name="sp3"><property name="orientation"><enum>Qt::Vertical</enum></property><property name="sizeHint" stdset="0"><size><width>20</width><height>40</height></size></property></spacer></item>
+               </layout>
+              </widget>
+
+              <widget class="QWidget" name="pageWarning">
+               <layout class="QVBoxLayout" name="vLayoutWarn">
+                <item>
+                 <widget class="QLabel" name="lblWarnTitle">
+                  <property name="text"><string>CANNOT DELETE!</string></property>
+                  <property name="alignment"><set>Qt::AlignCenter</set></property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QLabel" name="lblWarnMsg">
+                  <property name="text">
+                   <string>This category contains products. You must move or delete them first.</string>
+                  </property>
+                  <property name="wordWrap"><bool>true</bool></property>
+                  <property name="alignment"><set>Qt::AlignCenter</set></property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QTableWidget" name="tblBlockingProducts">
+                  <property name="editTriggers"><enum>QAbstractItemView::NoEditTriggers</enum></property>
+                  <column><property name="text"><string>ID</string></property></column>
+                  <column><property name="text"><string>Name</string></property></column>
+                  <column><property name="text"><string>Stock Info</string></property></column>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QPushButton" name="btnBackToForm">
+                  <property name="text"><string>OK, I Understand</string></property>
+                 </widget>
+                </item>
+               </layout>
+              </widget>
+             </widget>
+            </item>
+
+            <item>
+             <widget class="QPushButton" name="btnBack">
+              <property name="text"><string>Back to Dashboard</string></property>
+             </widget>
+            </item>
+           </layout>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+      </item>
+      <item>
+       <spacer name="horizontalSpacer_R">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>40</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+     </layout>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

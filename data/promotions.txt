@@ -1,0 +1,2 @@
+1|Flash Sale (Discount 5%)|0.05|Order over 500k|500000.00
+2|Mega Deal (Discount 15%)|0.15|Order over 2M|2000000.00

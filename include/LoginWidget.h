@@ -1,0 +1,4 @@
+#ifndef LOGINWIDGET_H
+#define LOGINWIDGET_H
+
+#endif // LOGINWIDGET_H

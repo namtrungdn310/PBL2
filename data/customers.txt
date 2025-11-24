@@ -1,0 +1,2 @@
+1|Nguyễn Văn A|a.nguyen@gmail.com|123456|10 Trần Thanh Mại, ĐN|0123456789|50|1
+2|Trần Thị B|b.tran@yahoo.com|abcdef|456 Le Loi, D1, HCMC|0912654321|50|
