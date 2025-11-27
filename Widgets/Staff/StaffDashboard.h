@@ -6,6 +6,7 @@
 #include <QStyleOption>
 #include <QPainter>
 #include "EditCategoriesWidget.h"
+#include "EditProductsWidget.h"
 namespace Ui { class StaffDashboard; }
 
 class StaffDashboard : public QWidget {
@@ -38,6 +39,7 @@ private:
     Ui::StaffDashboard *ui;
     ShopSystem* system;
     EditCategoriesWidget *m_editCategories;
+    EditProductsWidget *m_editProducts;
 };
 
 #endif // STAFFDASHBOARD_H

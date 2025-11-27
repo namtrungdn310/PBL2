@@ -377,3 +377,20 @@ void ShopSystem::staffConfirmCompleteOrder(int orderId) {
     }
     saveAllData();
 }
+
+int ShopSystem::countTotalInCarts(int productId, const string& sizeName) {
+    int total = 0;
+    for (const auto& [userId, cartItems] : savedUserCarts) {
+        for (const auto& item : cartItems) {
+            if (item.getProduct().getProductId() == productId && item.getSelectedSize() == sizeName) {
+                total += item.getQuantity();
+            }
+        }
+    }
+    for (const auto& item : currentCart.getItems()) {
+        if (item.getProduct().getProductId() == productId && item.getSelectedSize() == sizeName) {
+            total += item.getQuantity();
+        }
+    }
+    return total;
+}

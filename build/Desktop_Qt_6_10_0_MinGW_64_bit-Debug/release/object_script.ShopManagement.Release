@@ -28,6 +28,7 @@ release/ReviewsWidget.o
 release/AccountSettingsWidget.o
 release/StaffDashboard.o
 release/EditCategoriesWidget.o
+release/EditProductsWidget.o
 release/qrc_resources.o
 release/moc_MainWindow.o
 release/moc_StartupWidget.o
@@ -43,3 +44,4 @@ release/moc_ReviewsWidget.o
 release/moc_AccountSettingsWidget.o
 release/moc_StaffDashboard.o
 release/moc_EditCategoriesWidget.o
+release/moc_EditProductsWidget.o

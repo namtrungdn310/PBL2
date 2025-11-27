@@ -28,6 +28,7 @@ debug/ReviewsWidget.o
 debug/AccountSettingsWidget.o
 debug/StaffDashboard.o
 debug/EditCategoriesWidget.o
+debug/EditProductsWidget.o
 debug/qrc_resources.o
 debug/moc_MainWindow.o
 debug/moc_StartupWidget.o
@@ -43,3 +44,4 @@ debug/moc_ReviewsWidget.o
 debug/moc_AccountSettingsWidget.o
 debug/moc_StaffDashboard.o
 debug/moc_EditCategoriesWidget.o
+debug/moc_EditProductsWidget.o

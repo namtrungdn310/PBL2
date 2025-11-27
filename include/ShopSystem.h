@@ -102,17 +102,18 @@ public:
     void loadAllData();
     void saveAllData();
 
+    int getTotalUsers() const { return customers.size() + staffMembers.size(); }
+    int registerNewCustomer(const string& name, const string& email, const string& pass, const string& address, const string& phone);
     int getNewOrderId();
+    int getNewUserId();
     int getTotalProducts() const { return products.size(); }
+    int countTotalInCarts(int productId, const string& sizeName);
     int getTotalCustomers() const { return customers.size(); }
     int getTotalOrders() const { return orders.size(); }
-    int getTotalUsers() const { return customers.size() + staffMembers.size(); }
-    int getNewUserId();
+
     double getTotalRevenue() const;
     double getRevenueThisMonth() const;
     double getMonthlyRevenueTarget() const { return monthlyRevenueTarget; }
-    void setMonthlyRevenueTarget(double target) { monthlyRevenueTarget = target; }
-
-    int registerNewCustomer(const string& name, const string& email, const string& pass, const string& address, const string& phone);
+    void setMonthlyRevenueTarget(double target) { monthlyRevenueTarget = target; }  
 };
 #endif

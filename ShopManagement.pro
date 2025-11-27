@@ -31,7 +31,8 @@ SOURCES += \
     Widgets/Customer/AccountSettingsWidget.cpp \
     \
     Widgets/Staff/StaffDashboard.cpp \
-    Widgets/Staff/EditCategoriesWidget.cpp
+    Widgets/Staff/EditCategoriesWidget.cpp \
+    Widgets/Staff/EditProductsWidget.cpp
 
 HEADERS += \
     include/Cart.h include/CartItem.h include/Category.h include/Customer.h \
@@ -54,7 +55,8 @@ HEADERS += \
     Widgets/Customer/AccountSettingsWidget.h \
     \
     Widgets/Staff/StaffDashboard.h \
-    Widgets/Staff/EditCategoriesWidget.h
+    Widgets/Staff/EditCategoriesWidget.h \
+    Widgets/Staff/EditProductsWidget.h
 
 FORMS += \
     Widgets/MainWindow.ui \
@@ -72,7 +74,8 @@ FORMS += \
     Widgets/Customer/AccountSettingsWidget.ui \
     \
     Widgets/Staff/StaffDashboard.ui \
-    Widgets/Staff/EditCategoriesWidget.ui
+    Widgets/Staff/EditCategoriesWidget.ui \
+    Widgets/Staff/EditProductsWidget.ui \
 
 RESOURCES += resources.qrc
 

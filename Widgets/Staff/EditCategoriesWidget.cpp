@@ -13,7 +13,6 @@ EditCategoriesWidget::EditCategoriesWidget(QWidget *parent) :
     system = ShopSystem::getInstance();
     this->setObjectName("EditCategoriesWidget");
 
-    // 1. Cấu hình bảng Categories (Trái)
     ui->tblCategories->setColumnCount(3);
     ui->tblCategories->setHorizontalHeaderLabels({"ID", "Name", "Products"});
     ui->tblCategories->horizontalHeader()->setSectionResizeMode(0, QHeaderView::Fixed);
@@ -27,7 +26,6 @@ EditCategoriesWidget::EditCategoriesWidget(QWidget *parent) :
     ui->tblCategories->setSelectionMode(QAbstractItemView::SingleSelection);
     ui->tblCategories->setEditTriggers(QAbstractItemView::NoEditTriggers);
 
-    // 2. Cấu hình bảng Warning (Sản phẩm chặn xóa)
     ui->tblBlockingProducts->setColumnCount(3);
     ui->tblBlockingProducts->setHorizontalHeaderLabels({"ID", "Product Name", "Stock Info"});
     ui->tblBlockingProducts->horizontalHeader()->setSectionResizeMode(0, QHeaderView::Fixed);
@@ -48,12 +46,10 @@ void EditCategoriesWidget::paintEvent(QPaintEvent *event) {
     style()->drawPrimitive(QStyle::PE_Widget, &opt, &p, this);
 }
 
-// --- LOAD DỮ LIỆU ---
 void EditCategoriesWidget::refreshData() {
-    ui->stackActions->setCurrentIndex(0); // Luôn về trang Form
+    ui->stackActions->setCurrentIndex(0);
     loadCategoriesTable();
 
-    // Reset trạng thái
     ui->txtNewName->clear();
     ui->txtEditName->clear();
     ui->lblSelectedId->setText("Selected ID: -");
@@ -89,7 +85,6 @@ void EditCategoriesWidget::loadCategoriesTable() {
     }
 }
 
-// --- CHỌN DÒNG ĐỂ SỬA/XÓA ---
 void EditCategoriesWidget::on_tblCategories_cellClicked(int row, int column) {
     Q_UNUSED(column);
     currentSelectedCatId = ui->tblCategories->item(row, 0)->text().toInt();
@@ -101,7 +96,6 @@ void EditCategoriesWidget::on_tblCategories_cellClicked(int row, int column) {
     ui->btnDelete->setEnabled(true);
 }
 
-// --- LOGIC THÊM MỚI ---
 int EditCategoriesWidget::getNewCategoryId() {
     int maxId = 0;
     for (const auto& cat : system->getCategories()) {
@@ -120,13 +114,12 @@ void EditCategoriesWidget::on_btnAdd_clicked() {
     int newId = getNewCategoryId();
     Category newCat(newId, name.toStdString());
     system->addCategory(newCat);
-    system->saveAllData(); // Lưu ngay
+    system->saveAllData();
 
     QMessageBox::information(this, "Success", "Category added successfully!");
     refreshData();
 }
 
-// --- LOGIC ĐỔI TÊN ---
 void EditCategoriesWidget::on_btnRename_clicked() {
     if (currentSelectedCatId == -1) return;
     QString newName = ui->txtEditName->text().trimmed();
@@ -135,8 +128,6 @@ void EditCategoriesWidget::on_btnRename_clicked() {
         return;
     }
 
-    // Vì ShopSystem trả về const vector, ta cần hack nhẹ hoặc thêm hàm updateCategory
-    // Ở đây tôi dùng const_cast cho nhanh, chuẩn thì nên thêm hàm update vào ShopSystem
     vector<Category>& cats = const_cast<vector<Category>&>(system->getCategories());
     for (auto& cat : cats) {
         if (cat.getCategoryId() == currentSelectedCatId) {
@@ -150,11 +141,9 @@ void EditCategoriesWidget::on_btnRename_clicked() {
     refreshData();
 }
 
-// --- LOGIC XÓA (KIỂM TRA SẢN PHẨM) ---
 void EditCategoriesWidget::on_btnDelete_clicked() {
     if (currentSelectedCatId == -1) return;
 
-    // 1. Tìm các sản phẩm thuộc Category này
     vector<Product> blockingProds;
     for (const auto& p : system->getProducts()) {
         if (p.getCategoryId() == currentSelectedCatId) {
@@ -162,7 +151,6 @@ void EditCategoriesWidget::on_btnDelete_clicked() {
         }
     }
 
-    // 2. NẾU CÓ SẢN PHẨM -> CHẶN XÓA & HIỆN BẢNG CẢNH BÁO
     if (!blockingProds.empty()) {
         ui->tblBlockingProducts->setRowCount(0);
         for(const auto& p : blockingProds) {
@@ -181,17 +169,14 @@ void EditCategoriesWidget::on_btnDelete_clicked() {
             ui->tblBlockingProducts->setItem(r, 2, new QTableWidgetItem(sizeInfo));
         }
 
-        // Chuyển sang trang Warning
         ui->stackActions->setCurrentIndex(1);
         return;
     }
 
-    // 3. NẾU KHÔNG CÓ -> CHO PHÉP XÓA
     QMessageBox::StandardButton reply;
     reply = QMessageBox::question(this, "Delete", "Are you sure you want to delete this category?", QMessageBox::Yes|QMessageBox::No);
 
     if (reply == QMessageBox::Yes) {
-        // Xóa khỏi vector
         vector<Category>& cats = const_cast<vector<Category>&>(system->getCategories());
         for (auto it = cats.begin(); it != cats.end(); ++it) {
             if (it->getCategoryId() == currentSelectedCatId) {
@@ -207,7 +192,7 @@ void EditCategoriesWidget::on_btnDelete_clicked() {
 }
 
 void EditCategoriesWidget::on_btnBackToForm_clicked() {
-    ui->stackActions->setCurrentIndex(0); // Quay lại form
+    ui->stackActions->setCurrentIndex(0);
 }
 
 void EditCategoriesWidget::on_btnBack_clicked() { emit backSignal(); }
