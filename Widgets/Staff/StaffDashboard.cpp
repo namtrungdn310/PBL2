@@ -64,24 +64,20 @@ StaffDashboard::StaffDashboard(QWidget *parent) :
         "   background: qlineargradient(x1:0, y1:0, x2:1, y2:1, "
         "       stop:0 #D6F0FD, stop:1 #B3E5FC); "
         "}"
-
         "QWidget#mainContainer { "
         "   border-radius: 20px; "
         "}"
-
         "QWidget#headerContainer { "
         "   background-color: rgba(255, 255, 255, 0.95); "
         "   border-bottom: 1px solid #E0E0E0; "
         "}"
         "QLabel#lblWelcome { font-family: 'Segoe UI'; font-size: 16px; font-weight: bold; color: #1565C0; }"
-
         "QPushButton#btnLogout { "
         "   background-color: transparent; "
         "   border: 1px solid #E74C3C; color: #E74C3C; "
         "   border-radius: 15px; padding: 7px 20px; font-weight: 700; "
         "}"
         "QPushButton#btnLogout:hover { background-color: #E74C3C; color: white; }"
-
         "QWidget#frameStack { "
         "   background-color: #DEF4FC; "
         "   border-top-left-radius: 20px; "
@@ -90,11 +86,9 @@ StaffDashboard::StaffDashboard(QWidget *parent) :
 
         "   border-right: 2px solid #333333; "
         "}"
-
         "QWidget#lblLogo_1 { "
         "   margin-bottom: 11px; "
         "}"
-
         "QLabel#lblSlogan { "
         "   font-family: 'Segoe UI', sans-serif; "
         "   font-size: 20px; "
@@ -107,7 +101,6 @@ StaffDashboard::StaffDashboard(QWidget *parent) :
         "   padding-left: 20px; padding-right: 20px; "
         "   qproperty-alignment: AlignCenter; "
         "}"
-
         "QWidget#frameHome { "
         "   background-color: #FFFFFF; "
         "   border-top-right-radius: 20px; "
@@ -118,12 +111,10 @@ StaffDashboard::StaffDashboard(QWidget *parent) :
         "   border-bottom: 2px solid #FFFFFF; "
         "   border-left: none; "
         "}"
-
         "QLabel#lblLogo_2 { "
         "   font-size: 24px; color: #1565C0; font-weight: 800; "
         "   margin-bottom: 20px;"
         "}"
-
         "QPushButton#btnEditCategories, QPushButton#btnEditProducts, QPushButton#btnEditPromotions, "
         "QPushButton#btnEditReviews, QPushButton#btnCustomers, QPushButton#btnAnalysis, QPushButton#btnAccountSetting { "
         "   background-color: #1976D2; "
@@ -136,12 +127,10 @@ StaffDashboard::StaffDashboard(QWidget *parent) :
 
         "   margin-bottom: 15px; "
         "}"
-
         "QPushButton#btnEditCategories:hover, QPushButton#btnEditProducts:hover, QPushButton#btnEditPromotions:hover, "
         "QPushButton#btnEditReviews:hover, QPushButton#btnCustomers:hover, QPushButton#btnAnalysis:hover, QPushButton#btnAccountSetting:hover { "
         "   background-color: #1565C0; "
         "}"
-
         "QPushButton#btnEditCategories:pressed, QPushButton#btnEditProducts:pressed, QPushButton#btnEditPromotions:pressed, "
         "QPushButton#btnEditReviews:pressed, QPushButton#btnCustomers:pressed, QPushButton#btnAnalysis:pressed, QPushButton#btnAccountSetting:pressed { "
         "   background-color: #0D47A1; "
@@ -150,11 +139,13 @@ StaffDashboard::StaffDashboard(QWidget *parent) :
 
     m_editCategories = new EditCategoriesWidget(this);
     m_editProducts = new EditProductsWidget(this);
+    m_editPromotions = new EditPromotionsWidget(this);
     ui->dashboardStack->addWidget(m_editCategories);
     ui->dashboardStack->addWidget(m_editProducts);
+    ui->dashboardStack->addWidget(m_editPromotions);
     connect(m_editCategories, &EditCategoriesWidget::backSignal, this, &StaffDashboard::goHome);
     connect(m_editProducts, &EditProductsWidget::backSignal, this, &StaffDashboard::goHome);
-
+    connect(m_editPromotions, &EditPromotionsWidget::backSignal, this, &StaffDashboard::goHome);
     ui->dashboardStack->setCurrentIndex(0);
 }
 
@@ -194,7 +185,11 @@ void StaffDashboard::on_btnEditProducts_clicked()   {
     m_editProducts->refreshData();
     ui->dashboardStack->setCurrentWidget(m_editProducts);
 }
-void StaffDashboard::on_btnEditPromotions_clicked() { QMessageBox::information(this, "Admin", "Edit Promotions"); }
+
+void StaffDashboard::on_btnEditPromotions_clicked() {
+    m_editPromotions->refreshData();
+    ui->dashboardStack->setCurrentWidget(m_editPromotions);
+}
 void StaffDashboard::on_btnEditReviews_clicked()    { QMessageBox::information(this, "Admin", "Edit Reviews"); }
 void StaffDashboard::on_btnCustomers_clicked()      { QMessageBox::information(this, "Admin", "Customers Management"); }
 void StaffDashboard::on_btnAnalysis_clicked()       { QMessageBox::information(this, "Admin", "Shop Analysis"); }

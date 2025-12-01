@@ -46,6 +46,7 @@ public:
     QHBoxLayout *hlFilter;
     QComboBox *cboCategoryFilter;
     QPushButton *btnFilter;
+    QPushButton *btnAddProduct;
     QTableWidget *tblProducts;
     QLabel *lblHint;
     QFrame *lineSeparator;
@@ -137,6 +138,12 @@ public:
 
 
         verticalLayout_Left->addLayout(hlFilter);
+
+        btnAddProduct = new QPushButton(leftSide);
+        btnAddProduct->setObjectName("btnAddProduct");
+        btnAddProduct->setStyleSheet(QString::fromUtf8("background-color: #2E7D32; margin-bottom: 10px;"));
+
+        verticalLayout_Left->addWidget(btnAddProduct);
 
         tblProducts = new QTableWidget(leftSide);
         if (tblProducts->columnCount() < 3)
@@ -355,6 +362,7 @@ public:
         lblTitle->setText(QCoreApplication::translate("EditProductsWidget", "PRODUCT LIST", nullptr));
         txtSearch->setPlaceholderText(QCoreApplication::translate("EditProductsWidget", "Search product...", nullptr));
         btnFilter->setText(QCoreApplication::translate("EditProductsWidget", "Filter", nullptr));
+        btnAddProduct->setText(QCoreApplication::translate("EditProductsWidget", "+ Add New Product", nullptr));
         QTableWidgetItem *___qtablewidgetitem = tblProducts->horizontalHeaderItem(0);
         ___qtablewidgetitem->setText(QCoreApplication::translate("EditProductsWidget", "ID", nullptr));
         QTableWidgetItem *___qtablewidgetitem1 = tblProducts->horizontalHeaderItem(1);

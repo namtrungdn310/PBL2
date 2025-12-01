@@ -7,7 +7,9 @@
 EditProductsWidget::EditProductsWidget(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::EditProductsWidget),
-    currentEditingProduct(nullptr)
+    currentEditingProduct(nullptr),
+    isAddMode(false),
+    lastGeneratedProductId(0)
 {
     ui->setupUi(this);
     system = ShopSystem::getInstance();
@@ -33,6 +35,11 @@ EditProductsWidget::EditProductsWidget(QWidget *parent) :
 
     populateSizeCombo();
     setupStyle();
+    for(const auto& p : system->getProducts()) {
+        if (p.getProductId() > lastGeneratedProductId) {
+            lastGeneratedProductId = p.getProductId();
+        }
+    }
 }
 
 EditProductsWidget::~EditProductsWidget() { delete ui; }
@@ -45,8 +52,8 @@ void EditProductsWidget::paintEvent(QPaintEvent *event) {
 void EditProductsWidget::refreshData() {
     ui->stackEdit->setCurrentIndex(0);
     currentEditingProduct = nullptr;
+    isAddMode = false;
     tempSizes.clear();
-
     loadCategories();
     on_btnFilter_clicked();
 }
@@ -104,13 +111,16 @@ void EditProductsWidget::on_tblProducts_cellDoubleClicked(int row, int column) {
 }
 
 void EditProductsWidget::loadProductToForm(Product* p) {
+    isAddMode = false;
     currentEditingProduct = p;
-
+    ui->lblEditTitle->setText("EDIT PRODUCT");
+    ui->btnDeleteProduct->setVisible(true); // Hiện nút xóa
+    ui->btnConfirm->setText("Confirm Save");
     ui->txtName->setText(QString::fromStdString(p->getName()));
     ui->txtPrice->setText(QString::number(p->getPrice()));
     ui->txtBrand->setText(QString::fromStdString(p->getBrand()));
     ui->txtDesc->setText(QString::fromStdString(p->getDescription()));
-
+    ui->txtName->setText(QString::fromStdString(p->getName()));
     int idx = ui->cboCategoryEdit->findData(p->getCategoryId());
     if (idx != -1) ui->cboCategoryEdit->setCurrentIndex(idx);
     tempSizes = p->getSizes();
@@ -158,13 +168,27 @@ void EditProductsWidget::on_btnRemoveSize_clicked() {
 }
 
 void EditProductsWidget::on_btnConfirm_clicked() {
-    if (!currentEditingProduct) return;
     QString name = ui->txtName->text().trimmed();
     long long price = ui->txtPrice->text().toLongLong();
     if (name.isEmpty() || price < 0) {
         QMessageBox::warning(this, "Error", "Invalid Name or Price!");
         return;
     }
+    if (isAddMode) {
+        lastGeneratedProductId++;
+        int newId = lastGeneratedProductId;
+        int catId = ui->cboCategoryEdit->currentData().toInt();
+        string desc = ui->txtDesc->toPlainText().toStdString();
+        string brand = ui->txtBrand->text().toStdString();
+        Product newP(newId, name.toStdString(), price, brand, desc, catId);
+        newP.getSizes() = tempSizes;
+        system->addProduct(newP);
+        system->saveAllData();
+        QMessageBox::information(this, "Success", "New product added successfully!");
+        refreshData();
+        return;
+    }
+    if (!currentEditingProduct) return;
     QString warningMsg = "";
 
     for (const auto& newSize : tempSizes) {
@@ -229,7 +253,24 @@ void EditProductsWidget::on_btnDeleteProduct_clicked() {
         refreshData();
     }
 }
+void EditProductsWidget::on_btnAddProduct_clicked() {
+    isAddMode = true;
+    currentEditingProduct = nullptr;
 
+    ui->txtName->clear();
+    ui->txtPrice->clear();
+    ui->txtBrand->clear();
+    ui->txtDesc->clear();
+
+    tempSizes.clear();
+    updateSizeTable();
+
+    ui->lblEditTitle->setText("ADD NEW PRODUCT");
+    ui->btnDeleteProduct->setVisible(false); // Ẩn nút xóa khi đang thêm mới
+    ui->btnConfirm->setText("Confirm Add");
+    ui->stackEdit->setCurrentIndex(1);
+    ui->txtName->setFocus();
+}
 void EditProductsWidget::on_btnBack_clicked() { emit backSignal(); }
 
 void EditProductsWidget::setupStyle() {
@@ -237,6 +278,7 @@ void EditProductsWidget::setupStyle() {
     shadow->setBlurRadius(40);
     shadow->setColor(QColor(0, 0, 0, 50));
     shadow->setOffset(0, 10);
+    ui->btnAddProduct->setStyleSheet("background-color: #2E7D32; color: white; border-radius: 18px; padding: 10px; font-weight: bold;");
     ui->mainCard->setGraphicsEffect(shadow);
     this->setStyleSheet(
         "QWidget { "

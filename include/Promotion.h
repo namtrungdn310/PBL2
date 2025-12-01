@@ -25,5 +25,10 @@ public:
     
     double applyPromotion(double orderTotal) const;
     bool isValid() const;
+
+    void setName(string n) { name = n; }
+    void setDiscountRate(double r) { discountRate = r; }
+    void setCondition(string c) { condition = c; }
+    void setMinOrderAmount(double m) { minOrderAmount = m; }
 };
 #endif

@@ -46,6 +46,7 @@ template <> constexpr inline auto EditProductsWidget::qt_create_metaobjectdata<q
         "on_tblProducts_cellDoubleClicked",
         "row",
         "column",
+        "on_btnAddProduct_clicked",
         "on_btnAddSize_clicked",
         "on_btnRemoveSize_clicked",
         "on_btnConfirm_clicked",
@@ -63,14 +64,16 @@ template <> constexpr inline auto EditProductsWidget::qt_create_metaobjectdata<q
         QtMocHelpers::SlotData<void(int, int)>(5, 2, QMC::AccessPrivate, QMetaType::Void, {{
             { QMetaType::Int, 6 }, { QMetaType::Int, 7 },
         }}),
-        // Slot 'on_btnAddSize_clicked'
+        // Slot 'on_btnAddProduct_clicked'
         QtMocHelpers::SlotData<void()>(8, 2, QMC::AccessPrivate, QMetaType::Void),
-        // Slot 'on_btnRemoveSize_clicked'
+        // Slot 'on_btnAddSize_clicked'
         QtMocHelpers::SlotData<void()>(9, 2, QMC::AccessPrivate, QMetaType::Void),
-        // Slot 'on_btnConfirm_clicked'
+        // Slot 'on_btnRemoveSize_clicked'
         QtMocHelpers::SlotData<void()>(10, 2, QMC::AccessPrivate, QMetaType::Void),
-        // Slot 'on_btnDeleteProduct_clicked'
+        // Slot 'on_btnConfirm_clicked'
         QtMocHelpers::SlotData<void()>(11, 2, QMC::AccessPrivate, QMetaType::Void),
+        // Slot 'on_btnDeleteProduct_clicked'
+        QtMocHelpers::SlotData<void()>(12, 2, QMC::AccessPrivate, QMetaType::Void),
     };
     QtMocHelpers::UintData qt_properties {
     };
@@ -98,10 +101,11 @@ void EditProductsWidget::qt_static_metacall(QObject *_o, QMetaObject::Call _c, i
         case 1: _t->on_btnBack_clicked(); break;
         case 2: _t->on_btnFilter_clicked(); break;
         case 3: _t->on_tblProducts_cellDoubleClicked((*reinterpret_cast<std::add_pointer_t<int>>(_a[1])),(*reinterpret_cast<std::add_pointer_t<int>>(_a[2]))); break;
-        case 4: _t->on_btnAddSize_clicked(); break;
-        case 5: _t->on_btnRemoveSize_clicked(); break;
-        case 6: _t->on_btnConfirm_clicked(); break;
-        case 7: _t->on_btnDeleteProduct_clicked(); break;
+        case 4: _t->on_btnAddProduct_clicked(); break;
+        case 5: _t->on_btnAddSize_clicked(); break;
+        case 6: _t->on_btnRemoveSize_clicked(); break;
+        case 7: _t->on_btnConfirm_clicked(); break;
+        case 8: _t->on_btnDeleteProduct_clicked(); break;
         default: ;
         }
     }
@@ -130,14 +134,14 @@ int EditProductsWidget::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 8)
+        if (_id < 9)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 8;
+        _id -= 9;
     }
     if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 8)
+        if (_id < 9)
             *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType();
-        _id -= 8;
+        _id -= 9;
     }
     return _id;
 }

@@ -60,7 +60,7 @@ public:
     const vector<Category>& getCategories() const { return categories; }
     const vector<Review>& getReviews() const { return reviews; }
     const vector<Invoice>& getInvoices() const { return invoices; }
-
+    vector<Promotion>& getPromotions();
     Product* findProduct(int productId);
     Customer* findCustomer(int userId);
     Customer* findCustomerByEmail(const string& email);

@@ -7,6 +7,7 @@
 #include <QPainter>
 #include "EditCategoriesWidget.h"
 #include "EditProductsWidget.h"
+#include "EditPromotionsWidget.h"
 namespace Ui { class StaffDashboard; }
 
 class StaffDashboard : public QWidget {
@@ -26,7 +27,6 @@ private slots:
     void on_btnLogout_clicked();
     void goHome();
 
-    // Slots cho 7 nút menu
     void on_btnEditCategories_clicked();
     void on_btnEditProducts_clicked();
     void on_btnEditPromotions_clicked();
@@ -40,6 +40,7 @@ private:
     ShopSystem* system;
     EditCategoriesWidget *m_editCategories;
     EditProductsWidget *m_editProducts;
+    EditPromotionsWidget *m_editPromotions;
 };
 
-#endif // STAFFDASHBOARD_H
+#endif

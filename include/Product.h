@@ -18,7 +18,7 @@ private:
 
 public:
     Product();
-    Product(int id, const string& n, const string& desc, long long p, const string& b, int catId);
+    Product(int id, const string& n, long long p, const string& desc, const string& b, int catId);
     
     int getProductId() const { return productId; }
     const string& getName() const { return name; }

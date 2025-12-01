@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>EditPromotionsWidget</class>
+ <widget class="QWidget" name="EditPromotionsWidget">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1024</width>
+    <height>768</height>
+   </rect>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout_Main">
+   <item>
+    <widget class="QWidget" name="centerContainer" native="true">
+     <layout class="QHBoxLayout" name="horizontalLayout_Center">
+      <item>
+       <spacer name="horizontalSpacer_L">
+        <property name="orientation"><enum>Qt::Horizontal</enum></property>
+        <property name="sizeHint" stdset="0"><size><width>40</width><height>20</height></size></property>
+       </spacer>
+      </item>
+      <item>
+       <widget class="QFrame" name="mainCard">
+        <property name="minimumSize"><size><width>950</width><height>650</height></size></property>
+        <property name="frameShape"><enum>QFrame::StyledPanel</enum></property>
+        <layout class="QHBoxLayout" name="horizontalLayout_Card">
+         <property name="spacing"><number>0</number></property>
+         <property name="leftMargin"><number>0</number></property>
+         <property name="topMargin"><number>0</number></property>
+         <property name="rightMargin"><number>0</number></property>
+         <property name="bottomMargin"><number>0</number></property>
+
+         <item>
+          <widget class="QWidget" name="leftSide" native="true">
+           <layout class="QVBoxLayout" name="verticalLayout_Left">
+            <property name="leftMargin"><number>20</number></property>
+            <property name="topMargin"><number>20</number></property>
+            <property name="rightMargin"><number>10</number></property>
+            <property name="bottomMargin"><number>20</number></property>
+            <item><widget class="QLabel" name="lblTitle"><property name="text"><string>PROMOTION LIST</string></property></widget></item>
+            <item>
+             <widget class="QTableWidget" name="tblPromos">
+              <property name="selectionBehavior"><enum>QAbstractItemView::SelectRows</enum></property>
+              <column><property name="text"><string>ID</string></property></column>
+              <column><property name="text"><string>Name</string></property></column>
+              <column><property name="text"><string>Rate</string></property></column>
+              <column><property name="text"><string>Min Order</string></property></column>
+             </widget>
+            </item>
+            <item><widget class="QLabel" name="lblHint"><property name="text"><string>* Select item to Edit or Delete</string></property></widget></item>
+           </layout>
+          </widget>
+         </item>
+
+         <item><widget class="Line" name="lineSeparator"><property name="orientation"><enum>Qt::Vertical</enum></property></widget></item>
+
+         <item>
+          <widget class="QWidget" name="rightSide" native="true">
+           <property name="minimumSize"><size><width>350</width><height>0</height></size></property>
+           <layout class="QVBoxLayout" name="verticalLayout_Right">
+            <property name="leftMargin"><number>20</number></property>
+            <property name="topMargin"><number>20</number></property>
+            <property name="rightMargin"><number>20</number></property>
+            <property name="bottomMargin"><number>20</number></property>
+
+            <item><widget class="QLabel" name="lblManageTitle"><property name="text"><string>MANAGE PROMOTIONS</string></property><property name="alignment"><set>Qt::AlignCenter</set></property></widget></item>
+
+            <item>
+             <widget class="QGroupBox" name="grpAdd">
+              <property name="title"><string>Add New Promotion</string></property>
+              <layout class="QVBoxLayout" name="vlAdd">
+               <item><widget class="QLineEdit" name="txtAddName"><property name="placeholderText"><string>Promo Name (e.g. Summer Sale)</string></property></widget></item>
+               <item><widget class="QLineEdit" name="txtAddCondition"><property name="placeholderText"><string>Condition (e.g. Order > 500k)</string></property></widget></item>
+               <item>
+                <layout class="QHBoxLayout" name="hlAddNums">
+                 <item><widget class="QDoubleSpinBox" name="spinAddRate"><property name="suffix"><string> %</string></property><property name="maximum"><number>100</number></property></widget></item>
+                 <item><widget class="QLineEdit" name="txtAddMinAmount"><property name="placeholderText"><string>Min Order (VND)</string></property></widget></item>
+                </layout>
+               </item>
+               <item><widget class="QPushButton" name="btnAdd"><property name="text"><string>Add Promotion</string></property></widget></item>
+              </layout>
+             </widget>
+            </item>
+
+            <item><spacer name="vSpacer"><property name="orientation"><enum>Qt::Vertical</enum></property><property name="sizeHint" stdset="0"><size><width>20</width><height>20</height></size></property></spacer></item>
+
+            <item>
+             <widget class="QGroupBox" name="grpEdit">
+              <property name="title"><string>Edit Selected</string></property>
+              <property name="enabled"><bool>false</bool></property>
+              <layout class="QVBoxLayout" name="vlEdit">
+               <item><widget class="QLabel" name="lblSelectedId"><property name="text"><string>Selected ID: -</string></property></widget></item>
+               <item><widget class="QLineEdit" name="txtEditName"><property name="placeholderText"><string>Promo Name</string></property></widget></item>
+               <item><widget class="QLineEdit" name="txtEditCondition"><property name="placeholderText"><string>Condition</string></property></widget></item>
+               <item>
+                <layout class="QHBoxLayout" name="hlEditNums">
+                 <item><widget class="QDoubleSpinBox" name="spinEditRate"><property name="suffix"><string> %</string></property><property name="maximum"><number>100</number></property></widget></item>
+                 <item><widget class="QLineEdit" name="txtEditMinAmount"><property name="placeholderText"><string>Min Order (VND)</string></property></widget></item>
+                </layout>
+               </item>
+               <item>
+                <layout class="QHBoxLayout" name="hlEditBtns">
+                 <item><widget class="QPushButton" name="btnDelete"><property name="text"><string>Delete</string></property></widget></item>
+                 <item><widget class="QPushButton" name="btnSave"><property name="text"><string>Confirm Save</string></property></widget></item>
+                </layout>
+               </item>
+              </layout>
+             </widget>
+            </item>
+
+            <item><spacer name="vSpacer2"><property name="orientation"><enum>Qt::Vertical</enum></property><property name="sizeHint" stdset="0"><size><width>20</width><height>40</height></size></property></spacer></item>
+
+            <item>
+             <widget class="QPushButton" name="btnBack">
+              <property name="text"><string>Back to Dashboard</string></property>
+             </widget>
+            </item>
+           </layout>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+      </item>
+      <item>
+       <spacer name="horizontalSpacer_R">
+        <property name="orientation"><enum>Qt::Horizontal</enum></property>
+        <property name="sizeHint" stdset="0"><size><width>40</width><height>20</height></size></property>
+       </spacer>
+      </item>
+     </layout>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+</ui>

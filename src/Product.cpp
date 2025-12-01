@@ -3,7 +3,7 @@
 
 Product::Product() : productId(0), price(0), categoryId(0) {}
 
-Product::Product(int id, const string& n, const string& desc, long long p, const string& b, int catId)
+Product::Product(int id, const string& n, long long p, const string& desc,  const string& b, int catId)
     : productId(id), name(n), description(desc), price(p), brand(b), categoryId(catId) {}
 
 Size* Product::findSize(const string& sizeName) {

@@ -109,6 +109,18 @@
               </item>
              </layout>
             </item>
+
+            <item>
+             <widget class="QPushButton" name="btnAddProduct">
+              <property name="text">
+               <string>+ Add New Product</string>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">background-color: #2E7D32; margin-bottom: 10px;</string>
+              </property>
+             </widget>
+            </item>
+
             <item>
              <widget class="QTableWidget" name="tblProducts">
               <property name="selectionBehavior">
@@ -131,6 +143,7 @@
               </column>
              </widget>
             </item>
+
             <item>
              <widget class="QLabel" name="lblHint">
               <property name="text">

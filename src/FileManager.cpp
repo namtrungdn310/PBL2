@@ -83,8 +83,8 @@ vector<Product> FileManager::readProducts(string filename) {
         getline(ss, description, '|');
         ss >> price; ss.ignore();
         getline(ss, brand, '|');
-        ss >> categoryId;        
-        Product product(id, name, description, price, brand, categoryId);
+        ss >> categoryId;
+        Product product(id, name, price, description,  brand, categoryId);
         products.push_back(product);
     }
     file.close();

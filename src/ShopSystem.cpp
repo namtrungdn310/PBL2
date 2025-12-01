@@ -394,3 +394,7 @@ int ShopSystem::countTotalInCarts(int productId, const string& sizeName) {
     }
     return total;
 }
+
+vector<Promotion>& ShopSystem::getPromotions() {
+    return this->promotions; //
+}
