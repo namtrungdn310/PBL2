@@ -154,6 +154,7 @@ void ReviewsWidget::loadReviewsForProduct(int prodId) {
     QLayoutItem* item;
     while ((item = layout->takeAt(0)) != nullptr) { delete item->widget(); delete item; }
     vector<Review> reviews = system->getReviewsForProduct(prodId);
+    Customer* currentCust = system->getCurrentCustomer();
     if (reviews.empty()) {
         QLabel* empty = new QLabel("No reviews yet. Be the first!", ui->scrollContent);
         empty->setStyleSheet("color: #777; font-style: italic; margin-top: 20px;");
@@ -167,8 +168,27 @@ void ReviewsWidget::loadReviewsForProduct(int prodId) {
                 "QLabel { border: none; }"
                 );
             QVBoxLayout* l = new QVBoxLayout(card);
+            QHBoxLayout* headerLayout = new QHBoxLayout();
             QLabel* name = new QLabel(QString::fromStdString(r.getCustomerName()), card);
             name->setStyleSheet("font-weight: bold; color: #1565C0; font-size: 13px;");
+            headerLayout->addWidget(name);
+            headerLayout->addStretch();
+            if (currentCust && r.getCustomerId() == currentCust->getUserId()) {
+                QPushButton* btnDelete = new QPushButton("Delete", card);
+                btnDelete->setCursor(Qt::PointingHandCursor);
+                btnDelete->setStyleSheet(
+                    "QPushButton { "
+                    "  background-color: #FFEBEE; color: #D32F2F; border: 1px solid #FFCDD2; "
+                    "  border-radius: 4px; padding: 2px 8px; font-size: 11px; font-weight: bold;"
+                    "}"
+                    "QPushButton:hover { background-color: #FFCDD2; }"
+                    );
+                connect(btnDelete, &QPushButton::clicked, [this, rId = r.getReviewId()]() {
+                    this->handleDeleteReview(rId);
+                });
+                headerLayout->addWidget(btnDelete);
+            }
+            l->addLayout(headerLayout);
             QLabel* stars = new QLabel(getStarString(r.getRating()), card);
             stars->setStyleSheet("color: #F1C40F; font-size: 14px;");
             QLabel* cmt = new QLabel(QString::fromStdString(r.getComment()), card);
@@ -189,12 +209,35 @@ void ReviewsWidget::on_btnConfirmReview_clicked() {
     Customer* c = system->getCurrentCustomer();
     int custId = c ? c->getUserId() : 0;
     string custName = c ? c->getName() : "Guest";
-    int newId = system->getReviews().size() + 1;
+    int maxId = 0;
+    vector<Review> allReviews = system->getReviews();
+    for(const auto& r : allReviews) {
+        if (r.getReviewId() > maxId) {
+            maxId = r.getReviewId();
+        }
+    }
+    int newId = maxId + 1;
     Review newReview(newId, currentProduct->getProductId(), custId, rating, comment, custName);
     system->addReview(newReview);
     FileManager::writeReviews("data/reviews.txt", system->getReviews());
     QMessageBox::information(this, "Success", "Review posted successfully!");
     refreshData();
+}
+
+void ReviewsWidget::handleDeleteReview(int reviewId) {
+    QMessageBox::StandardButton reply;
+    reply = QMessageBox::question(this, "Confirm Delete",
+                                  "Are you sure you want to delete your review?",
+                                  QMessageBox::Yes | QMessageBox::No);
+    if (reply == QMessageBox::Yes) {
+        system->removeReview(reviewId);
+        FileManager::writeReviews("data/reviews.txt", system->getReviews());
+        if (currentProduct) {
+            showProductDetail(currentProduct);
+        }
+
+        QMessageBox::information(this, "Deleted", "Review has been deleted.");
+    }
 }
 
 void ReviewsWidget::on_btnBackList_clicked() { ui->reviewStack->setCurrentIndex(0); }

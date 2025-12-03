@@ -47,7 +47,9 @@ template <> constexpr inline auto ReviewsWidget::qt_create_metaobjectdata<qt_met
         "column",
         "on_btnBackMenu_clicked",
         "on_btnConfirmReview_clicked",
-        "on_btnBackList_clicked"
+        "on_btnBackList_clicked",
+        "handleDeleteReview",
+        "reviewId"
     };
 
     QtMocHelpers::UintData qt_methods {
@@ -65,6 +67,10 @@ template <> constexpr inline auto ReviewsWidget::qt_create_metaobjectdata<qt_met
         QtMocHelpers::SlotData<void()>(8, 2, QMC::AccessPrivate, QMetaType::Void),
         // Slot 'on_btnBackList_clicked'
         QtMocHelpers::SlotData<void()>(9, 2, QMC::AccessPrivate, QMetaType::Void),
+        // Slot 'handleDeleteReview'
+        QtMocHelpers::SlotData<void(int)>(10, 2, QMC::AccessPrivate, QMetaType::Void, {{
+            { QMetaType::Int, 11 },
+        }}),
     };
     QtMocHelpers::UintData qt_properties {
     };
@@ -94,6 +100,7 @@ void ReviewsWidget::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _i
         case 3: _t->on_btnBackMenu_clicked(); break;
         case 4: _t->on_btnConfirmReview_clicked(); break;
         case 5: _t->on_btnBackList_clicked(); break;
+        case 6: _t->handleDeleteReview((*reinterpret_cast<std::add_pointer_t<int>>(_a[1]))); break;
         default: ;
         }
     }
@@ -122,14 +129,14 @@ int ReviewsWidget::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 6)
+        if (_id < 7)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 6;
+        _id -= 7;
     }
     if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 6)
+        if (_id < 7)
             *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType();
-        _id -= 6;
+        _id -= 7;
     }
     return _id;
 }

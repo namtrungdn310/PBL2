@@ -8,8 +8,7 @@ EditProductsWidget::EditProductsWidget(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::EditProductsWidget),
     currentEditingProduct(nullptr),
-    isAddMode(false),
-    lastGeneratedProductId(0)
+    isAddMode(false)
 {
     ui->setupUi(this);
     system = ShopSystem::getInstance();
@@ -35,11 +34,6 @@ EditProductsWidget::EditProductsWidget(QWidget *parent) :
 
     populateSizeCombo();
     setupStyle();
-    for(const auto& p : system->getProducts()) {
-        if (p.getProductId() > lastGeneratedProductId) {
-            lastGeneratedProductId = p.getProductId();
-        }
-    }
 }
 
 EditProductsWidget::~EditProductsWidget() { delete ui; }
@@ -78,7 +72,7 @@ void EditProductsWidget::populateSizeCombo() {
         "37", "38", "39", "40", "41", "42", "43", "44"
     };
     ui->cboSizeSelect->addItems(sizes);
-    ui->cboSizeSelect->setEditable(true); // Cho phép nhập size lạ
+    ui->cboSizeSelect->setEditable(true);
 }
 
 void EditProductsWidget::on_btnFilter_clicked() {
@@ -142,7 +136,6 @@ void EditProductsWidget::updateSizeTable() {
 void EditProductsWidget::on_btnAddSize_clicked() {
     QString sName = ui->cboSizeSelect->currentText().trimmed();
     int qty = ui->spinStock->value();
-
     if (sName.isEmpty()) return;
     bool found = false;
     for(auto& s : tempSizes) {
@@ -151,11 +144,21 @@ void EditProductsWidget::on_btnAddSize_clicked() {
             break;
         }
     }
-
     if (!found) {
         tempSizes.push_back(Size(0, sName.toStdString(), qty));
     }
-
+    auto getSizeRank = [](const string& s) {
+        if (s == "XS") return 1;
+        if (s == "S")  return 2;
+        if (s == "M")  return 3;
+        if (s == "L")  return 4;
+        if (s == "XL") return 5;
+        if (s == "XXL") return 6;
+        try { return 100 + std::stoi(s); } catch(...) { return 999; }
+    };
+    std::sort(tempSizes.begin(), tempSizes.end(), [&](const Size& a, const Size& b) {
+        return getSizeRank(a.getSizeName()) < getSizeRank(b.getSizeName());
+    });
     updateSizeTable();
 }
 
@@ -175,8 +178,7 @@ void EditProductsWidget::on_btnConfirm_clicked() {
         return;
     }
     if (isAddMode) {
-        lastGeneratedProductId++;
-        int newId = lastGeneratedProductId;
+        int newId = system->getNewProductId();
         int catId = ui->cboCategoryEdit->currentData().toInt();
         string desc = ui->txtDesc->toPlainText().toStdString();
         string brand = ui->txtBrand->text().toStdString();

@@ -33,11 +33,9 @@ private:
     Ui::EditPromotionsWidget *ui;
     ShopSystem* system;
     int currentSelectedId;
-    int lastGeneratedId = 0;
     void setupStyle();
     void loadTable();
     QString formatMoney(double amount);
-    int getNewPromoId();
 };
 
 #endif

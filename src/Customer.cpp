@@ -81,7 +81,7 @@ int Customer::placeOrder(ShopSystem& system, int promoId, int pointsToUse, const
 
     system.addOrder(newOrder);
     
-    int newInvoiceId = system.getInvoices().size() + 1;
+    int newInvoiceId = system.getNewInvoiceId();
     Invoice newInvoice(newInvoiceId, newOrder.getTotalAmount(), newOrderId, paymentMethod, time(0));
     system.addInvoice(newInvoice);
 

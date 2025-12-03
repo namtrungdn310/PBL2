@@ -9,8 +9,7 @@
 EditPromotionsWidget::EditPromotionsWidget(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::EditPromotionsWidget),
-    currentSelectedId(-1),
-    lastGeneratedId(0)
+    currentSelectedId(-1)
 {
     ui->setupUi(this);
     system = ShopSystem::getInstance();
@@ -31,11 +30,6 @@ EditPromotionsWidget::EditPromotionsWidget(QWidget *parent) :
     ui->tblPromos->verticalHeader()->setVisible(false);
 
     setupStyle();
-    for(const auto& p : system->getPromotions()) {
-        if (p.getPromoId() > lastGeneratedId) {
-            lastGeneratedId = p.getPromoId();
-        }
-    }
 }
 
 EditPromotionsWidget::~EditPromotionsWidget() { delete ui; }
@@ -110,11 +104,6 @@ void EditPromotionsWidget::on_tblPromos_cellClicked(int row, int column) {
     }
 }
 
-int EditPromotionsWidget::getNewPromoId() {
-    lastGeneratedId++;
-    return lastGeneratedId;
-}
-
 void EditPromotionsWidget::on_btnAdd_clicked() {
     QString name = ui->txtAddName->text().trimmed();
     QString cond = ui->txtAddCondition->text().trimmed();
@@ -125,7 +114,7 @@ void EditPromotionsWidget::on_btnAdd_clicked() {
         QMessageBox::warning(this, "Error", "Invalid input!");
         return;
     }
-    int newId = getNewPromoId();
+    int newId = system->getNewPromoId();
     Promotion p(newId, name.toStdString(), rate, cond.toStdString(), minAmt, 0, 0);
     system->addPromotion(p);
     system->saveAllData();

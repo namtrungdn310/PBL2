@@ -7,15 +7,13 @@ using namespace std;
 
 class Cart {
 private:
-    int cartId;
     int customerId;
     vector<CartItem> items;
 
 public:
     Cart();
-    Cart(int id, int custId);
-    
-    int getCartId() const { return cartId; }
+    explicit Cart(int custId);
+
     int getCustomerId() const { return customerId; }
     const vector<CartItem>& getItems() const { return items; }  
     vector<CartItem>& getItems() { return items; }

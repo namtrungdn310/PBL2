@@ -36,7 +36,6 @@ private:
     ShopSystem* system;
     Product* currentEditingProduct;
     bool isAddMode;
-    int lastGeneratedProductId;
     vector<Size> tempSizes;
 
     void setupStyle();

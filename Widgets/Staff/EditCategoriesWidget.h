@@ -15,7 +15,7 @@ public:
     explicit EditCategoriesWidget(QWidget *parent = nullptr);
     ~EditCategoriesWidget();
 
-    void refreshData(); // Load lại dữ liệu
+    void refreshData();
     void paintEvent(QPaintEvent *event) override;
 
 signals:
@@ -29,7 +29,7 @@ private slots:
     void on_btnRename_clicked();
     void on_btnDelete_clicked();
 
-    void on_btnBackToForm_clicked(); // Nút "OK" ở trang cảnh báo
+    void on_btnBackToForm_clicked();
 
 private:
     Ui::EditCategoriesWidget *ui;
@@ -38,8 +38,7 @@ private:
 
     void setupStyle();
     void loadCategoriesTable();
-    int countProductsInCategory(int catId); // Hàm đếm số lượng SP
-    int getNewCategoryId(); // Hàm tự sinh ID
+    int countProductsInCategory(int catId);
 };
 
-#endif // EDITCATEGORIESWIDGET_H
+#endif

@@ -1,7 +1,7 @@
 #include "../include/Cart.h"
 
-Cart::Cart() : cartId(0), customerId(0) {}
-Cart::Cart(int id, int custId) : cartId(id), customerId(custId) {}
+Cart::Cart() : customerId(0) {}
+Cart::Cart(int custId) : customerId(custId) {}
 
 void Cart::addItem(int prodId, const string& size, int qty, const Product& product) {
     for (auto& item : items) {
@@ -28,7 +28,6 @@ void Cart::updateItemQuantity(int itemIndex, int newQuantity) {
     }
 }
 
-// Thêm implementation này vào cuối file
 int Cart::getQuantityInCart(int prodId, const string& sizeName) const {
     for (const auto& item : items) {
         if (item.getProduct().getProductId() == prodId && 

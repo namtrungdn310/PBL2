@@ -15,6 +15,7 @@ private:
     string brand;
     int categoryId;
     vector<Size> sizes;
+    int getSizeRank(const string& sizeName) const;
 
 public:
     Product();
@@ -27,7 +28,7 @@ public:
     const string& getBrand() const { return brand; }
     int getCategoryId() const { return categoryId; }
     const vector<Size>& getSizes() const { return sizes; }
-    vector<Size>& getSizes() { return sizes; } // Để có thể sửa đổi size từ bên ngoài
+    vector<Size>& getSizes() { return sizes; }
     
     void setProductId(int id) { productId = id; }
     void setName(const string& n) { name = n; }
@@ -40,9 +41,9 @@ public:
     void updateStock(const string& sizeName, int qty);
     void addSize(const Size& size);
     bool hasSize(const string& sizeName) const;
+    void sortSizes();
     int getTotalStock() const;
     
-    // Xóa save/load riêng lẻ vì FileManager sẽ lo
     void saveToFile(); 
     void loadFromFile();
 };

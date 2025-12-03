@@ -43,6 +43,12 @@ private:
     Cart currentCart;
     double monthlyRevenueTarget;
 
+    int lastUserId;
+    int lastProductId;
+    int lastCategoryId;
+    int lastOrderId;
+    int lastInvoiceId;
+    int lastPromoId;
     ShopSystem(); 
     
 public:
@@ -83,6 +89,7 @@ public:
     void addCategory(const Category& category);
     void staffConfirmCancelOrder(int orderId);
     void staffConfirmCompleteOrder(int orderId);
+    void removeReview(int reviewId);
     vector<Product> searchProducts(int categoryId, string keyword, long long minPrice, long long maxPrice, SortOption sortOption);
     static string toLowerStr(string str) {
         transform(str.begin(), str.end(), str.begin(), ::tolower);
@@ -104,12 +111,16 @@ public:
 
     int getTotalUsers() const { return customers.size() + staffMembers.size(); }
     int registerNewCustomer(const string& name, const string& email, const string& pass, const string& address, const string& phone);
-    int getNewOrderId();
-    int getNewUserId();
     int getTotalProducts() const { return products.size(); }
     int countTotalInCarts(int productId, const string& sizeName);
     int getTotalCustomers() const { return customers.size(); }
     int getTotalOrders() const { return orders.size(); }
+    int getNewOrderId();
+    int getNewUserId();
+    int getNewProductId();
+    int getNewCategoryId();
+    int getNewInvoiceId();
+    int getNewPromoId();
 
     double getTotalRevenue() const;
     double getRevenueThisMonth() const;

@@ -96,22 +96,13 @@ void EditCategoriesWidget::on_tblCategories_cellClicked(int row, int column) {
     ui->btnDelete->setEnabled(true);
 }
 
-int EditCategoriesWidget::getNewCategoryId() {
-    int maxId = 0;
-    for (const auto& cat : system->getCategories()) {
-        if (cat.getCategoryId() > maxId) maxId = cat.getCategoryId();
-    }
-    return maxId + 1;
-}
-
 void EditCategoriesWidget::on_btnAdd_clicked() {
     QString name = ui->txtNewName->text().trimmed();
     if (name.isEmpty()) {
         QMessageBox::warning(this, "Error", "Please enter a category name.");
         return;
     }
-
-    int newId = getNewCategoryId();
+    int newId = system->getNewCategoryId();
     Category newCat(newId, name.toStdString());
     system->addCategory(newCat);
     system->saveAllData();
@@ -207,35 +198,28 @@ void EditCategoriesWidget::setupStyle() {
         "   color: #333333; "
         "   font-family: 'Segoe UI'; "
         "}"
-
         "QWidget#EditCategoriesWidget { "
         "   background: qlineargradient(x1:0, y1:0, x2:1, y2:1, stop:0 #D6F0FD, stop:1 #B3E5FC); "
         "}"
-
         "QFrame#mainCard { "
         "   background-color: #FFFFFF; "
         "   border-radius: 20px; "
         "   border: 1px solid #E0E0E0; "
         "}"
-
         "QLabel#lblTitle, QLabel#lblManageTitle { "
         "   font-size: 20px; font-weight: 800; color: #1565C0; margin-bottom: 10px; "
         "}"
-
         "QLabel#lblHint { color: #777; font-size: 11px; font-style: italic; margin-top: 5px; }"
-
         "QGroupBox { "
         "   font-weight: bold; border: 1px solid #DDD; border-radius: 8px; "
         "   margin-top: 20px; padding-top: 15px; background-color: #FAFAFA; "
         "}"
         "QGroupBox::title { subcontrol-origin: margin; left: 10px; padding: 0 5px; color: #1565C0; }"
-
         "QLineEdit { "
         "   background-color: #FFFFFF; border: 1px solid #DDD; "
         "   border-radius: 8px; padding: 8px; color: #333; "
         "}"
         "QLineEdit:focus { border: 2px solid #1976D2; }"
-
         "QTableWidget { "
         "   background-color: #FFFFFF; border: 1px solid #E0E0E0; "
         "   border-radius: 8px; gridline-color: #F0F0F0; "
@@ -245,26 +229,20 @@ void EditCategoriesWidget::setupStyle() {
         "   background-color: #F9FAFB; border: none; "
         "   font-weight: bold; color: #1565C0; padding: 5px; "
         "}"
-
         "QPushButton { "
         "   background-color: #1976D2; color: white; "
         "   border-radius: 18px; padding: 10px; font-weight: bold; "
         "}"
         "QPushButton:hover { background-color: #1565C0; }"
         "QPushButton:pressed { background-color: #0D47A1; }"
-
         "QPushButton#btnDelete { background-color: #D32F2F; margin-top: 5px; }"
         "QPushButton#btnDelete:hover { background-color: #C62828; }"
-
         "QPushButton:disabled { background-color: #BDC3C7; color: #F0F0F0; }"
-
         "QPushButton#btnBack { "
         "   background-color: #FFFFFF; border: 2px solid #EF5350; color: #D32F2F; margin-top: 10px; "
         "}"
         "QPushButton#btnBack:hover { background-color: #FFEBEE; }"
-
         "Line#lineSeparator { border: 1px solid #EEEEEE; }"
-
         "QLabel#lblWarnTitle { color: #D32F2F; font-size: 18px; font-weight: bold; }"
         "QLabel#lblWarnMsg { color: #555; font-size: 13px; margin-bottom: 10px; }"
         "QPushButton#btnBackToForm { background-color: #333; color: white; margin-top: 10px; }"

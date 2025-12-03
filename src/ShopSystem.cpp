@@ -6,7 +6,7 @@
 
 ShopSystem* ShopSystem::instance = nullptr;
 
-ShopSystem::ShopSystem() : currentCustomer(nullptr), currentStaff(nullptr), monthlyRevenueTarget(50000000.0) {}
+ShopSystem::ShopSystem() : currentCustomer(nullptr), currentStaff(nullptr), monthlyRevenueTarget(50000000.0), lastUserId(0), lastProductId(0), lastCategoryId(0), lastOrderId(0), lastInvoiceId(0), lastPromoId(0) {}
 ShopSystem::~ShopSystem() {}
 
 ShopSystem* ShopSystem::getInstance() {
@@ -14,7 +14,6 @@ ShopSystem* ShopSystem::getInstance() {
     return instance;
 }
 
-// CRUD
 void ShopSystem::addProduct(const Product& product) { products.push_back(product); }
 void ShopSystem::removeProduct(int productId) {
     products.erase(remove_if(products.begin(), products.end(), [productId](const Product& p) { return p.getProductId() == productId; }), products.end());
@@ -65,15 +64,14 @@ vector<Review> ShopSystem::getReviewsForProduct(int productId) const {
     return res;
 }
 
-// Auth
 bool ShopSystem::loginCustomer(const string& email, const string& password) {
     Customer* c = findCustomerByEmail(email);
     if (c && c->login(email, password)) {
         currentCustomer = c;
         currentStaff = nullptr;
-        currentCart = Cart(1, c->getUserId()); //khởi tạo giỏ hàng
+        currentCart = Cart(c->getUserId());
 
-        if (savedUserCarts.count(c->getUserId())) { //load giỏ hàng cũ
+        if (savedUserCarts.count(c->getUserId())) {
             for (const auto& item : savedUserCarts[c->getUserId()]) {
                 currentCart.addItem(item.getProduct().getProductId(), item.getSelectedSize(), item.getQuantity(), item.getProduct());
             }
@@ -96,7 +94,7 @@ bool ShopSystem::loginStaff(const string& email, const string& password) {
 }
 
 void ShopSystem::logout() {
-    if (currentCustomer) { //lưu giỏ hàng trước khi logout
+    if (currentCustomer) {
         savedUserCarts[currentCustomer->getUserId()] = currentCart.getItems();
         FileManager::writeCarts("data/carts.txt", savedUserCarts);
     }
@@ -126,8 +124,37 @@ void ShopSystem::loadAllData() {
     promotions = FileManager::readPromotions("data/promotions.txt");
     reviews = FileManager::readReviews("data/reviews.txt");
     invoices = FileManager::readInvoices("data/invoices.txt");
-    products = FileManager::readProducts("data/products.txt"); //load products xong mới load carts
+    products = FileManager::readProducts("data/products.txt");
     
+    lastUserId = 0;
+    for (const auto& c : customers) {
+        if (c.getUserId() > lastUserId) lastUserId = c.getUserId();
+    }
+    for (const auto& s : staffMembers) {
+        if (s.getUserId() > lastUserId) lastUserId = s.getUserId();
+    }
+
+    lastProductId = 0;
+    for (const auto& p : products) if (p.getProductId() > lastProductId) lastProductId = p.getProductId();
+
+    lastCategoryId = 0;
+    for (const auto& c : categories) if (c.getCategoryId() > lastCategoryId) lastCategoryId = c.getCategoryId();
+
+    lastOrderId = 0;
+    for (const auto& o : orders) {
+        if (o.getOrderId() > lastOrderId) lastOrderId = o.getOrderId();
+    }
+
+    lastInvoiceId = 0;
+    for (const auto& inv : invoices) {
+        if (inv.getInvoiceId() > lastInvoiceId) lastInvoiceId = inv.getInvoiceId();
+    }
+
+    lastPromoId = 0;
+    for (const auto& p : promotions) {
+        if (p.getPromoId() > lastPromoId) lastPromoId = p.getPromoId();
+    }
+
     auto itemsMap = FileManager::readOrderItems("data/order_items.txt", products);
     for (auto& order : orders) {
         int oid = order.getOrderId();
@@ -148,14 +175,6 @@ void ShopSystem::loadAllData() {
                 product.addSize(size);
             }
         }
-    }
-    int maxOrderId = 0;
-    for (const auto& o : orders) {
-        if (o.getOrderId() > maxOrderId) maxOrderId = o.getOrderId();
-    }
-    int maxInvoiceId = 0;
-    for (const auto& inv : invoices) {
-        if (inv.getInvoiceId() > maxInvoiceId) maxInvoiceId = inv.getInvoiceId();
     }
 
     savedUserCarts = FileManager::readCarts("data/carts.txt", products);
@@ -308,26 +327,34 @@ void ShopSystem::deleteCurrentCustomer() {
     saveAllData();
 }
 
-int ShopSystem::getNewUserId() { //lấy id cao nhất rồi cộng lên
-    int maxId = 0;
-    for (const auto& c : customers) {
-        if (c.getUserId() > maxId) maxId = c.getUserId();
-    }
+int ShopSystem::getNewUserId() {
+    lastUserId++;
+    return lastUserId;
+}
 
-    for (const auto& s : staffMembers) {
-        if (s.getUserId() > maxId) maxId = s.getUserId();
-    }
-    return maxId + 1;
+int ShopSystem::getNewProductId() {
+    lastProductId++;
+    return lastProductId;
+}
+
+int ShopSystem::getNewCategoryId() {
+    lastCategoryId++;
+    return lastCategoryId;
 }
 
 int ShopSystem::getNewOrderId() {
-    int maxId = 0;
-    for (const auto& o : orders) {
-        if (o.getOrderId() > maxId) {
-            maxId = o.getOrderId();
-        }
-    }
-    return maxId + 1;
+    lastOrderId++;
+    return lastOrderId;
+}
+
+int ShopSystem::getNewInvoiceId() {
+    lastInvoiceId++;
+    return lastInvoiceId;
+}
+
+int ShopSystem::getNewPromoId() {
+    lastPromoId++;
+    return lastPromoId;
 }
 
 void ShopSystem::staffConfirmCancelOrder(int orderId) {
@@ -396,5 +423,13 @@ int ShopSystem::countTotalInCarts(int productId, const string& sizeName) {
 }
 
 vector<Promotion>& ShopSystem::getPromotions() {
-    return this->promotions; //
+    return this->promotions;
+}
+void ShopSystem::removeReview(int reviewId) {
+    for (auto it = reviews.begin(); it != reviews.end(); ++it) {
+        if (it->getReviewId() == reviewId) {
+            reviews.erase(it);
+            return;
+        }
+    }
 }
