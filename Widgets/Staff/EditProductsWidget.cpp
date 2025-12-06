@@ -108,7 +108,7 @@ void EditProductsWidget::loadProductToForm(Product* p) {
     isAddMode = false;
     currentEditingProduct = p;
     ui->lblEditTitle->setText("EDIT PRODUCT");
-    ui->btnDeleteProduct->setVisible(true); // Hiện nút xóa
+    ui->btnDeleteProduct->setVisible(true);
     ui->btnConfirm->setText("Confirm Save");
     ui->txtName->setText(QString::fromStdString(p->getName()));
     ui->txtPrice->setText(QString::number(p->getPrice()));

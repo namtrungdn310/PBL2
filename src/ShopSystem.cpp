@@ -6,7 +6,7 @@
 
 ShopSystem* ShopSystem::instance = nullptr;
 
-ShopSystem::ShopSystem() : currentCustomer(nullptr), currentStaff(nullptr), monthlyRevenueTarget(50000000.0), lastUserId(0), lastProductId(0), lastCategoryId(0), lastOrderId(0), lastInvoiceId(0), lastPromoId(0) {}
+ShopSystem::ShopSystem() : currentCustomer(nullptr), currentStaff(nullptr), monthlyRevenueTarget(50000000.0), lastUserId(0), lastProductId(0), lastCategoryId(0), lastOrderId(0), lastInvoiceId(0), lastPromoId(0), lastReviewId(0) {}
 ShopSystem::~ShopSystem() {}
 
 ShopSystem* ShopSystem::getInstance() {
@@ -155,6 +155,12 @@ void ShopSystem::loadAllData() {
         if (p.getPromoId() > lastPromoId) lastPromoId = p.getPromoId();
     }
 
+    lastReviewId = 0;
+    for (const auto& r : reviews) {
+        if (r.getReviewId() > lastReviewId) {
+            lastReviewId = r.getReviewId();
+        }
+    }
     auto itemsMap = FileManager::readOrderItems("data/order_items.txt", products);
     for (auto& order : orders) {
         int oid = order.getOrderId();
@@ -310,20 +316,28 @@ string ShopSystem::validateCartStock() {
 
 void ShopSystem::deleteCurrentCustomer() {
     if (!currentCustomer) return;
-
     int deletedId = currentCustomer->getUserId();
+    string deletedName = currentCustomer->getName();
+    orders.erase(remove_if(orders.begin(), orders.end(), [deletedId](const Order& o){
+                     return o.getCustomerId() == deletedId;
+                 }), orders.end());
+    string replyPrefix = "Replying to " + deletedName + ":";
 
-    orders.erase(remove_if(orders.begin(), orders.end(), [deletedId](const Order& o){ return o.getCustomerId() == deletedId; }), orders.end());
-    reviews.erase(remove_if(reviews.begin(), reviews.end(), [deletedId](const Review& r){ return r.getCustomerId() == deletedId; }), reviews.end());
+    reviews.erase(remove_if(reviews.begin(), reviews.end(), [deletedId, replyPrefix](const Review& r){
+                      bool isReviewByThisCustomer = (r.getCustomerId() == deletedId);
+                      bool isStaffReplyToThisCustomer = (r.getRating() == 0 && r.getComment().find(replyPrefix) == 0);
+
+                      return isReviewByThisCustomer || isStaffReplyToThisCustomer;
+                  }), reviews.end());
     savedUserCarts.erase(deletedId);
-
     logout();
 
     customers.erase(
-        std::remove_if(customers.begin(), customers.end(), [deletedId](const Customer& c) { return c.getUserId() == deletedId; }),
+        std::remove_if(customers.begin(), customers.end(), [deletedId](const Customer& c) {
+            return c.getUserId() == deletedId;
+        }),
         customers.end()
         );
-
     saveAllData();
 }
 
@@ -425,11 +439,17 @@ int ShopSystem::countTotalInCarts(int productId, const string& sizeName) {
 vector<Promotion>& ShopSystem::getPromotions() {
     return this->promotions;
 }
+
 void ShopSystem::removeReview(int reviewId) {
-    for (auto it = reviews.begin(); it != reviews.end(); ++it) {
-        if (it->getReviewId() == reviewId) {
-            reviews.erase(it);
-            return;
-        }
-    }
+    reviews.erase(
+        std::remove_if(reviews.begin(), reviews.end(),
+                       [reviewId](const Review& r) { return r.getReviewId() == reviewId; }),
+        reviews.end()
+        );
+    saveAllData();
+}
+
+int ShopSystem::getNewReviewId() {
+    lastReviewId++;
+    return lastReviewId;
 }

@@ -33,7 +33,8 @@ SOURCES += \
     Widgets/Staff/StaffDashboard.cpp \
     Widgets/Staff/EditCategoriesWidget.cpp \
     Widgets/Staff/EditProductsWidget.cpp \
-    Widgets/Staff/EditPromotionsWidget.cpp
+    Widgets/Staff/EditPromotionsWidget.cpp \
+    Widgets/Staff/EditReviewsWidget.cpp
 
 HEADERS += \
     include/Cart.h include/CartItem.h include/Category.h include/Customer.h \
@@ -58,7 +59,8 @@ HEADERS += \
     Widgets/Staff/StaffDashboard.h \
     Widgets/Staff/EditCategoriesWidget.h \
     Widgets/Staff/EditProductsWidget.h \
-    Widgets/Staff/EditPromotionsWidget.h
+    Widgets/Staff/EditPromotionsWidget.h \
+    Widgets/Staff/EditReviewsWidget.h
 
 FORMS += \
     Widgets/MainWindow.ui \
@@ -78,7 +80,8 @@ FORMS += \
     Widgets/Staff/StaffDashboard.ui \
     Widgets/Staff/EditCategoriesWidget.ui \
     Widgets/Staff/EditProductsWidget.ui \
-    Widgets/Staff/EditPromotionsWidget.ui
+    Widgets/Staff/EditPromotionsWidget.ui \
+    Widgets/Staff/EditReviewsWidget.ui
 
 RESOURCES += resources.qrc
 

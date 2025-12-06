@@ -209,7 +209,7 @@ void CustomerDashboard::showCartPage() {
     ui->dashboardStack->setCurrentWidget(m_viewCart);
 }
 void CustomerDashboard::on_btnOrders_clicked()   {
-    m_historyWidget->loadHistory(); // Load dữ liệu mới
+    m_historyWidget->loadHistory();
     ui->dashboardStack->setCurrentWidget(m_historyWidget);
 }
 void CustomerDashboard::on_btnPromos_clicked()   {
@@ -221,6 +221,6 @@ void CustomerDashboard::on_btnReviews_clicked()  {
     ui->dashboardStack->setCurrentWidget(m_reviewsWidget);
 }
 void CustomerDashboard::on_btnSetting_clicked()  {
-    m_settingsWidget->loadUserData(); // Load thông tin cũ lên
+    m_settingsWidget->loadUserData();
     ui->dashboardStack->setCurrentWidget(m_settingsWidget);
 }

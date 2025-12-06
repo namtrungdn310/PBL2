@@ -49,6 +49,7 @@ private:
     int lastOrderId;
     int lastInvoiceId;
     int lastPromoId;
+    int lastReviewId;
     ShopSystem(); 
     
 public:
@@ -121,6 +122,7 @@ public:
     int getNewCategoryId();
     int getNewInvoiceId();
     int getNewPromoId();
+    int getNewReviewId();
 
     double getTotalRevenue() const;
     double getRevenueThisMonth() const;

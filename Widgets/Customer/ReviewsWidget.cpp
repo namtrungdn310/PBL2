@@ -72,10 +72,17 @@ pair<double, int> ReviewsWidget::calculateRating(int prodId) {
     vector<Review> reviews = system->getReviewsForProduct(prodId);
     if (reviews.empty()) return {0.0, 0};
     double sum = 0;
-    for(const auto& r : reviews) sum += r.getRating();
-    double avg = sum / reviews.size();
+    int count = 0;
+    for(const auto& r : reviews) {
+        if (r.getRating() > 0) {
+            sum += r.getRating();
+            count++;
+        }
+    }
+    if (count == 0) return {0.0, 0};
+    double avg = sum / count;
     avg = std::round(avg * 10.0) / 10.0;
-    return {avg, (int)reviews.size()};
+    return {avg, count};
 }
 
 QString ReviewsWidget::getStarString(int rating) {
@@ -148,29 +155,43 @@ void ReviewsWidget::showProductDetail(Product* p) {
     ui->txtComment->clear();
     ui->tabReviews->setCurrentIndex(0);
 }
-
 void ReviewsWidget::loadReviewsForProduct(int prodId) {
     QLayout* layout = ui->scrollContent->layout();
     QLayoutItem* item;
-    while ((item = layout->takeAt(0)) != nullptr) { delete item->widget(); delete item; }
-    vector<Review> reviews = system->getReviewsForProduct(prodId);
+    while ((item = layout->takeAt(0)) != nullptr) {
+        delete item->widget();
+        delete item;
+    }
+    vector<Review> allReviews = system->getReviewsForProduct(prodId);
     Customer* currentCust = system->getCurrentCustomer();
-    if (reviews.empty()) {
+
+    vector<Review> customerReviews;
+    vector<Review> staffReplies;
+    for (const auto& r : allReviews) {
+        if (r.getRating() > 0) {
+            customerReviews.push_back(r);
+        } else {
+            staffReplies.push_back(r);
+        }
+    }
+    if (customerReviews.empty()) {
         QLabel* empty = new QLabel("No reviews yet. Be the first!", ui->scrollContent);
         empty->setStyleSheet("color: #777; font-style: italic; margin-top: 20px;");
         empty->setAlignment(Qt::AlignCenter);
         layout->addWidget(empty);
     } else {
-        for (const auto& r : reviews) {
+        for (const auto& r : customerReviews) {
             QFrame* card = new QFrame(ui->scrollContent);
             card->setStyleSheet(
-                "QFrame { background: #FAFAFA; border: 1px solid #E0E0E0; border-radius: 8px; }"
-                "QLabel { border: none; }"
+                "QFrame { background: #FFFFFF; border: 1px solid #E0E0E0; border-radius: 8px; }"
+                "QLabel { border: none; background: transparent; }"
                 );
-            QVBoxLayout* l = new QVBoxLayout(card);
+            QVBoxLayout* cardLayout = new QVBoxLayout(card);
+            cardLayout->setSpacing(5);
             QHBoxLayout* headerLayout = new QHBoxLayout();
             QLabel* name = new QLabel(QString::fromStdString(r.getCustomerName()), card);
-            name->setStyleSheet("font-weight: bold; color: #1565C0; font-size: 13px;");
+            name->setStyleSheet("font-weight: bold; color: #1565C0; font-size: 14px;");
+
             headerLayout->addWidget(name);
             headerLayout->addStretch();
             if (currentCust && r.getCustomerId() == currentCust->getUserId()) {
@@ -188,13 +209,41 @@ void ReviewsWidget::loadReviewsForProduct(int prodId) {
                 });
                 headerLayout->addWidget(btnDelete);
             }
-            l->addLayout(headerLayout);
+            cardLayout->addLayout(headerLayout);
             QLabel* stars = new QLabel(getStarString(r.getRating()), card);
-            stars->setStyleSheet("color: #F1C40F; font-size: 14px;");
+            stars->setStyleSheet("color: #F1C40F; font-size: 14px; margin-bottom: 5px;");
+
             QLabel* cmt = new QLabel(QString::fromStdString(r.getComment()), card);
             cmt->setWordWrap(true);
-            cmt->setStyleSheet("color: #333; font-size: 13px;");
-            l->addWidget(name); l->addWidget(stars); l->addWidget(cmt);
+            cmt->setStyleSheet("color: #333; font-size: 13px; margin-bottom: 10px;");
+
+            cardLayout->addWidget(stars);
+            cardLayout->addWidget(cmt);
+            QString replyPrefix = "Replying to " + QString::fromStdString(r.getCustomerName()) + ":";
+
+            for (const auto& sr : staffReplies) {
+                QString srContent = QString::fromStdString(sr.getComment());
+                if (srContent.startsWith(replyPrefix)) {
+                    QFrame* replyFrame = new QFrame(card);
+                    replyFrame->setStyleSheet(
+                        "QFrame { background-color: #E3F2FD; border: 1px solid #90CAF9; border-radius: 6px; margin-top: 5px; }"
+                        "QLabel { color: #333; }"
+                        );
+                    QVBoxLayout* replyLayout = new QVBoxLayout(replyFrame);
+                    QLabel* staffName = new QLabel("Shop Support 🛒", replyFrame);
+                    staffName->setStyleSheet("font-weight: bold; color: #0D47A1; font-size: 12px; border: none;");
+                    QString cleanContent = srContent;
+                    QLabel* staffMsg = new QLabel(cleanContent, replyFrame);
+                    staffMsg->setWordWrap(true);
+                    staffMsg->setStyleSheet("font-size: 13px; color: #444; border: none;");
+
+                    replyLayout->addWidget(staffName);
+                    replyLayout->addWidget(staffMsg);
+
+                    cardLayout->addWidget(replyFrame);
+                }
+            }
+
             layout->addWidget(card);
         }
     }
@@ -209,17 +258,10 @@ void ReviewsWidget::on_btnConfirmReview_clicked() {
     Customer* c = system->getCurrentCustomer();
     int custId = c ? c->getUserId() : 0;
     string custName = c ? c->getName() : "Guest";
-    int maxId = 0;
-    vector<Review> allReviews = system->getReviews();
-    for(const auto& r : allReviews) {
-        if (r.getReviewId() > maxId) {
-            maxId = r.getReviewId();
-        }
-    }
-    int newId = maxId + 1;
+    int newId = system->getNewReviewId();
     Review newReview(newId, currentProduct->getProductId(), custId, rating, comment, custName);
     system->addReview(newReview);
-    FileManager::writeReviews("data/reviews.txt", system->getReviews());
+    system->saveAllData();
     QMessageBox::information(this, "Success", "Review posted successfully!");
     refreshData();
 }
@@ -230,47 +272,74 @@ void ReviewsWidget::handleDeleteReview(int reviewId) {
                                   "Are you sure you want to delete your review?",
                                   QMessageBox::Yes | QMessageBox::No);
     if (reply == QMessageBox::Yes) {
-        system->removeReview(reviewId);
-        FileManager::writeReviews("data/reviews.txt", system->getReviews());
-        if (currentProduct) {
-            showProductDetail(currentProduct);
+        string targetName = "";
+        int prodId = 0;
+        vector<Review> currentReviews = system->getReviews();
+        for(const auto& r : currentReviews) {
+            if (r.getReviewId() == reviewId) {
+                targetName = r.getCustomerName();
+                prodId = r.getProductId();
+                break;
+            }
+        }
+        vector<int> idsToDelete;
+        idsToDelete.push_back(reviewId);
+
+        if (!targetName.empty()) {
+            string replyPrefix = "Replying to " + targetName + ":";
+            for(const auto& r : currentReviews) {
+                if (r.getProductId() == prodId && r.getRating() == 0) {
+                    string comment = r.getComment();
+                    if (comment.find(replyPrefix) == 0) {
+                        idsToDelete.push_back(r.getReviewId());
+                    }
+                }
+            }
         }
 
-        QMessageBox::information(this, "Deleted", "Review has been deleted.");
+        for (int id : idsToDelete) {
+            system->removeReview(id);
+        }
+        system->saveAllData();
+
+        if (currentProduct) {
+            pair<double, int> rateData = calculateRating(currentProduct->getProductId());
+            ui->lblRatingInfo->setText(QString::number(rateData.first, 'f', 1) + " Stars (" + QString::number(rateData.second) + " reviews)");
+            loadReviewsForProduct(currentProduct->getProductId());
+        }
+        QMessageBox::information(this, "Deleted", "Review and all staff replies have been deleted.");
     }
 }
 
-void ReviewsWidget::on_btnBackList_clicked() { ui->reviewStack->setCurrentIndex(0); }
+void ReviewsWidget::on_btnBackList_clicked() {
+    on_btnFilter_clicked();
+    ui->reviewStack->setCurrentIndex(0);
+}
 void ReviewsWidget::on_btnBackMenu_clicked() { emit backSignal(); }
 
 void ReviewsWidget::setupStyle() {
     ui->mainCard->setGraphicsEffect(nullptr);
-
     this->setStyleSheet(
         "QWidget { color: #333333; font-family: 'Segoe UI'; }"
         "QWidget#ReviewsWidget { background: qlineargradient(x1:0, y1:0, x2:1, y2:1, stop:0 #D6F0FD, stop:1 #B3E5FC); }"
-
         "QFrame#mainCard { "
         "   background-color: #FFFFFF; "
         "   border-radius: 20px; "
         "   border: 2px solid #FFFFFF; "
         "}"
-
+        "QScrollArea { background: transparent; border: none; }"
+        "QWidget#scrollContent { background-color: #FAFAFA; border-radius: 8px; }"
         "QLabel#lblTitleList, QLabel#lblProdName { font-size: 22px; font-weight: 800; color: #1565C0; margin-bottom: 10px; }"
         "QLabel#lblRatingInfo { font-size: 14px; font-weight: bold; color: #F39C12; }"
         "QLabel#lblProdDesc { font-size: 13px; color: #555; margin-bottom: 15px; }"
         "QLabel#lblHint { color: #777; font-size: 11px; font-style: italic; }"
-
         "QLineEdit, QComboBox, QSpinBox, QTextEdit { background-color: #F5F7F9; border: 1px solid #DDD; border-radius: 8px; padding: 8px; color: #333; font-size: 13px; }"
         "QLineEdit:focus, QTextEdit:focus { border: 2px solid #1976D2; background: #FFF; }"
         "QComboBox QAbstractItemView { background: #34495E; color: #FFF; selection-background-color: #1976D2; }"
-
         "QTableWidget { background-color: #FFFFFF; border: 1px solid #E0E0E0; border-radius: 8px; gridline-color: #F5F5F5; color: #333; selection-background-color: #1976D2; selection-color: #FFF; outline: 0; }"
         "QHeaderView::section { background-color: #F9FAFB; border: none; font-weight: bold; color: #1565C0; padding: 5px; }"
-
         "QPushButton { background-color: #1976D2; color: white; border-radius: 18px; padding: 10px; font-weight: bold; }"
         "QPushButton:hover { background-color: #1565C0; }"
-
         "QPushButton#btnBackMenu, QPushButton#btnBackList { background-color: #FFFFFF; border: 2px solid #EF5350; color: #D32F2F; margin-top: 10px; }"
         "QPushButton#btnBackMenu:hover, QPushButton#btnBackList:hover { background-color: #FFEBEE; }"
         "QTabWidget::pane { border: 1px solid #E0E0E0; border-radius: 5px; top: -1px; }"

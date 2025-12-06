@@ -30,6 +30,7 @@ release/StaffDashboard.o
 release/EditCategoriesWidget.o
 release/EditProductsWidget.o
 release/EditPromotionsWidget.o
+release/EditReviewsWidget.o
 release/qrc_resources.o
 release/moc_MainWindow.o
 release/moc_StartupWidget.o
@@ -47,3 +48,4 @@ release/moc_StaffDashboard.o
 release/moc_EditCategoriesWidget.o
 release/moc_EditProductsWidget.o
 release/moc_EditPromotionsWidget.o
+release/moc_EditReviewsWidget.o

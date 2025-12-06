@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>EditReviewsWidget</class>
+ <widget class="QWidget" name="EditReviewsWidget">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1024</width>
+    <height>768</height>
+   </rect>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout_Main">
+   <item>
+    <widget class="QWidget" name="centerContainer" native="true">
+     <layout class="QHBoxLayout" name="horizontalLayout_Center">
+      <item>
+       <spacer name="horizontalSpacer_L">
+        <property name="orientation"><enum>Qt::Horizontal</enum></property>
+        <property name="sizeHint" stdset="0"><size><width>40</width><height>20</height></size></property>
+       </spacer>
+      </item>
+      <item>
+       <widget class="QFrame" name="mainCard">
+        <property name="minimumSize"><size><width>950</width><height>650</height></size></property>
+        <property name="frameShape"><enum>QFrame::StyledPanel</enum></property>
+        <layout class="QHBoxLayout" name="horizontalLayout_Card">
+         <property name="spacing"><number>0</number></property>
+         <property name="leftMargin"><number>0</number></property>
+         <property name="topMargin"><number>0</number></property>
+         <property name="rightMargin"><number>0</number></property>
+         <property name="bottomMargin"><number>0</number></property>
+
+         <item>
+          <widget class="QWidget" name="leftSide" native="true">
+           <property name="minimumSize"><size><width>350</width><height>0</height></size></property>
+           <property name="maximumSize"><size><width>350</width><height>16777215</height></size></property>
+           <layout class="QVBoxLayout" name="verticalLayout_Left">
+            <property name="leftMargin"><number>20</number></property>
+            <property name="topMargin"><number>20</number></property>
+            <property name="rightMargin"><number>10</number></property>
+            <property name="bottomMargin"><number>20</number></property>
+            <item><widget class="QLabel" name="lblTitle"><property name="text"><string>SELECT PRODUCT</string></property></widget></item>
+            <item><widget class="QLineEdit" name="txtSearch"><property name="placeholderText"><string>Search product...</string></property></widget></item>
+            <item>
+             <layout class="QHBoxLayout" name="hlFilter">
+              <item><widget class="QComboBox" name="cboCategoryFilter"/></item>
+              <item><widget class="QPushButton" name="btnFilter"><property name="text"><string>Filter</string></property></widget></item>
+             </layout>
+            </item>
+            <item>
+             <widget class="QTableWidget" name="tblProducts">
+              <property name="selectionBehavior"><enum>QAbstractItemView::SelectRows</enum></property>
+              <column><property name="text"><string>ID</string></property></column>
+              <column><property name="text"><string>Name</string></property></column>
+              <column><property name="text"><string>Rating</string></property></column>
+             </widget>
+            </item>
+           </layout>
+          </widget>
+         </item>
+
+         <item><widget class="Line" name="lineSeparator"><property name="orientation"><enum>Qt::Vertical</enum></property></widget></item>
+
+         <item>
+          <widget class="QWidget" name="rightSide" native="true">
+           <layout class="QVBoxLayout" name="verticalLayout_Right">
+            <property name="leftMargin"><number>20</number></property>
+            <property name="topMargin"><number>20</number></property>
+            <property name="rightMargin"><number>20</number></property>
+            <property name="bottomMargin"><number>20</number></property>
+
+            <item>
+             <widget class="QStackedWidget" name="stackReviews">
+              <property name="currentIndex"><number>0</number></property>
+
+              <widget class="QWidget" name="pageEmpty">
+               <layout class="QVBoxLayout" name="vlEmpty">
+                <item><widget class="QLabel" name="lblEmpty"><property name="text"><string>Select a product to manage reviews</string></property><property name="alignment"><set>Qt::AlignCenter</set></property></widget></item>
+               </layout>
+              </widget>
+
+              <widget class="QWidget" name="pageReviews">
+               <layout class="QVBoxLayout" name="vlReviews">
+                <item>
+                 <widget class="QLabel" name="lblProdName">
+                  <property name="text"><string>Product Name</string></property>
+                  <property name="alignment"><set>Qt::AlignCenter</set></property>
+                  <property name="wordWrap"><bool>true</bool></property>
+                 </widget>
+                </item>
+
+                <item>
+                 <widget class="QScrollArea" name="scrollArea">
+                  <property name="widgetResizable"><bool>true</bool></property>
+                  <property name="frameShape"><enum>QFrame::NoFrame</enum></property>
+                  <widget class="QWidget" name="scrollContent">
+                   <layout class="QVBoxLayout" name="verticalLayout_Scroll">
+                    <property name="spacing"><number>15</number></property>
+                   </layout>
+                  </widget>
+                 </widget>
+                </item>
+
+                <item>
+                 <widget class="QGroupBox" name="grpReply">
+                  <property name="title"><string>Reply to Customer</string></property>
+                  <layout class="QVBoxLayout" name="vlReply">
+                   <item>
+                    <widget class="QTextEdit" name="txtReply">
+                     <property name="placeholderText"><string>Select a review above to reply, or write a general comment...</string></property>
+                     <property name="maximumHeight"><number>80</number></property>
+                    </widget>
+                   </item>
+                   <item>
+                    <widget class="QPushButton" name="btnPostReply">
+                     <property name="text"><string>Post Reply</string></property>
+                    </widget>
+                   </item>
+                  </layout>
+                 </widget>
+                </item>
+               </layout>
+              </widget>
+             </widget>
+            </item>
+
+            <item>
+             <widget class="QPushButton" name="btnBack">
+              <property name="text"><string>Back to Dashboard</string></property>
+             </widget>
+            </item>
+           </layout>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+      </item>
+      <item>
+       <spacer name="horizontalSpacer_R">
+        <property name="orientation"><enum>Qt::Horizontal</enum></property>
+        <property name="sizeHint" stdset="0"><size><width>40</width><height>20</height></size></property>
+       </spacer>
+      </item>
+     </layout>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+</ui>
