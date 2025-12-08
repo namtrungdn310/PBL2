@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>CustomersManagementWidget</class>
+ <widget class="QWidget" name="CustomersManagementWidget">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1024</width>
+    <height>768</height>
+   </rect>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout_Main">
+   <item>
+    <widget class="QWidget" name="centerContainer" native="true">
+     <layout class="QHBoxLayout" name="horizontalLayout_Center">
+      <item>
+       <spacer name="horizontalSpacer_L">
+        <property name="orientation"><enum>Qt::Horizontal</enum></property>
+        <property name="sizeHint" stdset="0"><size><width>20</width><height>20</height></size></property>
+       </spacer>
+      </item>
+      <item>
+       <widget class="QFrame" name="mainCard">
+        <property name="minimumSize"><size><width>980</width><height>700</height></size></property>
+        <property name="frameShape"><enum>QFrame::StyledPanel</enum></property>
+        <layout class="QVBoxLayout" name="verticalLayout_Card">
+         <property name="leftMargin"><number>0</number></property>
+         <property name="topMargin"><number>0</number></property>
+         <property name="rightMargin"><number>0</number></property>
+         <property name="bottomMargin"><number>0</number></property>
+
+         <item>
+          <widget class="QWidget" name="headerWidget" native="true">
+           <property name="minimumSize"><size><width>0</width><height>60</height></size></property>
+           <layout class="QHBoxLayout" name="hlHeader">
+            <item><widget class="QLabel" name="lblTitle"><property name="text"><string>CUSTOMERS &amp; ORDERS MANAGEMENT</string></property></widget></item>
+            <item><spacer name="spHeader"><property name="orientation"><enum>Qt::Horizontal</enum></property></spacer></item>
+            <item><widget class="QPushButton" name="btnBack"><property name="text"><string>Back to Dashboard</string></property></widget></item>
+           </layout>
+          </widget>
+         </item>
+
+         <item>
+          <widget class="QTabWidget" name="tabWidget">
+           <property name="currentIndex"><number>0</number></property>
+
+           <widget class="QWidget" name="tabPending">
+            <attribute name="title"><string>Manage Pending Orders</string></attribute>
+            <layout class="QVBoxLayout" name="vlPending">
+             <item>
+              <widget class="QLabel" name="lblPendingHint">
+               <property name="text"><string>Orders requiring your confirmation (Sorted: Oldest First)</string></property>
+               <property name="alignment"><set>Qt::AlignCenter</set></property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QScrollArea" name="scrollPending">
+               <property name="widgetResizable"><bool>true</bool></property>
+               <widget class="QWidget" name="scrollContentPending">
+                <layout class="QVBoxLayout" name="vlScrollPending">
+                 <property name="spacing"><number>15</number></property>
+                </layout>
+               </widget>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+
+           <widget class="QWidget" name="tabDatabase">
+            <attribute name="title"><string>Customer Database</string></attribute>
+
+            <layout class="QHBoxLayout" name="hlDatabase">
+
+             <item>
+              <widget class="QGroupBox" name="grpCustList">
+               <property name="title"><string>Customer List</string></property>
+               <property name="maximumSize"><size><width>400</width><height>16777215</height></size></property>
+               <layout class="QVBoxLayout" name="vlCustList">
+                <item><widget class="QLineEdit" name="txtSearchCust"><property name="placeholderText"><string>Search Name...</string></property></widget></item>
+                <item>
+                 <layout class="QHBoxLayout" name="hlSortCust">
+                  <item><widget class="QLabel" name="lSort"><property name="text"><string>Sort:</string></property></widget></item>
+                  <item>
+                   <widget class="QComboBox" name="cboSortCust">
+                    <item><property name="text"><string>Total Spent: High to Low</string></property></item>
+                    <item><property name="text"><string>Total Spent: Low to High</string></property></item>
+                    <item><property name="text"><string>Name: A-Z</string></property></item>
+                   </widget>
+                  </item>
+                 </layout>
+                </item>
+                <item>
+                 <widget class="QTableWidget" name="tblCustomers">
+                  <property name="selectionBehavior"><enum>QAbstractItemView::SelectRows</enum></property>
+                  <column><property name="text"><string>ID</string></property></column>
+                  <column><property name="text"><string>Name</string></property></column>
+                  <column><property name="text"><string>Total Spent</string></property></column>
+                 </widget>
+                </item>
+               </layout>
+              </widget>
+             </item>
+
+             <item>
+              <widget class="QGroupBox" name="grpCustOrders">
+               <property name="title"><string>Selected Customer Orders</string></property>
+               <layout class="QVBoxLayout" name="vlCustOrders">
+                <item>
+                 <layout class="QHBoxLayout" name="hlSortOrder">
+                  <item><widget class="QLabel" name="lblSelectedCust"><property name="text"><string>Select a customer to view orders</string></property></widget></item>
+                  <item><spacer name="spOrder"><property name="orientation"><enum>Qt::Horizontal</enum></property></spacer></item>
+                  <item>
+                   <widget class="QComboBox" name="cboSortOrder">
+                    <item><property name="text"><string>Date: Newest First</string></property></item>
+                    <item><property name="text"><string>Date: Oldest First</string></property></item>
+                    <item><property name="text"><string>Price: High to Low</string></property></item>
+                    <item><property name="text"><string>Price: Low to High</string></property></item>
+                   </widget>
+                  </item>
+                 </layout>
+                </item>
+                <item>
+                 <widget class="QScrollArea" name="scrollHistory">
+                  <property name="widgetResizable"><bool>true</bool></property>
+                  <widget class="QWidget" name="scrollContentHistory">
+                   <layout class="QVBoxLayout" name="vlScrollHistory">
+                    <property name="spacing"><number>15</number></property>
+                   </layout>
+                  </widget>
+                 </widget>
+                </item>
+               </layout>
+              </widget>
+             </item>
+
+            </layout>
+           </widget>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+      </item>
+      <item>
+       <spacer name="horizontalSpacer_R">
+        <property name="orientation"><enum>Qt::Horizontal</enum></property>
+        <property name="sizeHint" stdset="0"><size><width>20</width><height>20</height></size></property>
+       </spacer>
+      </item>
+     </layout>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+</ui>

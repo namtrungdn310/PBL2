@@ -141,14 +141,17 @@ StaffDashboard::StaffDashboard(QWidget *parent) :
     m_editProducts = new EditProductsWidget(this);
     m_editPromotions = new EditPromotionsWidget(this);
     m_editReviews = new EditReviewsWidget(this);
+    m_customersManagement = new CustomersManagementWidget(this);
     ui->dashboardStack->addWidget(m_editCategories);
     ui->dashboardStack->addWidget(m_editProducts);
     ui->dashboardStack->addWidget(m_editPromotions);
     ui->dashboardStack->addWidget(m_editReviews);
+    ui->dashboardStack->addWidget(m_customersManagement);
     connect(m_editCategories, &EditCategoriesWidget::backSignal, this, &StaffDashboard::goHome);
     connect(m_editProducts, &EditProductsWidget::backSignal, this, &StaffDashboard::goHome);
     connect(m_editPromotions, &EditPromotionsWidget::backSignal, this, &StaffDashboard::goHome);
     connect(m_editReviews, &EditReviewsWidget::backSignal, this, &StaffDashboard::goHome);
+    connect(m_customersManagement, &CustomersManagementWidget::backSignal, this, &StaffDashboard::goHome);
     ui->dashboardStack->setCurrentIndex(0);
 }
 
@@ -199,6 +202,9 @@ void StaffDashboard::on_btnEditReviews_clicked()    {
     ui->dashboardStack->setCurrentWidget(m_editReviews);
 }
 
-void StaffDashboard::on_btnCustomers_clicked()      { QMessageBox::information(this, "Admin", "Customers Management"); }
+void StaffDashboard::on_btnCustomers_clicked()      {
+    m_customersManagement->refreshData();
+    ui->dashboardStack->setCurrentWidget(m_customersManagement);
+}
 void StaffDashboard::on_btnAnalysis_clicked()       { QMessageBox::information(this, "Admin", "Shop Analysis"); }
 void StaffDashboard::on_btnAccountSetting_clicked() { QMessageBox::information(this, "Admin", "Account Setting"); }

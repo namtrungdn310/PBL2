@@ -31,6 +31,7 @@ release/EditCategoriesWidget.o
 release/EditProductsWidget.o
 release/EditPromotionsWidget.o
 release/EditReviewsWidget.o
+release/CustomersManagementWidget.o
 release/qrc_resources.o
 release/moc_MainWindow.o
 release/moc_StartupWidget.o
@@ -49,3 +50,4 @@ release/moc_EditCategoriesWidget.o
 release/moc_EditProductsWidget.o
 release/moc_EditPromotionsWidget.o
 release/moc_EditReviewsWidget.o
+release/moc_CustomersManagementWidget.o

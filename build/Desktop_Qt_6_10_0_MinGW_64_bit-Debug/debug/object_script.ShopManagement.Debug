@@ -31,6 +31,7 @@ debug/EditCategoriesWidget.o
 debug/EditProductsWidget.o
 debug/EditPromotionsWidget.o
 debug/EditReviewsWidget.o
+debug/CustomersManagementWidget.o
 debug/qrc_resources.o
 debug/moc_MainWindow.o
 debug/moc_StartupWidget.o
@@ -49,3 +50,4 @@ debug/moc_EditCategoriesWidget.o
 debug/moc_EditProductsWidget.o
 debug/moc_EditPromotionsWidget.o
 debug/moc_EditReviewsWidget.o
+debug/moc_CustomersManagementWidget.o
