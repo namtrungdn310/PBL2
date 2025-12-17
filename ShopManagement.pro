@@ -20,6 +20,7 @@ SOURCES += \
     Widgets/StartupWidget.cpp \
     Widgets/LoginWidget.cpp \
     Widgets/RegisterWidget.cpp \
+    Widgets/IntroWidget.cpp \
     \
     Widgets/Customer/CustomerDashboard.cpp \
     Widgets/Customer/ViewProductsWidget.cpp \
@@ -35,7 +36,9 @@ SOURCES += \
     Widgets/Staff/EditProductsWidget.cpp \
     Widgets/Staff/EditPromotionsWidget.cpp \
     Widgets/Staff/EditReviewsWidget.cpp \
-    Widgets/Staff/CustomersManagementWidget.cpp
+    Widgets/Staff/CustomersManagementWidget.cpp \
+    Widgets/Staff/ShopAnalysisWidget.cpp \
+    Widgets/Staff/AccountSettingWidget.cpp
 
 HEADERS += \
     include/Cart.h include/CartItem.h include/Category.h include/Customer.h \
@@ -47,6 +50,7 @@ HEADERS += \
     Widgets/StartupWidget.h \
     Widgets/LoginWidget.h \
     Widgets/RegisterWidget.h \
+    Widgets/IntroWidget.h \
     \
     Widgets/Customer/CustomerDashboard.h \
     Widgets/Customer/ViewProductsWidget.h \
@@ -62,13 +66,16 @@ HEADERS += \
     Widgets/Staff/EditProductsWidget.h \
     Widgets/Staff/EditPromotionsWidget.h \
     Widgets/Staff/EditReviewsWidget.h \
-    Widgets/Staff/CustomersManagementWidget.h
+    Widgets/Staff/CustomersManagementWidget.h \
+    Widgets/Staff/ShopAnalysisWidget.h \
+    Widgets/Staff/AccountSettingWidget.h
 
 FORMS += \
     Widgets/MainWindow.ui \
     Widgets/StartupWidget.ui \
     Widgets/LoginWidget.ui \
     Widgets/RegisterWidget.ui \
+    Widgets/IntroWidget.ui \
     \
     Widgets/Customer/CustomerDashboard.ui \
     Widgets/Customer/ViewProductsWidget.ui \
@@ -84,7 +91,9 @@ FORMS += \
     Widgets/Staff/EditProductsWidget.ui \
     Widgets/Staff/EditPromotionsWidget.ui \
     Widgets/Staff/EditReviewsWidget.ui \
-    Widgets/Staff/CustomersManagementWidget.ui
+    Widgets/Staff/CustomersManagementWidget.ui \
+    Widgets/Staff/ShopAnalysisWidget.ui \
+    Widgets/Staff/AccountSettingWidget.ui
 
 RESOURCES += resources.qrc
 

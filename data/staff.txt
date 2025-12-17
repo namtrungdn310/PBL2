@@ -1,2 +1,3 @@
 3|Trung Châu|admin@shop.com|admin123|1|Manager
 4|Huỳnh Thịnh|c.le@shop.com|staff123|2|Inventory Staff
+5|Võ Trần Thiên Tân|votranthientan@gmail.com|comrangduabo|2|Sales Staff

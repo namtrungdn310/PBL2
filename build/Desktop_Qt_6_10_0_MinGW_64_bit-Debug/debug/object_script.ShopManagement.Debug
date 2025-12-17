@@ -18,6 +18,7 @@ debug/MainWindow.o
 debug/StartupWidget.o
 debug/LoginWidget.o
 debug/RegisterWidget.o
+debug/IntroWidget.o
 debug/CustomerDashboard.o
 debug/ViewProductsWidget.o
 debug/ViewCartWidget.o
@@ -32,11 +33,14 @@ debug/EditProductsWidget.o
 debug/EditPromotionsWidget.o
 debug/EditReviewsWidget.o
 debug/CustomersManagementWidget.o
+debug/ShopAnalysisWidget.o
+debug/AccountSettingWidget.o
 debug/qrc_resources.o
 debug/moc_MainWindow.o
 debug/moc_StartupWidget.o
 debug/moc_LoginWidget.o
 debug/moc_RegisterWidget.o
+debug/moc_IntroWidget.o
 debug/moc_CustomerDashboard.o
 debug/moc_ViewProductsWidget.o
 debug/moc_ViewCartWidget.o
@@ -51,3 +55,5 @@ debug/moc_EditProductsWidget.o
 debug/moc_EditPromotionsWidget.o
 debug/moc_EditReviewsWidget.o
 debug/moc_CustomersManagementWidget.o
+debug/moc_ShopAnalysisWidget.o
+debug/moc_AccountSettingWidget.o

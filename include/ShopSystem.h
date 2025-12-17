@@ -37,7 +37,6 @@ private:
     vector<Review> reviews;
     vector<Invoice> invoices;
     map<int, vector<CartItem>> savedUserCarts;
-    
     Customer* currentCustomer;
     Staff* currentStaff;
     Cart currentCart;
@@ -62,6 +61,7 @@ public:
     vector<Product>& getProducts() { return products; }
     const vector<Customer>& getCustomers() const { return customers; }
     vector<Customer>& getCustomers() { return customers; }
+    const vector<Staff>& getStaffList() const { return staffMembers; }
     const vector<Order>& getOrders() const { return orders; }
     const vector<Promotion>& getPromotions() const { return promotions; }
     const vector<Category>& getCategories() const { return categories; }
@@ -81,7 +81,9 @@ public:
     void removeProduct(int productId);
     void addCustomer(const Customer& customer);
     void deleteCurrentCustomer();
-    void addStaff(const Staff& staff);
+    void addStaff(const Staff& s);
+    void removeStaff(int staffId);
+    void updateStaff(const Staff& s); // Hàm cập nhật thông tin
     void addOrder(const Order& order);
     void addInvoice(const Invoice& invoice);
     void addReview(const Review& review);

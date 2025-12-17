@@ -18,6 +18,7 @@ release/MainWindow.o
 release/StartupWidget.o
 release/LoginWidget.o
 release/RegisterWidget.o
+release/IntroWidget.o
 release/CustomerDashboard.o
 release/ViewProductsWidget.o
 release/ViewCartWidget.o
@@ -32,11 +33,14 @@ release/EditProductsWidget.o
 release/EditPromotionsWidget.o
 release/EditReviewsWidget.o
 release/CustomersManagementWidget.o
+release/ShopAnalysisWidget.o
+release/AccountSettingWidget.o
 release/qrc_resources.o
 release/moc_MainWindow.o
 release/moc_StartupWidget.o
 release/moc_LoginWidget.o
 release/moc_RegisterWidget.o
+release/moc_IntroWidget.o
 release/moc_CustomerDashboard.o
 release/moc_ViewProductsWidget.o
 release/moc_ViewCartWidget.o
@@ -51,3 +55,5 @@ release/moc_EditProductsWidget.o
 release/moc_EditPromotionsWidget.o
 release/moc_EditReviewsWidget.o
 release/moc_CustomersManagementWidget.o
+release/moc_ShopAnalysisWidget.o
+release/moc_AccountSettingWidget.o

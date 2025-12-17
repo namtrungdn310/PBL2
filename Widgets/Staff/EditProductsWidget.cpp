@@ -141,6 +141,7 @@ void EditProductsWidget::on_btnAddSize_clicked() {
     for(auto& s : tempSizes) {
         if (s.getSizeName() == sName.toStdString()) {
             s.setQuantity(qty);
+            found = true;
             break;
         }
     }
@@ -156,9 +157,11 @@ void EditProductsWidget::on_btnAddSize_clicked() {
         if (s == "XXL") return 6;
         try { return 100 + std::stoi(s); } catch(...) { return 999; }
     };
+
     std::sort(tempSizes.begin(), tempSizes.end(), [&](const Size& a, const Size& b) {
         return getSizeRank(a.getSizeName()) < getSizeRank(b.getSizeName());
     });
+
     updateSizeTable();
 }
 

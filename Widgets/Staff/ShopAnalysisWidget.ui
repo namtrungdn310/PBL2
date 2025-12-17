@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>ShopAnalysisWidget</class>
+ <widget class="QWidget" name="ShopAnalysisWidget">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1024</width>
+    <height>768</height>
+   </rect>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout_Main">
+   <item>
+    <widget class="QWidget" name="centerContainer" native="true">
+     <layout class="QHBoxLayout" name="horizontalLayout_Center">
+      <item>
+       <spacer name="horizontalSpacer_L">
+        <property name="orientation"><enum>Qt::Horizontal</enum></property>
+        <property name="sizeHint" stdset="0"><size><width>20</width><height>20</height></size></property>
+       </spacer>
+      </item>
+      <item>
+       <widget class="QFrame" name="mainCard">
+        <property name="minimumSize"><size><width>980</width><height>700</height></size></property>
+        <property name="frameShape"><enum>QFrame::StyledPanel</enum></property>
+        <layout class="QVBoxLayout" name="verticalLayout_Card">
+         <property name="leftMargin"><number>20</number></property>
+         <property name="topMargin"><number>20</number></property>
+         <property name="rightMargin"><number>20</number></property>
+         <property name="bottomMargin"><number>20</number></property>
+
+         <item>
+          <layout class="QHBoxLayout" name="hlHeader">
+           <item><widget class="QLabel" name="lblTitle"><property name="text"><string>SHOP ANALYTICS DASHBOARD</string></property></widget></item>
+           <item><spacer name="spHeader"><property name="orientation"><enum>Qt::Horizontal</enum></property></spacer></item>
+           <item><widget class="QLabel" name="lblFilter"><property name="text"><string>Time Period:</string></property></widget></item>
+           <item>
+            <widget class="QComboBox" name="cboFilter">
+             <item><property name="text"><string>All Time</string></property></item>
+             <item><property name="text"><string>This Month</string></property></item>
+            </widget>
+           </item>
+          </layout>
+         </item>
+
+         <item>
+          <widget class="QFrame" name="kpiContainer">
+           <layout class="QHBoxLayout" name="hlKPI">
+            <property name="spacing"><number>15</number></property>
+            <property name="leftMargin"><number>0</number></property>
+            <property name="topMargin"><number>10</number></property>
+            <property name="rightMargin"><number>0</number></property>
+            <property name="bottomMargin"><number>10</number></property>
+
+            <item>
+             <widget class="QFrame" name="kpi1">
+              <property name="styleSheet"><string>background-color: #E3F2FD; border-radius: 10px; border: 1px solid #BBDEFB;</string></property>
+              <layout class="QVBoxLayout" name="vlKPI1">
+               <item><widget class="QLabel" name="lblKpiTitle1"><property name="text"><string>TOTAL REVENUE</string></property><property name="alignment"><set>Qt::AlignCenter</set></property></widget></item>
+               <item><widget class="QLabel" name="lblValRevenue"><property name="text"><string>0 VND</string></property><property name="alignment"><set>Qt::AlignCenter</set></property></widget></item>
+              </layout>
+             </widget>
+            </item>
+
+            <item>
+             <widget class="QFrame" name="kpi2">
+              <property name="styleSheet"><string>background-color: #E8F5E9; border-radius: 10px; border: 1px solid #C8E6C9;</string></property>
+              <layout class="QVBoxLayout" name="vlKPI2">
+               <item><widget class="QLabel" name="lblKpiTitle2"><property name="text"><string>TOTAL ORDERS</string></property><property name="alignment"><set>Qt::AlignCenter</set></property></widget></item>
+               <item><widget class="QLabel" name="lblValOrders"><property name="text"><string>0</string></property><property name="alignment"><set>Qt::AlignCenter</set></property></widget></item>
+              </layout>
+             </widget>
+            </item>
+
+            <item>
+             <widget class="QFrame" name="kpi3">
+              <property name="styleSheet"><string>background-color: #FFF3E0; border-radius: 10px; border: 1px solid #FFE0B2;</string></property>
+              <layout class="QVBoxLayout" name="vlKPI3">
+               <item><widget class="QLabel" name="lblKpiTitle3"><property name="text"><string>PRODUCTS SOLD</string></property><property name="alignment"><set>Qt::AlignCenter</set></property></widget></item>
+               <item><widget class="QLabel" name="lblValItems"><property name="text"><string>0</string></property><property name="alignment"><set>Qt::AlignCenter</set></property></widget></item>
+              </layout>
+             </widget>
+            </item>
+
+            <item>
+             <widget class="QFrame" name="kpi4">
+              <property name="styleSheet"><string>background-color: #FFEBEE; border-radius: 10px; border: 1px solid #FFCDD2;</string></property>
+              <layout class="QVBoxLayout" name="vlKPI4">
+               <item><widget class="QLabel" name="lblKpiTitle4"><property name="text"><string>CANCEL RATE</string></property><property name="alignment"><set>Qt::AlignCenter</set></property></widget></item>
+               <item><widget class="QLabel" name="lblValCancel"><property name="text"><string>0%</string></property><property name="alignment"><set>Qt::AlignCenter</set></property></widget></item>
+              </layout>
+             </widget>
+            </item>
+           </layout>
+          </widget>
+         </item>
+
+         <item>
+          <widget class="QTabWidget" name="tabAnalysis">
+           <property name="currentIndex"><number>0</number></property>
+
+           <widget class="QWidget" name="tabProduct">
+            <attribute name="title"><string>Product Performance</string></attribute>
+            <layout class="QHBoxLayout" name="hlTabProd">
+             <item>
+              <widget class="QGroupBox" name="grpBestSeller">
+               <property name="title"><string>Top Best Sellers (by Quantity)</string></property>
+               <layout class="QVBoxLayout" name="vlBest">
+                <item><widget class="QTableWidget" name="tblBestSellers"><column><property name="text"><string>Product</string></property></column><column><property name="text"><string>Sold</string></property></column><column><property name="text"><string>Revenue</string></property></column></widget></item>
+               </layout>
+              </widget>
+             </item>
+             <item>
+              <widget class="QGroupBox" name="grpLowStock">
+               <property name="title"><string>Low Stock Alert (&lt; 10)</string></property>
+               <layout class="QVBoxLayout" name="vlLow">
+                <item><widget class="QTableWidget" name="tblLowStock"><column><property name="text"><string>ID</string></property></column><column><property name="text"><string>Product</string></property></column><column><property name="text"><string>Stock</string></property></column></widget></item>
+               </layout>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+
+           <widget class="QWidget" name="tabCustomer">
+            <attribute name="title"><string>Customer Insights</string></attribute>
+            <layout class="QVBoxLayout" name="vlCust">
+             <item>
+              <widget class="QGroupBox" name="grpVip">
+               <property name="title"><string>Top VIP Customers (by Total Spent)</string></property>
+               <layout class="QVBoxLayout" name="vlVip">
+                <item><widget class="QTableWidget" name="tblVIP"><column><property name="text"><string>ID</string></property></column><column><property name="text"><string>Name</string></property></column><column><property name="text"><string>Total Orders</string></property></column><column><property name="text"><string>Total Spent</string></property></column></widget></item>
+               </layout>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+
+           <widget class="QWidget" name="tabFinance">
+            <attribute name="title"><string>Financials (Daily Revenue)</string></attribute>
+            <layout class="QVBoxLayout" name="vlFin">
+             <item>
+              <widget class="QTableWidget" name="tblDailyRevenue"><column><property name="text"><string>Date</string></property></column><column><property name="text"><string>Orders Count</string></property></column><column><property name="text"><string>Revenue</string></property></column></widget>
+             </item>
+            </layout>
+           </widget>
+          </widget>
+         </item>
+
+         <item>
+          <widget class="QPushButton" name="btnBack">
+           <property name="text"><string>Back to Dashboard</string></property>
+          </widget>
+         </item>
+
+        </layout>
+       </widget>
+      </item>
+      <item>
+       <spacer name="horizontalSpacer_R">
+        <property name="orientation"><enum>Qt::Horizontal</enum></property>
+        <property name="sizeHint" stdset="0"><size><width>20</width><height>20</height></size></property>
+       </spacer>
+      </item>
+     </layout>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+</ui>

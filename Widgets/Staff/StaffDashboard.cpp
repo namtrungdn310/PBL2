@@ -142,16 +142,22 @@ StaffDashboard::StaffDashboard(QWidget *parent) :
     m_editPromotions = new EditPromotionsWidget(this);
     m_editReviews = new EditReviewsWidget(this);
     m_customersManagement = new CustomersManagementWidget(this);
+    m_shopAnalysis = new ShopAnalysisWidget(this);
+    m_accountSetting = new AccountSettingWidget(this);
     ui->dashboardStack->addWidget(m_editCategories);
     ui->dashboardStack->addWidget(m_editProducts);
     ui->dashboardStack->addWidget(m_editPromotions);
     ui->dashboardStack->addWidget(m_editReviews);
     ui->dashboardStack->addWidget(m_customersManagement);
+    ui->dashboardStack->addWidget(m_shopAnalysis);
+    ui->dashboardStack->addWidget(m_accountSetting);
     connect(m_editCategories, &EditCategoriesWidget::backSignal, this, &StaffDashboard::goHome);
     connect(m_editProducts, &EditProductsWidget::backSignal, this, &StaffDashboard::goHome);
     connect(m_editPromotions, &EditPromotionsWidget::backSignal, this, &StaffDashboard::goHome);
     connect(m_editReviews, &EditReviewsWidget::backSignal, this, &StaffDashboard::goHome);
     connect(m_customersManagement, &CustomersManagementWidget::backSignal, this, &StaffDashboard::goHome);
+    connect(m_shopAnalysis, &ShopAnalysisWidget::backSignal, this, &StaffDashboard::goHome);
+    connect(m_accountSetting, &AccountSettingWidget::backSignal, this, &StaffDashboard::goHome);
     ui->dashboardStack->setCurrentIndex(0);
 }
 
@@ -206,5 +212,11 @@ void StaffDashboard::on_btnCustomers_clicked()      {
     m_customersManagement->refreshData();
     ui->dashboardStack->setCurrentWidget(m_customersManagement);
 }
-void StaffDashboard::on_btnAnalysis_clicked()       { QMessageBox::information(this, "Admin", "Shop Analysis"); }
-void StaffDashboard::on_btnAccountSetting_clicked() { QMessageBox::information(this, "Admin", "Account Setting"); }
+void StaffDashboard::on_btnAnalysis_clicked()       {
+    m_shopAnalysis->refreshData();
+    ui->dashboardStack->setCurrentWidget(m_shopAnalysis);
+}
+void StaffDashboard::on_btnAccountSetting_clicked() {
+    m_accountSetting->refreshData();
+    ui->dashboardStack->setCurrentWidget(m_accountSetting);
+}

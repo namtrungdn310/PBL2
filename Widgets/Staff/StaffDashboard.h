@@ -10,6 +10,8 @@
 #include "EditPromotionsWidget.h"
 #include "EditReviewsWidget.h"
 #include "CustomersManagementWidget.h"
+#include "ShopAnalysisWidget.h"
+#include "AccountSettingWidget.h"
 namespace Ui { class StaffDashboard; }
 
 class StaffDashboard : public QWidget {
@@ -45,6 +47,8 @@ private:
     EditPromotionsWidget *m_editPromotions;
     EditReviewsWidget *m_editReviews;
     CustomersManagementWidget *m_customersManagement;
+    ShopAnalysisWidget *m_shopAnalysis;
+    AccountSettingWidget *m_accountSetting;
 };
 
 #endif

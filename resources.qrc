@@ -2,5 +2,6 @@
     <qresource prefix="/">
         <file>assets/products.png</file>
         <file>assets/store.png</file>
+        <file>assets/logo_it.png</file>
     </qresource>
 </RCC>

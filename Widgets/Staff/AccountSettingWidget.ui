@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>AccountSettingWidget</class>
+ <widget class="QWidget" name="AccountSettingWidget">
+  <property name="geometry"><rect><x>0</x><y>0</y><width>1024</width><height>768</height></rect></property>
+  <layout class="QVBoxLayout" name="verticalLayout_Main">
+   <item>
+    <widget class="QWidget" name="centerContainer" native="true">
+     <layout class="QHBoxLayout" name="horizontalLayout_Center">
+      <item><spacer name="horizontalSpacer_L"><property name="orientation"><enum>Qt::Horizontal</enum></property></spacer></item>
+      <item>
+       <widget class="QFrame" name="mainCard">
+        <property name="minimumSize"><size><width>950</width><height>650</height></size></property>
+        <property name="styleSheet"><string>QFrame#mainCard { background: #FFF; border-radius: 15px; }</string></property>
+        <layout class="QVBoxLayout" name="vlCard">
+
+         <item>
+          <widget class="QPushButton" name="btnBack">
+           <property name="text"><string>← Back to Dashboard</string></property>
+           <property name="cursor"><cursorShape>PointingHandCursor</cursorShape></property>
+           <property name="flat"><bool>true</bool></property>
+          </widget>
+         </item>
+
+         <item>
+          <widget class="QTabWidget" name="tabWidget">
+           <property name="currentIndex"><number>0</number></property>
+
+           <widget class="QWidget" name="tabProfile">
+            <attribute name="title"><string>My Profile</string></attribute>
+            <layout class="QHBoxLayout" name="hlProfile">
+             <item>
+              <widget class="QWidget" name="leftPanel" native="true">
+               <property name="minimumSize"><size><width>350</width><height>0</height></size></property>
+               <layout class="QVBoxLayout" name="vlLeft">
+
+                <item>
+                 <spacer name="verticalSpacer_Top">
+                  <property name="orientation"><enum>Qt::Vertical</enum></property>
+                  <property name="sizeHint" stdset="0"><size><width>20</width><height>40</height></size></property>
+                 </spacer>
+                </item>
+
+                <item>
+                 <layout class="QHBoxLayout" name="hlAvatar">
+                  <item><spacer name="spAvatarL"><property name="orientation"><enum>Qt::Horizontal</enum></property></spacer></item>
+                  <item>
+                   <widget class="QLabel" name="lblAvatar">
+                    <property name="minimumSize"><size><width>180</width><height>180</height></size></property>
+                    <property name="maximumSize"><size><width>180</width><height>180</height></size></property>
+                    <property name="text"><string>A</string></property>
+                    <property name="alignment"><set>Qt::AlignCenter</set></property>
+                   </widget>
+                  </item>
+                  <item><spacer name="spAvatarR"><property name="orientation"><enum>Qt::Horizontal</enum></property></spacer></item>
+                 </layout>
+                </item>
+
+                <item>
+                 <layout class="QHBoxLayout" name="hlName">
+                  <item><spacer name="spNameL"><property name="orientation"><enum>Qt::Horizontal</enum></property></spacer></item>
+                  <item><widget class="QLabel" name="lblName"><property name="text"><string>Name</string></property><property name="alignment"><set>Qt::AlignCenter</set></property></widget></item>
+                  <item><spacer name="spNameR"><property name="orientation"><enum>Qt::Horizontal</enum></property></spacer></item>
+                 </layout>
+                </item>
+
+                <item>
+                 <layout class="QHBoxLayout" name="hlRole">
+                  <item><spacer name="spRoleL"><property name="orientation"><enum>Qt::Horizontal</enum></property></spacer></item>
+                  <item><widget class="QLabel" name="lblRole"><property name="text"><string>Position</string></property><property name="alignment"><set>Qt::AlignCenter</set></property></widget></item>
+                  <item><spacer name="spRoleR"><property name="orientation"><enum>Qt::Horizontal</enum></property></spacer></item>
+                 </layout>
+                </item>
+
+                <item>
+                 <spacer name="verticalSpacer_Bottom">
+                  <property name="orientation"><enum>Qt::Vertical</enum></property>
+                  <property name="sizeHint" stdset="0"><size><width>20</width><height>40</height></size></property>
+                 </spacer>
+                </item>
+
+               </layout>
+              </widget>
+              </item>
+
+             <item>
+              <widget class="QGroupBox" name="grpPass">
+               <property name="title"><string>Change My Password</string></property>
+               <layout class="QVBoxLayout" name="vlPass">
+                <item><spacer name="spPass1"><property name="orientation"><enum>Qt::Vertical</enum></property></spacer></item>
+                <item><widget class="QLineEdit" name="txtCurrentPass"><property name="placeholderText"><string>Current Password</string></property><property name="echoMode"><enum>QLineEdit::Password</enum></property></widget></item>
+                <item><spacer name="spPass2"><property name="orientation"><enum>Qt::Vertical</enum></property></spacer></item>
+                <item><widget class="QLineEdit" name="txtNewPass"><property name="placeholderText"><string>New Password</string></property><property name="echoMode"><enum>QLineEdit::Password</enum></property></widget></item>
+                <item><spacer name="spPass3"><property name="orientation"><enum>Qt::Vertical</enum></property></spacer></item>
+                <item><widget class="QLineEdit" name="txtConfirmPass"><property name="placeholderText"><string>Confirm New Password</string></property><property name="echoMode"><enum>QLineEdit::Password</enum></property></widget></item>
+                <item><spacer name="spPass4"><property name="orientation"><enum>Qt::Vertical</enum></property></spacer></item>
+                <item><widget class="QPushButton" name="btnUpdatePass"><property name="text"><string>Update Password</string></property></widget></item>
+                <item><spacer name="spPass5"><property name="orientation"><enum>Qt::Vertical</enum></property></spacer></item>
+               </layout>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+
+           <widget class="QWidget" name="tabManage">
+            <attribute name="title"><string>Staff Management</string></attribute>
+            <layout class="QHBoxLayout" name="hlManage">
+             <item>
+              <widget class="QGroupBox" name="grpList">
+               <property name="title"><string>Staff List</string></property>
+               <property name="maximumSize"><size><width>350</width><height>16777215</height></size></property>
+               <layout class="QVBoxLayout" name="vlList">
+                <item><widget class="QListWidget" name="lstStaff"/></item>
+                <item><widget class="QPushButton" name="btnAddNew"><property name="text"><string>+ Add New Staff (Clear Form)</string></property></widget></item>
+               </layout>
+              </widget>
+             </item>
+             <item>
+              <widget class="QGroupBox" name="grpDetails">
+               <property name="title"><string>Account Details</string></property>
+               <layout class="QVBoxLayout" name="vlDetails">
+                <item><widget class="QLabel" name="lblEditId"><property name="text"><string>ID: [New]</string></property></widget></item>
+
+                <item><widget class="QLabel" name="l1"><property name="text"><string>Full Name</string></property></widget></item>
+                <item><widget class="QLineEdit" name="txtEditName"/></item>
+
+                <item><widget class="QLabel" name="l2"><property name="text"><string>Email</string></property></widget></item>
+                <item><widget class="QLineEdit" name="txtEditEmail"/></item>
+
+                <item><widget class="QLabel" name="l3"><property name="text"><string>Password</string></property></widget></item>
+                <item><widget class="QLineEdit" name="txtEditPass"><property name="placeholderText"><string>Leave empty to keep current password</string></property></widget></item>
+
+                <item><widget class="QLabel" name="l4"><property name="text"><string>Position / Role</string></property></widget></item>
+                <item>
+                 <widget class="QComboBox" name="cboEditRole">
+                  <item><property name="text"><string>Manager</string></property></item>
+                  <item><property name="text"><string>Inventory Staff</string></property></item>
+                  <item><property name="text"><string>Sales Staff</string></property></item>
+                 </widget>
+                </item>
+
+                <item>
+                 <layout class="QHBoxLayout" name="hlActions">
+                  <item><widget class="QPushButton" name="btnDeleteStaff"><property name="text"><string>Delete Account</string></property></widget></item>
+                  <item><widget class="QPushButton" name="btnSaveStaff"><property name="text"><string>Save / Update</string></property></widget></item>
+                 </layout>
+                </item>
+                <item><spacer name="spDetails"><property name="orientation"><enum>Qt::Vertical</enum></property></spacer></item>
+               </layout>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+
+          </widget>
+         </item>
+        </layout>
+       </widget>
+      </item>
+      <item><spacer name="horizontalSpacer_R"><property name="orientation"><enum>Qt::Horizontal</enum></property></spacer></item>
+     </layout>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+</ui>

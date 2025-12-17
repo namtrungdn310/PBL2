@@ -33,7 +33,6 @@ Customer* ShopSystem::findCustomerByEmail(const string& email) {
     return nullptr;
 }
 
-void ShopSystem::addStaff(const Staff& s) { staffMembers.push_back(s); }
 Staff* ShopSystem::findStaff(int userId) {
     for (auto& s : staffMembers) if (s.getUserId() == userId) return &s;
     return nullptr;
@@ -288,7 +287,7 @@ string ShopSystem::validateCartStock() {
         Product* realProd = findProduct(prodId);
         // th1: sản phẩm đã bị xóa khỏi hệ thống
         if (!realProd) {
-            message += "- '" + item.getProduct().getName() + "' không còn kinh doanh -> Đã xóa khỏi giỏ.\n";
+            message += "- '" + item.getProduct().getName() + "' is no longer available -> Removed from cart.\n";
             itemsToRemove.push_back(i);
             continue;
         }
@@ -298,12 +297,12 @@ string ShopSystem::validateCartStock() {
         int realStock = (realSize) ? realSize->getQuantity() : 0;
 
         if (realStock == 0) {
-            message += "- '" + realProd->getName() + " (" + sizeName + ")' đã hết hàng -> Đã xóa khỏi giỏ.\n";
+            message += "- '" + realProd->getName() + " (" + sizeName + ")' is out of stock -> Removed from cart.\n";
             itemsToRemove.push_back(i);
         }
         else if (currentQty > realStock) {
             item.updateQuantity(realStock);
-            message += "- '" + realProd->getName() + " (" + sizeName + ")' chỉ còn " + to_string(realStock) + " cái -> Đã cập nhật lại số lượng.\n";
+            message += "- '" + realProd->getName() + " (" + sizeName + ")' only has " + to_string(realStock) + " left -> Quantity updated.\n";
         }
     }
 
@@ -452,4 +451,28 @@ void ShopSystem::removeReview(int reviewId) {
 int ShopSystem::getNewReviewId() {
     lastReviewId++;
     return lastReviewId;
+}
+
+void ShopSystem::addStaff(const Staff& s) {
+    staffMembers.push_back(s);
+    saveAllData();
+}
+
+void ShopSystem::removeStaff(int staffId) {
+    staffMembers.erase(
+        std::remove_if(staffMembers.begin(), staffMembers.end(),
+                       [staffId](const Staff& s) { return s.getUserId() == staffId; }),
+        staffMembers.end()
+        );
+    saveAllData();
+}
+
+void ShopSystem::updateStaff(const Staff& s) {
+    for(auto& staff : staffMembers) {
+        if(staff.getUserId() == s.getUserId()) {
+            staff = s;
+            break;
+        }
+    }
+    saveAllData();
 }

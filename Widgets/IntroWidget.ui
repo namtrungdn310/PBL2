@@ -1,0 +1,318 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>IntroWidget</class>
+ <widget class="QWidget" name="IntroWidget">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1024</width>
+    <height>768</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Introduction</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">background-color: white; font-family: 'Times New Roman'; color: #000000;</string>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout">
+   <property name="spacing">
+    <number>15</number>
+   </property>
+   <property name="leftMargin">
+    <number>50</number>
+   </property>
+   <property name="topMargin">
+    <number>50</number>
+   </property>
+   <property name="rightMargin">
+    <number>50</number>
+   </property>
+   <property name="bottomMargin">
+    <number>50</number>
+   </property>
+
+   <item>
+    <widget class="QLabel" name="lblHeader">
+     <property name="text">
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:16pt; font-weight:600;&quot;&gt;ĐẠI HỌC ĐÀ NẴNG&lt;/span&gt;&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:16pt; font-weight:600;&quot;&gt;ĐẠI HỌC BÁCH KHOA&lt;/span&gt;&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:16pt; font-weight:600;&quot;&gt;KHOA CÔNG NGHỆ THÔNG TIN&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
+   </item>
+
+   <item>
+    <spacer name="verticalSpacer_1">
+     <property name="orientation">
+      <enum>Qt::Vertical</enum>
+     </property>
+     <property name="sizeHint" stdset="0">
+      <size>
+       <width>20</width>
+       <height>20</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+
+   <item alignment="Qt::AlignHCenter">
+    <widget class="QLabel" name="lblLogo">
+     <property name="minimumSize">
+      <size>
+       <width>150</width>
+       <height>150</height>
+      </size>
+     </property>
+     <property name="maximumSize">
+      <size>
+       <width>150</width>
+       <height>150</height>
+      </size>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="scaledContents">
+      <bool>true</bool>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
+   </item>
+
+   <item>
+    <spacer name="verticalSpacer_2">
+     <property name="orientation">
+      <enum>Qt::Vertical</enum>
+     </property>
+     <property name="sizeHint" stdset="0">
+      <size>
+       <width>20</width>
+       <height>40</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+
+   <item>
+    <widget class="QLabel" name="lblPBL">
+     <property name="text">
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:20pt; font-weight:600;&quot;&gt;PBL2: DỰ ÁN CƠ SỞ LẬP TRÌNH&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QLabel" name="lblTopic">
+     <property name="text">
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:24pt; font-weight:600; color:#d32f2f;&quot;&gt;Đề tài : Quản lý shop quần áo&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
+   </item>
+
+   <item>
+    <spacer name="verticalSpacer_3">
+     <property name="orientation">
+      <enum>Qt::Vertical</enum>
+     </property>
+     <property name="sizeHint" stdset="0">
+      <size>
+       <width>20</width>
+       <height>60</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+
+   <item>
+    <widget class="QWidget" name="infoContainer" native="true">
+     <layout class="QGridLayout" name="gridLayout">
+      <property name="horizontalSpacing">
+       <number>30</number>
+      </property>
+      <property name="verticalSpacing">
+       <number>15</number>
+      </property>
+      <property name="leftMargin">
+       <number>100</number>
+      </property>
+
+      <item row="0" column="0" colspan="3">
+       <widget class="QLabel" name="label_svth">
+        <property name="text">
+         <string>SINH VIÊN THỰC HIỆN:</string>
+        </property>
+        <property name="font">
+         <font>
+          <family>Times New Roman</family>
+          <pointsize>14</pointsize>
+          <bold>true</bold>
+         </font>
+        </property>
+       </widget>
+      </item>
+
+      <item row="1" column="0">
+       <widget class="QLabel" name="sv1_name">
+        <property name="text">
+         <string>Châu Thanh Nam Trung</string>
+        </property>
+        <property name="font">
+         <font><family>Times New Roman</family><pointsize>14</pointsize><bold>true</bold></font>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="1">
+       <widget class="QLabel" name="sv1_class">
+        <property name="text">
+         <string>LỚP: 24T_DT2</string>
+        </property>
+        <property name="font">
+         <font><family>Times New Roman</family><pointsize>14</pointsize><bold>true</bold></font>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="2">
+       <widget class="QLabel" name="sv1_group">
+        <property name="text">
+         <string>NHÓM: 24.11B</string>
+        </property>
+        <property name="font">
+         <font><family>Times New Roman</family><pointsize>14</pointsize><bold>true</bold></font>
+        </property>
+       </widget>
+      </item>
+
+      <item row="2" column="0">
+       <widget class="QLabel" name="sv2_name">
+        <property name="text">
+         <string>Lê Huỳnh Thanh Thịnh</string>
+        </property>
+        <property name="font">
+         <font><family>Times New Roman</family><pointsize>14</pointsize><bold>true</bold></font>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="1">
+       <widget class="QLabel" name="sv2_class">
+        <property name="text">
+         <string>LỚP: 24T_DT2</string>
+        </property>
+        <property name="font">
+         <font><family>Times New Roman</family><pointsize>14</pointsize><bold>true</bold></font>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="2">
+       <widget class="QLabel" name="sv2_group">
+        <property name="text">
+         <string>NHÓM: 24.11B</string>
+        </property>
+        <property name="font">
+         <font><family>Times New Roman</family><pointsize>14</pointsize><bold>true</bold></font>
+        </property>
+       </widget>
+      </item>
+
+      <item row="3" column="0">
+       <widget class="QLabel" name="label_gvhd">
+        <property name="text">
+         <string>GIẢNG VIÊN HƯỚNG DẪN:</string>
+        </property>
+        <property name="font">
+         <font><family>Times New Roman</family><pointsize>14</pointsize><bold>true</bold></font>
+        </property>
+        <property name="styleSheet">
+         <string>margin-top: 20px;</string>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="1" colspan="2">
+       <widget class="QLabel" name="gv_name">
+        <property name="text">
+         <string>Đỗ Thị Tuyết Hoa</string>
+        </property>
+        <property name="font">
+         <font><family>Times New Roman</family><pointsize>14</pointsize><bold>true</bold></font>
+        </property>
+        <property name="styleSheet">
+         <string>margin-top: 20px;</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+
+   <item>
+    <spacer name="verticalSpacer_4">
+     <property name="orientation">
+      <enum>Qt::Vertical</enum>
+     </property>
+     <property name="sizeHint" stdset="0">
+      <size>
+       <width>20</width>
+       <height>40</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+
+   <item>
+    <widget class="QLabel" name="lblDate">
+     <property name="text">
+      <string>Đà Nẵng 12-2025</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+     <property name="font">
+      <font>
+       <family>Times New Roman</family>
+       <pointsize>14</pointsize>
+       <bold>true</bold>
+      </font>
+     </property>
+    </widget>
+   </item>
+
+   <item>
+    <spacer name="verticalSpacer_5">
+     <property name="orientation">
+      <enum>Qt::Vertical</enum>
+     </property>
+     <property name="sizeHint" stdset="0">
+      <size>
+       <width>20</width>
+       <height>20</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+
+   <item>
+    <widget class="QLabel" name="lblPressEnter">
+     <property name="text">
+      <string>- Press Enter to Continue -</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+     <property name="styleSheet">
+      <string>color: #555; font-style: italic; font-size: 14px;</string>
+     </property>
+    </widget>
+   </item>
+
+  </layout>
+ </widget>
+</ui>
