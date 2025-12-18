@@ -2,7 +2,7 @@
 #define PRODUCT_H
 
 #include <string>
-#include <vector>
+#include "DataStructures.h"
 #include "Size.h"
 using namespace std;
 
@@ -14,7 +14,7 @@ private:
     long long price;
     string brand;
     int categoryId;
-    vector<Size> sizes;
+    MyVector<Size> sizes;
     int getSizeRank(const string& sizeName) const;
 
 public:
@@ -27,8 +27,8 @@ public:
     long long getPrice() const { return price; }
     const string& getBrand() const { return brand; }
     int getCategoryId() const { return categoryId; }
-    const vector<Size>& getSizes() const { return sizes; }
-    vector<Size>& getSizes() { return sizes; }
+    const MyVector<Size>& getSizes() const { return sizes; }
+    MyVector<Size>& getSizes() { return sizes; }
     
     void setProductId(int id) { productId = id; }
     void setName(const string& n) { name = n; }

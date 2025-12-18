@@ -2,8 +2,7 @@
 #define FILEMANAGER_H
 
 #include <string>
-#include <vector>
-#include <map>
+#include "DataStructures.h"
 #include "Customer.h"
 #include "Staff.h"
 #include "Product.h"
@@ -23,30 +22,30 @@ public:
     static void initializeDataFiles();
 
     //đọc
-    static vector<Customer> readCustomers(string filename);
-    static vector<Staff> readStaff(string filename);
-    static vector<Product> readProducts(string filename);
-    static vector<Order> readOrders(string filename);
-    static vector<Promotion> readPromotions(string filename);
-    static vector<Review> readReviews(string filename);
-    static vector<Invoice> readInvoices(string filename);
-    static vector<Category> readCategories(string filename);
-    static map<int, vector<CartItem>> readCarts(string filename, const vector<Product>& allProducts);
-    static map<int, vector<pair<string, int>>> readInventoryStock(string filename);
-    static map<int, vector<OrderItem>> readOrderItems(string filename, const vector<Product>& allProducts);
+    static MyVector<Customer> readCustomers(string filename);
+    static MyVector<Staff> readStaff(string filename);
+    static MyVector<Product> readProducts(string filename);
+    static MyVector<Order> readOrders(string filename);
+    static MyVector<Promotion> readPromotions(string filename);
+    static MyVector<Review> readReviews(string filename);
+    static MyVector<Invoice> readInvoices(string filename);
+    static MyVector<Category> readCategories(string filename);
+    static MyMap<int, MyVector<CartItem>> readCarts(string filename, const MyVector<Product>& allProducts);
+    static MyMap<int, MyVector<Pair<string, int>>> readInventoryStock(string filename);
+    static MyMap<int, MyVector<OrderItem>> readOrderItems(string filename, const MyVector<Product>& allProducts);
     
     //viết
-    static void writeCustomers(string filename, const vector<Customer>& customers);
-    static void writeStaff(string filename, const vector<Staff>& staff);
-    static void writeProducts(string filename, const vector<Product>& products);
-    static void writeOrders(string filename, const vector<Order>& orders);
-    static void writePromotions(string filename, const vector<Promotion>& promos);
-    static void writeReviews(string filename, const vector<Review>& reviews);
-    static void writeInvoices(string filename, const vector<Invoice>& invoices);
-    static void writeCategories(string filename, const vector<Category>& categories);
-    static void writeInventoryStock(string filename, const vector<Product>& products);
-    static void writeCarts(string filename, const map<int, vector<CartItem>>& userCarts);
-    static void writeOrderItems(string filename, const vector<Order>& orders);
+    static void writeCustomers(string filename, const MyVector<Customer>& customers);
+    static void writeStaff(string filename, const MyVector<Staff>& staff);
+    static void writeProducts(string filename, const MyVector<Product>& products);
+    static void writeOrders(string filename, const MyVector<Order>& orders);
+    static void writePromotions(string filename, const MyVector<Promotion>& promos);
+    static void writeReviews(string filename, const MyVector<Review>& reviews);
+    static void writeInvoices(string filename, const MyVector<Invoice>& invoices);
+    static void writeCategories(string filename, const MyVector<Category>& categories);
+    static void writeInventoryStock(string filename, const MyVector<Product>& products);
+    static void writeCarts(string filename, const MyMap<int, MyVector<CartItem>>& userCarts);
+    static void writeOrderItems(string filename, const MyVector<Order>& orders);
 };
 
 #endif

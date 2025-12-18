@@ -167,11 +167,8 @@ void OrderWidget::setupStyle() {
 
     this->setStyleSheet(
         "QWidget { color: #333333; font-family: 'Segoe UI'; }"
-
         "QWidget#OrderWidget { background: qlineargradient(x1:0, y1:0, x2:1, y2:1, stop:0 #D6F0FD, stop:1 #B3E5FC); }"
-
         "QFrame#mainCard { background-color: #FFFFFF; border-radius: 20px; }"
-
         "QLabel#lblTitle { font-size: 24px; font-weight: 800; color: #1565C0; margin-bottom: 15px; }"
         "QLabel#lblSubtotal { font-size: 16px; font-weight: bold; color: #555; margin-top: 10px; }"
 
@@ -184,26 +181,20 @@ void OrderWidget::setupStyle() {
         "   font-size: 13px; "
         "}"
         "QHeaderView::section { background-color: #F9FAFB; border: none; font-weight: bold; color: #555; padding: 8px; }"
-
         "QLabel#lblPaymentTitle { font-size: 18px; font-weight: bold; color: #555; margin-bottom: 15px; }"
         "QLabel { font-size: 13px; font-weight: 600; color: #444; }"
-
         "QLabel#lblFinalTotalLabel { font-size: 14px; color: #777; }"
         "QLabel#lblFinalTotal { font-size: 28px; font-weight: 800; color: #D32F2F; margin-bottom: 10px; }"
-
         "QComboBox, QSpinBox { "
         "   background-color: #F5F7F9; border: 1px solid #DDD; "
         "   border-radius: 8px; padding: 8px; "
         "   color: #333; font-size: 13px; "
         "}"
         "QComboBox QAbstractItemView { background-color: #34495E; color: #FFF; selection-background-color: #1976D2; }"
-
         "QPushButton#btnConfirmPay { background-color: #27AE60; color: white; border-radius: 22px; padding: 12px; font-weight: bold; font-size: 15px; }"
         "QPushButton#btnConfirmPay:hover { background-color: #219150; }"
-
         "QPushButton#btnBack { background-color: #FFF; border: 2px solid #95A5A6; color: #7F8C8D; border-radius: 22px; padding: 10px; font-weight: bold; }"
         "QPushButton#btnBack:hover { background-color: #F0F0F0; }"
-
         "Line#lineSeparator { border: 1px solid #EEEEEE; }"
         "QMessageBox { "
         "   background-color: #34495E; "

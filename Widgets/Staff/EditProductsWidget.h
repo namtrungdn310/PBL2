@@ -36,11 +36,11 @@ private:
     ShopSystem* system;
     Product* currentEditingProduct;
     bool isAddMode;
-    vector<Size> tempSizes;
+    MyVector<Size> tempSizes;
 
     void setupStyle();
     void loadCategories();
-    void displayProducts(const vector<Product>& list);
+    void displayProducts(const MyVector<Product>& list);
     void loadProductToForm(Product* p);
     void updateSizeTable();
     void populateSizeCombo();

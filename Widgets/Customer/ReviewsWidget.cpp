@@ -64,18 +64,20 @@ void ReviewsWidget::refreshData() {
 
 void ReviewsWidget::loadCategories() {
     ui->cboCategory->clear(); ui->cboCategory->addItem("All Categories", 0);
-    for(const auto& cat : system->getCategories())
-        ui->cboCategory->addItem(QString::fromStdString(cat.getName()), cat.getCategoryId());
+    MyVector<Category>& cats = system->getCategories();
+    for(size_t i=0; i < cats.size(); i++) {
+        ui->cboCategory->addItem(QString::fromStdString(cats[i].getName()), cats[i].getCategoryId());
+    }
 }
 
-pair<double, int> ReviewsWidget::calculateRating(int prodId) {
-    vector<Review> reviews = system->getReviewsForProduct(prodId);
+Pair<double, int> ReviewsWidget::calculateRating(int prodId) {
+    MyVector<Review> reviews = system->getReviewsForProduct(prodId);
     if (reviews.empty()) return {0.0, 0};
     double sum = 0;
     int count = 0;
-    for(const auto& r : reviews) {
-        if (r.getRating() > 0) {
-            sum += r.getRating();
+    for(size_t i=0; i<reviews.size(); i++) {
+        if (reviews[i].getRating() > 0) {
+            sum += reviews[i].getRating();
             count++;
         }
     }
@@ -93,13 +95,14 @@ void ReviewsWidget::on_btnFilter_clicked() {
     int catId = ui->cboCategory->currentData().toInt();
     string keyword = ui->txtSearch->text().toStdString();
     SortOption sort = static_cast<SortOption>(ui->cboSort->currentData().toInt());
-    vector<Product> result = system->searchProducts(catId, keyword, 0, -1, sort);
+    MyVector<Product> result = system->searchProducts(catId, keyword, 0, -1, sort);
     displayProductList(result);
 }
 
-void ReviewsWidget::displayProductList(const vector<Product>& list) {
+void ReviewsWidget::displayProductList(const MyVector<Product>& list) {
     ui->tblProducts->setRowCount(0);
-    for(const auto& p : list) {
+    for(size_t i=0; i<list.size(); i++) {
+        const Product& p = list[i];
         int row = ui->tblProducts->rowCount();
         ui->tblProducts->insertRow(row);
 
@@ -115,7 +118,7 @@ void ReviewsWidget::displayProductList(const vector<Product>& list) {
         itemPrice->setTextAlignment(Qt::AlignCenter);
         ui->tblProducts->setItem(row, 1, itemPrice);
 
-        pair<double, int> rateData = calculateRating(p.getProductId());
+        Pair<double, int> rateData = calculateRating(p.getProductId());
         QString rateStr;
         QTableWidgetItem* itemRate;
 
@@ -148,13 +151,14 @@ void ReviewsWidget::showProductDetail(Product* p) {
     ui->reviewStack->setCurrentIndex(1);
     ui->lblProdName->setText(QString::fromStdString(p->getName()));
     ui->lblProdDesc->setText(QString::fromStdString(p->getDescription()));
-    pair<double, int> rateData = calculateRating(p->getProductId());
+    Pair<double, int> rateData = calculateRating(p->getProductId());
     ui->lblRatingInfo->setText(QString::number(rateData.first, 'f', 1) + " Stars (" + QString::number(rateData.second) + " reviews)");
     loadReviewsForProduct(p->getProductId());
     ui->spinRating->setValue(5);
     ui->txtComment->clear();
     ui->tabReviews->setCurrentIndex(0);
 }
+
 void ReviewsWidget::loadReviewsForProduct(int prodId) {
     QLayout* layout = ui->scrollContent->layout();
     QLayoutItem* item;
@@ -162,12 +166,13 @@ void ReviewsWidget::loadReviewsForProduct(int prodId) {
         delete item->widget();
         delete item;
     }
-    vector<Review> allReviews = system->getReviewsForProduct(prodId);
+    MyVector<Review> allReviews = system->getReviewsForProduct(prodId);
     Customer* currentCust = system->getCurrentCustomer();
 
-    vector<Review> customerReviews;
-    vector<Review> staffReplies;
-    for (const auto& r : allReviews) {
+    MyVector<Review> customerReviews;
+    MyVector<Review> staffReplies;
+    for (size_t i=0; i<allReviews.size(); i++) {
+        const Review& r = allReviews[i];
         if (r.getRating() > 0) {
             customerReviews.push_back(r);
         } else {
@@ -180,7 +185,8 @@ void ReviewsWidget::loadReviewsForProduct(int prodId) {
         empty->setAlignment(Qt::AlignCenter);
         layout->addWidget(empty);
     } else {
-        for (const auto& r : customerReviews) {
+        for (size_t i=0; i<customerReviews.size(); i++) {
+            const Review& r = customerReviews[i];
             QFrame* card = new QFrame(ui->scrollContent);
             card->setStyleSheet(
                 "QFrame { background: #FFFFFF; border: 1px solid #E0E0E0; border-radius: 8px; }"
@@ -221,7 +227,8 @@ void ReviewsWidget::loadReviewsForProduct(int prodId) {
             cardLayout->addWidget(cmt);
             QString replyPrefix = "Replying to " + QString::fromStdString(r.getCustomerName()) + ":";
 
-            for (const auto& sr : staffReplies) {
+            for (size_t j=0; j<staffReplies.size(); j++) {
+                const Review& sr = staffReplies[j];
                 QString srContent = QString::fromStdString(sr.getComment());
                 if (srContent.startsWith(replyPrefix)) {
                     QFrame* replyFrame = new QFrame(card);
@@ -274,20 +281,22 @@ void ReviewsWidget::handleDeleteReview(int reviewId) {
     if (reply == QMessageBox::Yes) {
         string targetName = "";
         int prodId = 0;
-        vector<Review> currentReviews = system->getReviews();
-        for(const auto& r : currentReviews) {
+        MyVector<Review> currentReviews = system->getReviews();
+        for(size_t i=0; i<currentReviews.size(); i++) {
+            const Review& r = currentReviews[i];
             if (r.getReviewId() == reviewId) {
                 targetName = r.getCustomerName();
                 prodId = r.getProductId();
                 break;
             }
         }
-        vector<int> idsToDelete;
+        MyVector<int> idsToDelete;
         idsToDelete.push_back(reviewId);
 
         if (!targetName.empty()) {
             string replyPrefix = "Replying to " + targetName + ":";
-            for(const auto& r : currentReviews) {
+            for(size_t i=0; i<currentReviews.size(); i++) {
+                const Review& r = currentReviews[i];
                 if (r.getProductId() == prodId && r.getRating() == 0) {
                     string comment = r.getComment();
                     if (comment.find(replyPrefix) == 0) {
@@ -297,13 +306,13 @@ void ReviewsWidget::handleDeleteReview(int reviewId) {
             }
         }
 
-        for (int id : idsToDelete) {
-            system->removeReview(id);
+        for (size_t i=0; i<idsToDelete.size(); i++) {
+            system->removeReview(idsToDelete[i]);
         }
         system->saveAllData();
 
         if (currentProduct) {
-            pair<double, int> rateData = calculateRating(currentProduct->getProductId());
+            Pair<double, int> rateData = calculateRating(currentProduct->getProductId());
             ui->lblRatingInfo->setText(QString::number(rateData.first, 'f', 1) + " Stars (" + QString::number(rateData.second) + " reviews)");
             loadReviewsForProduct(currentProduct->getProductId());
         }

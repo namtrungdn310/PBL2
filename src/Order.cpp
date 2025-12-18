@@ -15,7 +15,7 @@ double Order::calculateTotal() {
     for (const auto& item : items) {
         subtotal += item.getSubtotal();
     }
-    // Lưu ý: Promotion và Points sẽ được set từ bên ngoài (Customer/ShopSystem)
+    // Promotion và Points sẽ được set từ bên ngoài (Customer/ShopSystem)
     totalAmount = subtotal - promotionDiscount - pointsDiscount;
     return totalAmount; 
 }

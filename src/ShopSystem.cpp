@@ -1,8 +1,7 @@
 #include "../include/ShopSystem.h"
 #include "../include/FileManager.h"
 #include <QString>
-#include <algorithm>
-#include <ctime> 
+#include <ctime>
 
 ShopSystem* ShopSystem::instance = nullptr;
 
@@ -15,51 +14,74 @@ ShopSystem* ShopSystem::getInstance() {
 }
 
 void ShopSystem::addProduct(const Product& product) { products.push_back(product); }
+
 void ShopSystem::removeProduct(int productId) {
-    products.erase(remove_if(products.begin(), products.end(), [productId](const Product& p) { return p.getProductId() == productId; }), products.end());
+    for (size_t i = 0; i < products.size(); i++) {
+        if (products[i].getProductId() == productId) {
+            products.erase(products.begin() + i);
+            break;
+        }
+    }
 }
+
 Product* ShopSystem::findProduct(int productId) {
-    for (auto& p : products) if (p.getProductId() == productId) return &p;
+    for (size_t i = 0; i < products.size(); i++) {
+        if (products[i].getProductId() == productId) return &products[i];
+    }
     return nullptr;
 }
 
 void ShopSystem::addCustomer(const Customer& c) { customers.push_back(c); }
+
 Customer* ShopSystem::findCustomer(int userId) {
-    for (auto& c : customers) if (c.getUserId() == userId) return &c;
+    for (size_t i = 0; i < customers.size(); i++) {
+        if (customers[i].getUserId() == userId) return &customers[i];
+    }
     return nullptr;
 }
+
 Customer* ShopSystem::findCustomerByEmail(const string& email) {
-    for (auto& c : customers) if (c.getEmail() == email) return &c;
+    for (size_t i = 0; i < customers.size(); i++) {
+        if (customers[i].getEmail() == email) return &customers[i];
+    }
     return nullptr;
 }
 
 Staff* ShopSystem::findStaff(int userId) {
-    for (auto& s : staffMembers) if (s.getUserId() == userId) return &s;
+    for (size_t i = 0; i < staffMembers.size(); i++) {
+        if (staffMembers[i].getUserId() == userId) return &staffMembers[i];
+    }
     return nullptr;
 }
 
-void ShopSystem::addOrder(const Order& o) { orders.push_back(o); }
 Order* ShopSystem::findOrder(int orderId) {
-    for (auto& o : orders) if (o.getOrderId() == orderId) return &o;
+    for (size_t i = 0; i < orders.size(); i++) {
+        if (orders[i].getOrderId() == orderId) return &orders[i];
+    }
     return nullptr;
 }
 
-void ShopSystem::addPromotion(const Promotion& p) { promotions.push_back(p); }
 void ShopSystem::removePromotion(int promoId) {
-    promotions.erase(remove_if(promotions.begin(), promotions.end(), [promoId](const Promotion& p) { return p.getPromoId() == promoId; }), promotions.end());
+    for (size_t i = 0; i < promotions.size(); i++) {
+        if (promotions[i].getPromoId() == promoId) {
+            promotions.erase(promotions.begin() + i);
+            break;
+        }
+    }
 }
 
-void ShopSystem::addCategory(const Category& c) { categories.push_back(c); }
 string ShopSystem::getCategoryName(int catId) const {
-    for (const auto& cat : categories) if (cat.getCategoryId() == catId) return cat.getName();
+    for (size_t i = 0; i < categories.size(); i++) {
+        if (categories[i].getCategoryId() == catId) return categories[i].getName();
+    }
     return "Unknown";
 }
 
-void ShopSystem::addInvoice(const Invoice& i) { invoices.push_back(i); }
-void ShopSystem::addReview(const Review& r) { reviews.push_back(r); }
-vector<Review> ShopSystem::getReviewsForProduct(int productId) const {
-    vector<Review> res;
-    for (const auto& r : reviews) if (r.getProductId() == productId) res.push_back(r);
+MyVector<Review> ShopSystem::getReviewsForProduct(int productId) const {
+    MyVector<Review> res;
+    for (size_t i = 0; i < reviews.size(); i++) {
+        if (reviews[i].getProductId() == productId) res.push_back(reviews[i]);
+    }
     return res;
 }
 
@@ -71,20 +93,20 @@ bool ShopSystem::loginCustomer(const string& email, const string& password) {
         currentCart = Cart(c->getUserId());
 
         if (savedUserCarts.count(c->getUserId())) {
-            for (const auto& item : savedUserCarts[c->getUserId()]) {
-                currentCart.addItem(item.getProduct().getProductId(), item.getSelectedSize(), item.getQuantity(), item.getProduct());
+            MyVector<CartItem> items = savedUserCarts[c->getUserId()];
+            for (size_t i = 0; i < items.size(); i++) {
+                currentCart.addItem(items[i].getProduct().getProductId(), items[i].getSelectedSize(), items[i].getQuantity(), items[i].getProduct());
             }
         }
-
         return true;
     }
     return false;
 }
 
 bool ShopSystem::loginStaff(const string& email, const string& password) {
-    for (auto& s : staffMembers) {
-        if (s.login(email, password)) {
-            currentStaff = &s;
+    for (size_t i = 0; i < staffMembers.size(); i++) {
+        if (staffMembers[i].login(email, password)) {
+            currentStaff = &staffMembers[i];
             currentCustomer = nullptr;
             return true;
         }
@@ -104,7 +126,9 @@ void ShopSystem::logout() {
 
 int ShopSystem::registerNewCustomer(const string& name, const string& email, const string& pass, const string& address, const string& phone) {
     if (findCustomerByEmail(email)) return 1;
-    for (const auto& c : customers) if (c.getPhone() == phone) return 2;
+    for (size_t i = 0; i < customers.size(); i++) {
+        if (customers[i].getPhone() == phone) return 2;
+    }
     int newId = getNewUserId();
 
     Customer newCust(newId, name, email, pass, address, phone, 50);
@@ -124,60 +148,62 @@ void ShopSystem::loadAllData() {
     reviews = FileManager::readReviews("data/reviews.txt");
     invoices = FileManager::readInvoices("data/invoices.txt");
     products = FileManager::readProducts("data/products.txt");
-    
+
     lastUserId = 0;
-    for (const auto& c : customers) {
-        if (c.getUserId() > lastUserId) lastUserId = c.getUserId();
+    for (size_t i = 0; i < customers.size(); i++) {
+        if (customers[i].getUserId() > lastUserId) lastUserId = customers[i].getUserId();
     }
-    for (const auto& s : staffMembers) {
-        if (s.getUserId() > lastUserId) lastUserId = s.getUserId();
+    for (size_t i = 0; i < staffMembers.size(); i++) {
+        if (staffMembers[i].getUserId() > lastUserId) lastUserId = staffMembers[i].getUserId();
     }
 
     lastProductId = 0;
-    for (const auto& p : products) if (p.getProductId() > lastProductId) lastProductId = p.getProductId();
+    for (size_t i = 0; i < products.size(); i++) if (products[i].getProductId() > lastProductId) lastProductId = products[i].getProductId();
 
     lastCategoryId = 0;
-    for (const auto& c : categories) if (c.getCategoryId() > lastCategoryId) lastCategoryId = c.getCategoryId();
+    for (size_t i = 0; i < categories.size(); i++) if (categories[i].getCategoryId() > lastCategoryId) lastCategoryId = categories[i].getCategoryId();
 
     lastOrderId = 0;
-    for (const auto& o : orders) {
-        if (o.getOrderId() > lastOrderId) lastOrderId = o.getOrderId();
+    for (size_t i = 0; i < orders.size(); i++) {
+        if (orders[i].getOrderId() > lastOrderId) lastOrderId = orders[i].getOrderId();
     }
 
     lastInvoiceId = 0;
-    for (const auto& inv : invoices) {
-        if (inv.getInvoiceId() > lastInvoiceId) lastInvoiceId = inv.getInvoiceId();
+    for (size_t i = 0; i < invoices.size(); i++) {
+        if (invoices[i].getInvoiceId() > lastInvoiceId) lastInvoiceId = invoices[i].getInvoiceId();
     }
 
     lastPromoId = 0;
-    for (const auto& p : promotions) {
-        if (p.getPromoId() > lastPromoId) lastPromoId = p.getPromoId();
+    for (size_t i = 0; i < promotions.size(); i++) {
+        if (promotions[i].getPromoId() > lastPromoId) lastPromoId = promotions[i].getPromoId();
     }
 
     lastReviewId = 0;
-    for (const auto& r : reviews) {
-        if (r.getReviewId() > lastReviewId) {
-            lastReviewId = r.getReviewId();
-        }
+    for (size_t i = 0; i < reviews.size(); i++) {
+        if (reviews[i].getReviewId() > lastReviewId) lastReviewId = reviews[i].getReviewId();
     }
-    auto itemsMap = FileManager::readOrderItems("data/order_items.txt", products);
-    for (auto& order : orders) {
-        int oid = order.getOrderId();
+
+    MyMap<int, MyVector<OrderItem>> itemsMap = FileManager::readOrderItems("data/order_items.txt", products);
+    for (size_t i = 0; i < orders.size(); i++) {
+        int oid = orders[i].getOrderId();
         if (itemsMap.count(oid)) {
-            for (const auto& item : itemsMap[oid]) {
-                order.addOrderItem(item);
+            MyVector<OrderItem> items = itemsMap[oid];
+            for (size_t j = 0; j < items.size(); j++) {
+                orders[i].addOrderItem(items[j]);
             }
         }
     }
 
-    auto stockMap = FileManager::readInventoryStock("data/inventory_stock.txt");
-    for (auto& product : products) {
-        int prodId = product.getProductId();
-        if (stockMap.find(prodId) != stockMap.end()) {
+    MyMap<int, MyVector<Pair<string, int>>> stockMap = FileManager::readInventoryStock("data/inventory_stock.txt");
+    for (size_t i = 0; i < products.size(); i++) {
+        int prodId = products[i].getProductId();
+        if (stockMap.count(prodId)) {
             int sizeId = 1;
-            for (const auto& [sizeName, quantity] : stockMap[prodId]) {
-                Size size(sizeId++, sizeName, quantity);
-                product.addSize(size);
+            MyVector<Pair<string, int>> stockList = stockMap[prodId];
+            for (size_t j = 0; j < stockList.size(); j++) {
+                // stockList[j] là Pair<string, int>
+                Size size(sizeId++, stockList[j].first, stockList[j].second);
+                products[i].addSize(size);
             }
         }
     }
@@ -191,7 +217,7 @@ void ShopSystem::saveAllData() {
     }
     FileManager::writeCustomers("data/customers.txt", customers);
     FileManager::writeStaff("data/staff.txt", staffMembers);
-    FileManager::writeProducts("data/products.txt", products); 
+    FileManager::writeProducts("data/products.txt", products);
     FileManager::writeOrders("data/orders.txt", orders);
     FileManager::writePromotions("data/promotions.txt", promotions);
     FileManager::writeReviews("data/reviews.txt", reviews);
@@ -204,7 +230,9 @@ void ShopSystem::saveAllData() {
 
 double ShopSystem::getTotalRevenue() const {
     double total = 0;
-    for (const auto& order : orders) if (order.getStatus() == "Completed") total += order.getTotalAmount();
+    for (size_t i = 0; i < orders.size(); i++) {
+        if (orders[i].getStatus() == "Completed") total += orders[i].getTotalAmount();
+    }
     return total;
 }
 
@@ -212,15 +240,15 @@ double ShopSystem::getRevenueThisMonth() const {
     double monthlyTotal = 0;
     time_t now = time(0);
     tm* ltm = localtime(&now);
-    int currentMonth = 1 + ltm->tm_mon; 
+    int currentMonth = 1 + ltm->tm_mon;
     int currentYear = 1900 + ltm->tm_year;
 
-    for (const auto& order : orders) {
-        if (order.getStatus() == "Completed") {
-            time_t orderDate = order.getOrderDate();
+    for (size_t i = 0; i < orders.size(); i++) {
+        if (orders[i].getStatus() == "Completed") {
+            time_t orderDate = orders[i].getOrderDate();
             tm* ltmOrder = localtime(&orderDate);
             if ((1 + ltmOrder->tm_mon) == currentMonth && (1900 + ltmOrder->tm_year) == currentYear) {
-                 monthlyTotal += order.getTotalAmount();
+                monthlyTotal += orders[i].getTotalAmount();
             }
         }
     }
@@ -239,17 +267,17 @@ int ShopSystem::getAvailableStock(int productId, const string& sizeName) {
     return (realStock - inCart > 0) ? (realStock - inCart) : 0;
 }
 
-vector<Product> ShopSystem::searchProducts(int categoryId, string keyword, long long minPrice, long long maxPrice, SortOption sortOption) {
-    vector<Product> result;
+MyVector<Product> ShopSystem::searchProducts(int categoryId, string keyword, long long minPrice, long long maxPrice, SortOption sortOption) {
+    MyVector<Product> result;
     QString qKeyword = QString::fromStdString(keyword);
 
-    for (const auto& p : products) {
+    for (size_t i = 0; i < products.size(); i++) {
+        const Product& p = products[i];
         bool catOk = (categoryId == 0) || (p.getCategoryId() == categoryId);
 
         bool keyOk = true;
         if (!keyword.empty()) {
             QString qName = QString::fromStdString(p.getName());
-
             if (!qName.contains(qKeyword, Qt::CaseInsensitive)) {
                 keyOk = false;
             }
@@ -265,9 +293,9 @@ vector<Product> ShopSystem::searchProducts(int categoryId, string keyword, long 
     }
 
     if (sortOption == PRICE_ASC) {
-        std::sort(result.begin(), result.end(), [](const Product& a, const Product& b) { return a.getPrice() < b.getPrice(); });
+        Algorithms::sort(result, [](const Product& a, const Product& b) { return a.getPrice() < b.getPrice(); });
     } else if (sortOption == PRICE_DESC) {
-        std::sort(result.begin(), result.end(), [](const Product& a, const Product& b) { return a.getPrice() > b.getPrice(); });
+        Algorithms::sort(result, [](const Product& a, const Product& b) { return a.getPrice() > b.getPrice(); });
     }
 
     return result;
@@ -275,8 +303,8 @@ vector<Product> ShopSystem::searchProducts(int categoryId, string keyword, long 
 
 string ShopSystem::validateCartStock() {
     string message = "";
-    vector<int> itemsToRemove;
-    auto& cartItems = currentCart.getItems();
+    MyVector<int> itemsToRemove;
+    MyVector<CartItem>& cartItems = currentCart.getItems();
 
     for (size_t i = 0; i < cartItems.size(); ++i) {
         CartItem& item = cartItems[i];
@@ -285,20 +313,18 @@ string ShopSystem::validateCartStock() {
         int currentQty = item.getQuantity();
 
         Product* realProd = findProduct(prodId);
-        // th1: sản phẩm đã bị xóa khỏi hệ thống
         if (!realProd) {
             message += "- '" + item.getProduct().getName() + "' is no longer available -> Removed from cart.\n";
-            itemsToRemove.push_back(i);
+            itemsToRemove.push_back((int)i);
             continue;
         }
 
-        //th2: size hết hàng hoặc không đủ số lượng
         Size* realSize = realProd->findSize(sizeName);
         int realStock = (realSize) ? realSize->getQuantity() : 0;
 
         if (realStock == 0) {
             message += "- '" + realProd->getName() + " (" + sizeName + ")' is out of stock -> Removed from cart.\n";
-            itemsToRemove.push_back(i);
+            itemsToRemove.push_back((int)i);
         }
         else if (currentQty > realStock) {
             item.updateQuantity(realStock);
@@ -317,58 +343,42 @@ void ShopSystem::deleteCurrentCustomer() {
     if (!currentCustomer) return;
     int deletedId = currentCustomer->getUserId();
     string deletedName = currentCustomer->getName();
-    orders.erase(remove_if(orders.begin(), orders.end(), [deletedId](const Order& o){
-                     return o.getCustomerId() == deletedId;
-                 }), orders.end());
+
+    for (int i = orders.size() - 1; i >= 0; i--) {
+        if (orders[i].getCustomerId() == deletedId) {
+            orders.erase(orders.begin() + i);
+        }
+    }
+
     string replyPrefix = "Replying to " + deletedName + ":";
+    for (int i = reviews.size() - 1; i >= 0; i--) {
+        bool isReviewByThisCustomer = (reviews[i].getCustomerId() == deletedId);
+        bool isStaffReplyToThisCustomer = (reviews[i].getRating() == 0 && reviews[i].getComment().find(replyPrefix) == 0);
 
-    reviews.erase(remove_if(reviews.begin(), reviews.end(), [deletedId, replyPrefix](const Review& r){
-                      bool isReviewByThisCustomer = (r.getCustomerId() == deletedId);
-                      bool isStaffReplyToThisCustomer = (r.getRating() == 0 && r.getComment().find(replyPrefix) == 0);
+        if (isReviewByThisCustomer || isStaffReplyToThisCustomer) {
+            reviews.erase(reviews.begin() + i);
+        }
+    }
 
-                      return isReviewByThisCustomer || isStaffReplyToThisCustomer;
-                  }), reviews.end());
     savedUserCarts.erase(deletedId);
+
     logout();
 
-    customers.erase(
-        std::remove_if(customers.begin(), customers.end(), [deletedId](const Customer& c) {
-            return c.getUserId() == deletedId;
-        }),
-        customers.end()
-        );
+    for (size_t i = 0; i < customers.size(); i++) {
+        if (customers[i].getUserId() == deletedId) {
+            customers.erase(customers.begin() + i);
+            break;
+        }
+    }
     saveAllData();
 }
 
-int ShopSystem::getNewUserId() {
-    lastUserId++;
-    return lastUserId;
-}
-
-int ShopSystem::getNewProductId() {
-    lastProductId++;
-    return lastProductId;
-}
-
-int ShopSystem::getNewCategoryId() {
-    lastCategoryId++;
-    return lastCategoryId;
-}
-
-int ShopSystem::getNewOrderId() {
-    lastOrderId++;
-    return lastOrderId;
-}
-
-int ShopSystem::getNewInvoiceId() {
-    lastInvoiceId++;
-    return lastInvoiceId;
-}
-
-int ShopSystem::getNewPromoId() {
-    lastPromoId++;
-    return lastPromoId;
-}
+int ShopSystem::getNewUserId() { return ++lastUserId; }
+int ShopSystem::getNewProductId() { return ++lastProductId; }
+int ShopSystem::getNewCategoryId() { return ++lastCategoryId; }
+int ShopSystem::getNewOrderId() { return ++lastOrderId; }
+int ShopSystem::getNewInvoiceId() { return ++lastInvoiceId; }
+int ShopSystem::getNewPromoId() { return ++lastPromoId; }
 
 void ShopSystem::staffConfirmCancelOrder(int orderId) {
     Order* order = findOrder(orderId);
@@ -377,23 +387,21 @@ void ShopSystem::staffConfirmCancelOrder(int orderId) {
     string oldStatus = order->getStatus();
     if (oldStatus == "Cancelled") return;
 
-    for (const auto& item : order->getItems()) {
-        Product* p = findProduct(item.getProduct().getProductId());
-        if (p) p->updateStock(item.getSelectedSize(), item.getQuantity());
+    const MyVector<OrderItem>& items = order->getItems();
+    for (size_t i = 0; i < items.size(); i++) {
+        Product* p = findProduct(items[i].getProduct().getProductId());
+        if (p) p->updateStock(items[i].getSelectedSize(), items[i].getQuantity());
     }
+
     Customer* cust = findCustomer(order->getCustomerId());
     if (cust) {
         int currentPoints = cust->getLoyaltyPoints();
-
         int pointsUsed = static_cast<int>(order->getPointsDiscount() / 100.0);
-
         int pointsEarned = 0;
         if (oldStatus == "Completed") {
             pointsEarned = static_cast<int>(order->getTotalAmount() / 1000.0);
         }
-
         int newPoints = currentPoints + pointsUsed - pointsEarned;
-
         if (newPoints < 0) newPoints = 0;
         cust->setLoyaltyPoints(newPoints);
     }
@@ -420,14 +428,20 @@ void ShopSystem::staffConfirmCompleteOrder(int orderId) {
 
 int ShopSystem::countTotalInCarts(int productId, const string& sizeName) {
     int total = 0;
-    for (const auto& [userId, cartItems] : savedUserCarts) {
-        for (const auto& item : cartItems) {
-            if (item.getProduct().getProductId() == productId && item.getSelectedSize() == sizeName) {
-                total += item.getQuantity();
+
+    for (const auto& entry : savedUserCarts) {
+        const MyVector<CartItem>& items = entry.second;
+        for (size_t i = 0; i < items.size(); i++) {
+            if (items[i].getProduct().getProductId() == productId &&
+                items[i].getSelectedSize() == sizeName) {
+                total += items[i].getQuantity();
             }
         }
     }
-    for (const auto& item : currentCart.getItems()) {
+
+    MyVector<CartItem>& currentItems = currentCart.getItems();
+    for (size_t i = 0; i < currentItems.size(); i++) {
+        const CartItem& item = currentItems[i];
         if (item.getProduct().getProductId() == productId && item.getSelectedSize() == sizeName) {
             total += item.getQuantity();
         }
@@ -435,23 +449,21 @@ int ShopSystem::countTotalInCarts(int productId, const string& sizeName) {
     return total;
 }
 
-vector<Promotion>& ShopSystem::getPromotions() {
+MyVector<Promotion>& ShopSystem::getPromotions() {
     return this->promotions;
 }
 
 void ShopSystem::removeReview(int reviewId) {
-    reviews.erase(
-        std::remove_if(reviews.begin(), reviews.end(),
-                       [reviewId](const Review& r) { return r.getReviewId() == reviewId; }),
-        reviews.end()
-        );
+    for (size_t i = 0; i < reviews.size(); i++) {
+        if (reviews[i].getReviewId() == reviewId) {
+            reviews.erase(reviews.begin() + i);
+            break;
+        }
+    }
     saveAllData();
 }
 
-int ShopSystem::getNewReviewId() {
-    lastReviewId++;
-    return lastReviewId;
-}
+int ShopSystem::getNewReviewId() { return ++lastReviewId; }
 
 void ShopSystem::addStaff(const Staff& s) {
     staffMembers.push_back(s);
@@ -459,18 +471,19 @@ void ShopSystem::addStaff(const Staff& s) {
 }
 
 void ShopSystem::removeStaff(int staffId) {
-    staffMembers.erase(
-        std::remove_if(staffMembers.begin(), staffMembers.end(),
-                       [staffId](const Staff& s) { return s.getUserId() == staffId; }),
-        staffMembers.end()
-        );
+    for (size_t i = 0; i < staffMembers.size(); i++) {
+        if (staffMembers[i].getUserId() == staffId) {
+            staffMembers.erase(staffMembers.begin() + i);
+            break;
+        }
+    }
     saveAllData();
 }
 
 void ShopSystem::updateStaff(const Staff& s) {
-    for(auto& staff : staffMembers) {
-        if(staff.getUserId() == s.getUserId()) {
-            staff = s;
+    for (size_t i = 0; i < staffMembers.size(); i++) {
+        if (staffMembers[i].getUserId() == s.getUserId()) {
+            staffMembers[i] = s; // Gán chồng lên
             break;
         }
     }

@@ -72,11 +72,11 @@ void ViewProductsWidget::on_btnFilter_clicked() {
     string keyword = ui->txtSearch->text().toStdString();
     SortOption sort = static_cast<SortOption>(ui->cboSort->currentData().toInt());
 
-    vector<Product> result = system->searchProducts(catId, keyword, 0, -1, sort);
+    MyVector<Product> result = system->searchProducts(catId, keyword, 0, -1, sort);
     displayProducts(result);
 }
 
-void ViewProductsWidget::displayProducts(const vector<Product>& list) {
+void ViewProductsWidget::displayProducts(const MyVector<Product>& list) {
     ui->tblProducts->setRowCount(0);
     for(const auto& p : list) {
         int row = ui->tblProducts->rowCount();

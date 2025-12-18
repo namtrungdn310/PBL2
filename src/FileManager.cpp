@@ -2,7 +2,7 @@
 #include <fstream>
 #include <sstream>
 #include <iomanip>
-#include <map>
+#include "DataStructures.h"
 #include <filesystem>
 #include <string> 
 
@@ -17,10 +17,9 @@ void FileManager::createDataFolder() {
 
 void FileManager::initializeDataFiles() {
     createDataFolder();
-    
-    vector<string> files = {
+    string files[] = {
         "data/customers.txt",
-        "data/staff.txt", 
+        "data/staff.txt",
         "data/products.txt",
         "data/orders.txt",
         "data/promotions.txt",
@@ -31,7 +30,7 @@ void FileManager::initializeDataFiles() {
         "data/carts.txt",
         "data/order_items.txt"
     };
-    
+
     for (const auto& file : files) {
         if (!fs::exists(file)) {
             ofstream f(file);
@@ -40,32 +39,39 @@ void FileManager::initializeDataFiles() {
     }
 }
 
-map<int, vector<pair<string, int>>> FileManager::readInventoryStock(string filename) {
-    map<int, vector<pair<string, int>>> stockMap;
+MyMap<int, MyVector<Pair<string, int>>> FileManager::readInventoryStock(string filename) {
+    MyMap<int, MyVector<Pair<string, int>>> stockMap;
+
     ifstream file(filename);
     if (!file.is_open()) return stockMap;
-    
+
     string line;
     while (getline(file, line)) {
         if (line.empty()) continue;
-        
         stringstream ss(line);
-        int productId, quantity;
-        string sizeName;
-        
-        ss >> productId;
-        ss.ignore(); 
-        getline(ss, sizeName, '|');
-        ss >> quantity;
-        
-        stockMap[productId].push_back({sizeName, quantity});
+        string segment;
+        MyVector<string> seglist;
+
+        while(getline(ss, segment, '|')) {
+            seglist.push_back(segment);
+        }
+
+        if (seglist.size() < 3) continue;
+
+        int prodId = stoi(seglist[0]);
+        string size = seglist[1];
+        int qty = stoi(seglist[2]);
+
+        Pair<string, int> stockData(size, qty);
+
+        stockMap[prodId].push_back(stockData);
     }
     file.close();
     return stockMap;
 }
 
-vector<Product> FileManager::readProducts(string filename) {
-    vector<Product> products;
+MyVector<Product> FileManager::readProducts(string filename) {
+    MyVector<Product> products;
     ifstream file(filename);
     if (!file.is_open()) return products;
     
@@ -91,8 +97,8 @@ vector<Product> FileManager::readProducts(string filename) {
     return products;
 }
 
-vector<Customer> FileManager::readCustomers(string filename) {
-    vector<Customer> customers;
+MyVector<Customer> FileManager::readCustomers(string filename) {
+    MyVector<Customer> customers;
     ifstream file(filename);
     if (!file.is_open()) return customers;
 
@@ -119,7 +125,7 @@ vector<Customer> FileManager::readCustomers(string filename) {
             string usedPromosStr;
             getline(ss, usedPromosStr);
             if (!usedPromosStr.empty()) {
-                vector<int> usedIDs;
+                MyVector<int> usedIDs;
                 stringstream promoSS(usedPromosStr);
                 string promoIdStr;
                 while (getline(promoSS, promoIdStr, ',')) {
@@ -134,8 +140,8 @@ vector<Customer> FileManager::readCustomers(string filename) {
     return customers;
 }
 
-vector<Staff> FileManager::readStaff(string filename) {
-    vector<Staff> staff;
+MyVector<Staff> FileManager::readStaff(string filename) {
+    MyVector<Staff> staff;
     ifstream file(filename);
     if (!file.is_open()) return staff;
     
@@ -159,8 +165,8 @@ vector<Staff> FileManager::readStaff(string filename) {
     return staff;
 }
 
-vector<Order> FileManager::readOrders(string filename) {
-    vector<Order> orders;
+MyVector<Order> FileManager::readOrders(string filename) {
+    MyVector<Order> orders;
     ifstream file(filename);
     if (!file.is_open()) return orders;
     
@@ -192,8 +198,8 @@ vector<Order> FileManager::readOrders(string filename) {
     return orders;
 }
 
-vector<Promotion> FileManager::readPromotions(string filename) {
-    vector<Promotion> promos;
+MyVector<Promotion> FileManager::readPromotions(string filename) {
+    MyVector<Promotion> promos;
     ifstream file(filename);
     if (!file.is_open()) return promos;
     
@@ -219,8 +225,8 @@ vector<Promotion> FileManager::readPromotions(string filename) {
     return promos;
 }
 
-vector<Review> FileManager::readReviews(string filename) {
-    vector<Review> reviews;
+MyVector<Review> FileManager::readReviews(string filename) {
+    MyVector<Review> reviews;
     ifstream file(filename);
     if (!file.is_open()) return reviews;
 
@@ -244,8 +250,8 @@ vector<Review> FileManager::readReviews(string filename) {
     return reviews;
 }
 
-vector<Invoice> FileManager::readInvoices(string filename) {
-    vector<Invoice> invoices;
+MyVector<Invoice> FileManager::readInvoices(string filename) {
+    MyVector<Invoice> invoices;
     ifstream file(filename);
     if (!file.is_open()) return invoices;
 
@@ -269,8 +275,8 @@ vector<Invoice> FileManager::readInvoices(string filename) {
     return invoices;
 }
 
-vector<Category> FileManager::readCategories(string filename) {
-    vector<Category> categories;
+MyVector<Category> FileManager::readCategories(string filename) {
+    MyVector<Category> categories;
     ifstream file(filename);
     if (!file.is_open()) return categories;
 
@@ -290,7 +296,7 @@ vector<Category> FileManager::readCategories(string filename) {
     return categories;
 }
 
-void FileManager::writeInventoryStock(string filename, const vector<Product>& products) {
+void FileManager::writeInventoryStock(string filename, const MyVector<Product>& products) {
     ofstream file(filename);
     if (!file.is_open()) return;
     
@@ -304,7 +310,7 @@ void FileManager::writeInventoryStock(string filename, const vector<Product>& pr
     file.close();
 }
 
-void FileManager::writeProducts(string filename, const vector<Product>& products) {
+void FileManager::writeProducts(string filename, const MyVector<Product>& products) {
     ofstream file(filename);
     if (!file.is_open()) return;
     
@@ -320,7 +326,7 @@ void FileManager::writeProducts(string filename, const vector<Product>& products
     file.close();
 }
 
-void FileManager::writeCustomers(string filename, const vector<Customer>& customers) {
+void FileManager::writeCustomers(string filename, const MyVector<Customer>& customers) {
     ofstream file(filename);
     if (!file.is_open()) return;
     
@@ -340,7 +346,7 @@ void FileManager::writeCustomers(string filename, const vector<Customer>& custom
     file.close();
 }
 
-void FileManager::writeStaff(string filename, const vector<Staff>& staff) {
+void FileManager::writeStaff(string filename, const MyVector<Staff>& staff) {
     ofstream file(filename);
     if (!file.is_open()) return;
     
@@ -351,7 +357,7 @@ void FileManager::writeStaff(string filename, const vector<Staff>& staff) {
     file.close();
 }
 
-void FileManager::writeOrders(string filename, const vector<Order>& orders) {
+void FileManager::writeOrders(string filename, const MyVector<Order>& orders) {
     ofstream file(filename);
     if (!file.is_open()) return;
     
@@ -368,7 +374,7 @@ void FileManager::writeOrders(string filename, const vector<Order>& orders) {
     file.close();
 }
 
-void FileManager::writePromotions(string filename, const vector<Promotion>& promos) {
+void FileManager::writePromotions(string filename, const MyVector<Promotion>& promos) {
     ofstream file(filename);
     if (!file.is_open()) return;
     
@@ -380,7 +386,7 @@ void FileManager::writePromotions(string filename, const vector<Promotion>& prom
     file.close();
 }
 
-void FileManager::writeReviews(string filename, const vector<Review>& reviews) {
+void FileManager::writeReviews(string filename, const MyVector<Review>& reviews) {
     ofstream file(filename);
     if (!file.is_open()) return;
 
@@ -395,7 +401,7 @@ void FileManager::writeReviews(string filename, const vector<Review>& reviews) {
     file.close();
 }
 
-void FileManager::writeInvoices(string filename, const vector<Invoice>& invoices) {
+void FileManager::writeInvoices(string filename, const MyVector<Invoice>& invoices) {
     ofstream file(filename);
     if (!file.is_open()) return;
 
@@ -411,8 +417,8 @@ void FileManager::writeInvoices(string filename, const vector<Invoice>& invoices
 }
 
 
-map<int, vector<CartItem>> FileManager::readCarts(string filename, const vector<Product>& allProducts) {
-    map<int, vector<CartItem>> userCarts;
+MyMap<int, MyVector<CartItem>> FileManager::readCarts(string filename, const MyVector<Product>& allProducts) {
+    MyMap<int, MyVector<CartItem>> userCarts;
     ifstream file(filename);
     if (!file.is_open()) return userCarts;
 
@@ -421,7 +427,7 @@ map<int, vector<CartItem>> FileManager::readCarts(string filename, const vector<
         if (line.empty()) continue;
         stringstream ss(line);
         string segment;
-        vector<string> seglist;
+        MyVector<string> seglist;
         while(getline(ss, segment, '|')) seglist.push_back(segment);
 
         if (seglist.size() < 4) continue;
@@ -450,11 +456,13 @@ map<int, vector<CartItem>> FileManager::readCarts(string filename, const vector<
     return userCarts;
 }
 
-void FileManager::writeCarts(string filename, const map<int, vector<CartItem>>& userCarts) {
+void FileManager::writeCarts(string filename, const MyMap<int, MyVector<CartItem>>& userCarts) {
     ofstream file(filename);
     if (!file.is_open()) return;
+    for (const auto& entry : userCarts) {
+        int custId = entry.first;
+        const auto& items = entry.second;
 
-    for (const auto& [custId, items] : userCarts) {
         for (const auto& item : items) {
             file << custId << "|"
                  << item.getProduct().getProductId() << "|"
@@ -465,7 +473,7 @@ void FileManager::writeCarts(string filename, const map<int, vector<CartItem>>& 
     file.close();
 }
 
-void FileManager::writeOrderItems(string filename, const vector<Order>& orders) {
+void FileManager::writeOrderItems(string filename, const MyVector<Order>& orders) {
     ofstream file(filename);
     if (!file.is_open()) return;
 
@@ -481,17 +489,17 @@ void FileManager::writeOrderItems(string filename, const vector<Order>& orders) 
     file.close();
 }
 
-map<int, vector<OrderItem>> FileManager::readOrderItems(string filename, const vector<Product>& allProducts) {
-    map<int, vector<OrderItem>> itemsMap;
+MyMap<int, MyVector<OrderItem>> FileManager::readOrderItems(string filename, const MyVector<Product>& allProducts) {
+    MyMap<int, MyVector<OrderItem>> itemsMyMap;
     ifstream file(filename);
-    if (!file.is_open()) return itemsMap;
+    if (!file.is_open()) return itemsMyMap;
 
     string line;
     while (getline(file, line)) {
         if (line.empty()) continue;
         stringstream ss(line);
         string segment;
-        vector<string> seglist;
+        MyVector<string> seglist;
         while(getline(ss, segment, '|')) seglist.push_back(segment);
 
         if (seglist.size() < 5) continue;
@@ -511,13 +519,13 @@ map<int, vector<OrderItem>> FileManager::readOrderItems(string filename, const v
         }
 
         OrderItem item(p, size, qty, price);
-        itemsMap[orderId].push_back(item);
+        itemsMyMap[orderId].push_back(item);
     }
     file.close();
-    return itemsMap;
+    return itemsMyMap;
 }
 
-void FileManager::writeCategories(string filename, const vector<Category>& categories) {
+void FileManager::writeCategories(string filename, const MyVector<Category>& categories) {
     ofstream file(filename);
     if (!file.is_open()) return;
 

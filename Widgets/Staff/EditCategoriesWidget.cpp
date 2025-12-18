@@ -119,7 +119,7 @@ void EditCategoriesWidget::on_btnRename_clicked() {
         return;
     }
 
-    vector<Category>& cats = const_cast<vector<Category>&>(system->getCategories());
+    MyVector<Category>& cats = const_cast<MyVector<Category>&>(system->getCategories());
     for (auto& cat : cats) {
         if (cat.getCategoryId() == currentSelectedCatId) {
             cat.setName(newName.toStdString());
@@ -135,7 +135,7 @@ void EditCategoriesWidget::on_btnRename_clicked() {
 void EditCategoriesWidget::on_btnDelete_clicked() {
     if (currentSelectedCatId == -1) return;
 
-    vector<Product> blockingProds;
+    MyVector<Product> blockingProds;
     for (const auto& p : system->getProducts()) {
         if (p.getCategoryId() == currentSelectedCatId) {
             blockingProds.push_back(p);
@@ -168,7 +168,7 @@ void EditCategoriesWidget::on_btnDelete_clicked() {
     reply = QMessageBox::question(this, "Delete", "Are you sure you want to delete this category?", QMessageBox::Yes|QMessageBox::No);
 
     if (reply == QMessageBox::Yes) {
-        vector<Category>& cats = const_cast<vector<Category>&>(system->getCategories());
+        MyVector<Category>& cats = const_cast<MyVector<Category>&>(system->getCategories());
         for (auto it = cats.begin(); it != cats.end(); ++it) {
             if (it->getCategoryId() == currentSelectedCatId) {
                 cats.erase(it);

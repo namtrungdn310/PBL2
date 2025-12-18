@@ -182,6 +182,7 @@ DIST          = data/customers.txt \
 		..\..\include\CartItem.h \
 		..\..\include\Category.h \
 		..\..\include\Customer.h \
+		..\..\include\DataStructures.h \
 		..\..\include\FileManager.h \
 		..\..\include\Invoice.h \
 		..\..\include\Order.h \
@@ -269,7 +270,7 @@ qmake: FORCE
 qmake_all: FORCE
 
 dist:
-	$(ZIP) ShopManagement.zip $(SOURCES) $(DIST) ..\..\ShopManagement.pro C:\Qt\6.10.0\mingw_64\mkspecs\features\spec_pre.prf C:\Qt\6.10.0\mingw_64\mkspecs\features\device_config.prf C:\Qt\6.10.0\mingw_64\mkspecs\common\sanitize.conf C:\Qt\6.10.0\mingw_64\mkspecs\common\gcc-base.conf C:\Qt\6.10.0\mingw_64\mkspecs\common\g++-base.conf C:\Qt\6.10.0\mingw_64\mkspecs\features\win32\windows_vulkan_sdk.prf C:\Qt\6.10.0\mingw_64\mkspecs\common\windows-vulkan.conf C:\Qt\6.10.0\mingw_64\mkspecs\common\g++-win32.conf C:\Qt\6.10.0\mingw_64\mkspecs\common\windows-desktop.conf C:\Qt\6.10.0\mingw_64\mkspecs\qconfig.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_ext_freetype.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_ext_libjpeg.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_ext_libpng.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_ext_openxr_loader.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_charts.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_charts_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_chartsqml.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_chartsqml_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_concurrent.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_core.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_core_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_dbus.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_dbus_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_designer.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_designer_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_designercomponents_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_devicediscovery_support_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_entrypoint_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_example_icons_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_examples_asset_downloader_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_fb_support_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_ffmpegmediapluginimpl_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_freetype_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_gui.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_gui_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_harfbuzz_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_help.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_help_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_jpeg_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_labsanimation.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_labsanimation_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_labsfolderlistmodel.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_labsfolderlistmodel_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_labsplatform.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_labsplatform_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_labsqmlmodels.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_labsqmlmodels_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_labssettings.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_labssettings_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_labssharedimage.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_labssharedimage_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_labssynchronizer.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_labssynchronizer_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_labswavefrontmesh.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_labswavefrontmesh_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_linguist.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_multimedia.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_multimedia_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_multimediaquick_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_multimediatestlibprivate_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_multimediawidgets.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_multimediawidgets_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_network.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_network_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_opengl.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_opengl_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_openglwidgets.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_packetprotocol_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_png_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_printsupport.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_printsupport_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_qdoccatch_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_qdoccatchconversions_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_qdoccatchgenerators_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_qml.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_qml_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_qmlassetdownloader.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_qmlassetdownloader_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_qmlcompiler.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_qmlcompiler_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_qmlcore.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_qmlcore_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_qmldebug_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_qmldom_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_qmlformat_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_qmlintegration.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_qmllocalstorage.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_qmllocalstorage_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_qmlls_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_qmlmeta.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_qmlmeta_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_qmlmodels.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_qmlmodels_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_qmlnetwork.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_qmlnetwork_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_qmltest.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_qmltest_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_qmltoolingsettings_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_qmltyperegistrar_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_qmlworkerscript.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_qmlworkerscript_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_qmlxmllistmodel.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_qmlxmllistmodel_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_quick.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_quick3d.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_quick3d_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_quick3dassetimport.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_quick3dassetimport_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_quick3dassetutils.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_quick3dassetutils_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_quick3deffects.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_quick3dglslparser_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_quick3dhelpers.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_quick3dhelpers_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_quick3dhelpersimpl.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_quick3dhelpersimpl_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_quick3diblbaker.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_quick3diblbaker_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_quick3dparticleeffects.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_quick3dparticles.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_quick3dparticles_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_quick3druntimerender.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_quick3druntimerender_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_quick3dspatialaudio_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_quick3dutils.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_quick3dutils_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_quick3dxr.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_quick3dxr_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_quick_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_quickcontrols2.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_quickcontrols2_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_quickcontrols2basic.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_quickcontrols2basic_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_quickcontrols2basicstyleimpl.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_quickcontrols2basicstyleimpl_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_quickcontrols2fluentwinui3styleimpl.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_quickcontrols2fluentwinui3styleimpl_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_quickcontrols2fusion.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_quickcontrols2fusion_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_quickcontrols2fusionstyleimpl.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_quickcontrols2fusionstyleimpl_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_quickcontrols2imagine.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_quickcontrols2imagine_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_quickcontrols2imaginestyleimpl.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_quickcontrols2impl.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_quickcontrols2impl_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_quickcontrols2material.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_quickcontrols2material_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_quickcontrols2materialstyleimpl.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_quickcontrols2materialstyleimpl_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_quickcontrols2universal.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_quickcontrols2universal_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_quickcontrols2universalstyleimpl.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_quickcontrols2universalstyleimpl_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_quickcontrols2windowsstyleimpl.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_quickcontrolstestutilsprivate_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_quickdialogs2.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_quickdialogs2_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_quickdialogs2quickimpl.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_quickdialogs2quickimpl_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_quickdialogs2utils.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_quickdialogs2utils_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_quickeffects.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_quickeffects_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_quicklayouts.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_quicklayouts_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_quickparticles_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_quickshapes_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_quickshapesdesignhelpers_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_quicktemplates2.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_quicktemplates2_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_quicktestutilsprivate_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_quicktimeline.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_quicktimeline_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_quicktimelineblendtrees.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_quicktimelineblendtrees_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_quickvectorimage.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_quickvectorimage_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_quickvectorimagegenerator_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_quickvectorimagehelpers.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_quickvectorimagehelpers_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_quickwidgets.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_quickwidgets_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_shadertools.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_shadertools_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_spatialaudio.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_spatialaudio_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_sql.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_sql_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_svg.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_svg_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_svgwidgets.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_testinternals_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_testlib.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_testlib_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_tools_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_uiplugin.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_uitools.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_uitools_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_widgets.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_widgets_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_xml.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_xml_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_zlib_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\features\qt_functions.prf C:\Qt\6.10.0\mingw_64\mkspecs\features\qt_config.prf C:\Qt\6.10.0\mingw_64\mkspecs\win32-g++\qmake.conf C:\Qt\6.10.0\mingw_64\mkspecs\features\spec_post.prf .qmake.stash C:\Qt\6.10.0\mingw_64\mkspecs\features\exclusive_builds.prf C:\Qt\6.10.0\mingw_64\mkspecs\features\toolchain.prf C:\Qt\6.10.0\mingw_64\mkspecs\features\default_pre.prf C:\Qt\6.10.0\mingw_64\mkspecs\features\win32\default_pre.prf C:\Qt\6.10.0\mingw_64\mkspecs\features\resolve_config.prf C:\Qt\6.10.0\mingw_64\mkspecs\features\exclusive_builds_post.prf C:\Qt\6.10.0\mingw_64\mkspecs\features\default_post.prf C:\Qt\6.10.0\mingw_64\mkspecs\features\build_pass.prf C:\Qt\6.10.0\mingw_64\mkspecs\features\qml_debug.prf C:\Qt\6.10.0\mingw_64\mkspecs\features\precompile_header.prf C:\Qt\6.10.0\mingw_64\mkspecs\features\warn_on.prf C:\Qt\6.10.0\mingw_64\mkspecs\features\permissions.prf C:\Qt\6.10.0\mingw_64\mkspecs\features\qt.prf C:\Qt\6.10.0\mingw_64\mkspecs\features\resources_functions.prf C:\Qt\6.10.0\mingw_64\mkspecs\features\resources.prf C:\Qt\6.10.0\mingw_64\mkspecs\features\moc.prf C:\Qt\6.10.0\mingw_64\mkspecs\features\win32\opengl.prf C:\Qt\6.10.0\mingw_64\mkspecs\features\uic.prf C:\Qt\6.10.0\mingw_64\mkspecs\features\qmake_use.prf C:\Qt\6.10.0\mingw_64\mkspecs\features\file_copies.prf C:\Qt\6.10.0\mingw_64\mkspecs\features\win32\windows.prf C:\Qt\6.10.0\mingw_64\mkspecs\features\testcase_targets.prf C:\Qt\6.10.0\mingw_64\mkspecs\features\exceptions.prf C:\Qt\6.10.0\mingw_64\mkspecs\features\yacc.prf C:\Qt\6.10.0\mingw_64\mkspecs\features\lex.prf ..\..\ShopManagement.pro ..\..\resources.qrc C:\Qt\6.10.0\mingw_64\lib\Qt6Widgets.prl C:\Qt\6.10.0\mingw_64\lib\Qt6Gui.prl C:\Qt\6.10.0\mingw_64\lib\Qt6Core.prl C:\Qt\6.10.0\mingw_64\lib\Qt6EntryPoint.prl   ..\..\resources.qrc C:\Qt\6.10.0\mingw_64\mkspecs\features\data\dummy.cpp ..\..\include\Cart.h ..\..\include\CartItem.h ..\..\include\Category.h ..\..\include\Customer.h ..\..\include\FileManager.h ..\..\include\Invoice.h ..\..\include\Order.h ..\..\include\OrderItem.h ..\..\include\Product.h ..\..\include\Promotion.h ..\..\include\Review.h ..\..\include\ShopSystem.h ..\..\include\Size.h ..\..\include\Staff.h ..\..\include\User.h ..\..\Widgets\MainWindow.h ..\..\Widgets\StartupWidget.h ..\..\Widgets\LoginWidget.h ..\..\Widgets\RegisterWidget.h ..\..\Widgets\IntroWidget.h ..\..\Widgets\Customer\CustomerDashboard.h ..\..\Widgets\Customer\ViewProductsWidget.h ..\..\Widgets\Customer\ViewCartWidget.h ..\..\Widgets\Customer\OrderWidget.h ..\..\Widgets\Customer\OrderHistoryWidget.h ..\..\Widgets\Customer\PromotionsWidget.h ..\..\Widgets\Customer\ReviewsWidget.h ..\..\Widgets\Customer\AccountSettingsWidget.h ..\..\Widgets\Staff\StaffDashboard.h ..\..\Widgets\Staff\EditCategoriesWidget.h ..\..\Widgets\Staff\EditProductsWidget.h ..\..\Widgets\Staff\EditPromotionsWidget.h ..\..\Widgets\Staff\EditReviewsWidget.h ..\..\Widgets\Staff\CustomersManagementWidget.h ..\..\Widgets\Staff\ShopAnalysisWidget.h ..\..\Widgets\Staff\AccountSettingWidget.h  ..\..\main.cpp ..\..\src\Cart.cpp ..\..\src\CartItem.cpp ..\..\src\Category.cpp ..\..\src\Customer.cpp ..\..\src\FileManager.cpp ..\..\src\Invoice.cpp ..\..\src\Order.cpp ..\..\src\OrderItem.cpp ..\..\src\Product.cpp ..\..\src\Promotion.cpp ..\..\src\Review.cpp ..\..\src\ShopSystem.cpp ..\..\src\Size.cpp ..\..\src\Staff.cpp ..\..\src\User.cpp ..\..\Widgets\MainWindow.cpp ..\..\Widgets\StartupWidget.cpp ..\..\Widgets\LoginWidget.cpp ..\..\Widgets\RegisterWidget.cpp ..\..\Widgets\IntroWidget.cpp ..\..\Widgets\Customer\CustomerDashboard.cpp ..\..\Widgets\Customer\ViewProductsWidget.cpp ..\..\Widgets\Customer\ViewCartWidget.cpp ..\..\Widgets\Customer\OrderWidget.cpp ..\..\Widgets\Customer\OrderHistoryWidget.cpp ..\..\Widgets\Customer\PromotionsWidget.cpp ..\..\Widgets\Customer\ReviewsWidget.cpp ..\..\Widgets\Customer\AccountSettingsWidget.cpp ..\..\Widgets\Staff\StaffDashboard.cpp ..\..\Widgets\Staff\EditCategoriesWidget.cpp ..\..\Widgets\Staff\EditProductsWidget.cpp ..\..\Widgets\Staff\EditPromotionsWidget.cpp ..\..\Widgets\Staff\EditReviewsWidget.cpp ..\..\Widgets\Staff\CustomersManagementWidget.cpp ..\..\Widgets\Staff\ShopAnalysisWidget.cpp ..\..\Widgets\Staff\AccountSettingWidget.cpp ..\..\Widgets\MainWindow.ui ..\..\Widgets\StartupWidget.ui ..\..\Widgets\LoginWidget.ui ..\..\Widgets\RegisterWidget.ui ..\..\Widgets\IntroWidget.ui ..\..\Widgets\Customer\CustomerDashboard.ui ..\..\Widgets\Customer\ViewProductsWidget.ui ..\..\Widgets\Customer\ViewCartWidget.ui ..\..\Widgets\Customer\OrderWidget.ui ..\..\Widgets\Customer\OrderHistoryWidget.ui ..\..\Widgets\Customer\PromotionsWidget.ui ..\..\Widgets\Customer\ReviewsWidget.ui ..\..\Widgets\Customer\AccountSettingsWidget.ui ..\..\Widgets\Staff\StaffDashboard.ui ..\..\Widgets\Staff\EditCategoriesWidget.ui ..\..\Widgets\Staff\EditProductsWidget.ui ..\..\Widgets\Staff\EditPromotionsWidget.ui ..\..\Widgets\Staff\EditReviewsWidget.ui ..\..\Widgets\Staff\CustomersManagementWidget.ui ..\..\Widgets\Staff\ShopAnalysisWidget.ui ..\..\Widgets\Staff\AccountSettingWidget.ui    
+	$(ZIP) ShopManagement.zip $(SOURCES) $(DIST) ..\..\ShopManagement.pro C:\Qt\6.10.0\mingw_64\mkspecs\features\spec_pre.prf C:\Qt\6.10.0\mingw_64\mkspecs\features\device_config.prf C:\Qt\6.10.0\mingw_64\mkspecs\common\sanitize.conf C:\Qt\6.10.0\mingw_64\mkspecs\common\gcc-base.conf C:\Qt\6.10.0\mingw_64\mkspecs\common\g++-base.conf C:\Qt\6.10.0\mingw_64\mkspecs\features\win32\windows_vulkan_sdk.prf C:\Qt\6.10.0\mingw_64\mkspecs\common\windows-vulkan.conf C:\Qt\6.10.0\mingw_64\mkspecs\common\g++-win32.conf C:\Qt\6.10.0\mingw_64\mkspecs\common\windows-desktop.conf C:\Qt\6.10.0\mingw_64\mkspecs\qconfig.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_ext_freetype.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_ext_libjpeg.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_ext_libpng.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_ext_openxr_loader.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_charts.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_charts_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_chartsqml.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_chartsqml_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_concurrent.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_core.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_core_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_dbus.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_dbus_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_designer.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_designer_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_designercomponents_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_devicediscovery_support_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_entrypoint_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_example_icons_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_examples_asset_downloader_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_fb_support_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_ffmpegmediapluginimpl_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_freetype_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_gui.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_gui_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_harfbuzz_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_help.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_help_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_jpeg_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_labsanimation.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_labsanimation_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_labsfolderlistmodel.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_labsfolderlistmodel_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_labsplatform.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_labsplatform_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_labsqmlmodels.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_labsqmlmodels_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_labssettings.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_labssettings_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_labssharedimage.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_labssharedimage_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_labssynchronizer.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_labssynchronizer_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_labswavefrontmesh.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_labswavefrontmesh_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_linguist.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_multimedia.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_multimedia_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_multimediaquick_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_multimediatestlibprivate_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_multimediawidgets.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_multimediawidgets_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_network.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_network_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_opengl.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_opengl_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_openglwidgets.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_packetprotocol_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_png_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_printsupport.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_printsupport_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_qdoccatch_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_qdoccatchconversions_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_qdoccatchgenerators_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_qml.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_qml_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_qmlassetdownloader.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_qmlassetdownloader_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_qmlcompiler.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_qmlcompiler_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_qmlcore.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_qmlcore_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_qmldebug_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_qmldom_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_qmlformat_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_qmlintegration.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_qmllocalstorage.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_qmllocalstorage_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_qmlls_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_qmlmeta.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_qmlmeta_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_qmlmodels.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_qmlmodels_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_qmlnetwork.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_qmlnetwork_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_qmltest.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_qmltest_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_qmltoolingsettings_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_qmltyperegistrar_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_qmlworkerscript.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_qmlworkerscript_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_qmlxmllistmodel.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_qmlxmllistmodel_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_quick.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_quick3d.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_quick3d_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_quick3dassetimport.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_quick3dassetimport_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_quick3dassetutils.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_quick3dassetutils_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_quick3deffects.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_quick3dglslparser_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_quick3dhelpers.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_quick3dhelpers_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_quick3dhelpersimpl.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_quick3dhelpersimpl_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_quick3diblbaker.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_quick3diblbaker_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_quick3dparticleeffects.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_quick3dparticles.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_quick3dparticles_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_quick3druntimerender.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_quick3druntimerender_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_quick3dspatialaudio_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_quick3dutils.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_quick3dutils_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_quick3dxr.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_quick3dxr_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_quick_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_quickcontrols2.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_quickcontrols2_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_quickcontrols2basic.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_quickcontrols2basic_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_quickcontrols2basicstyleimpl.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_quickcontrols2basicstyleimpl_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_quickcontrols2fluentwinui3styleimpl.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_quickcontrols2fluentwinui3styleimpl_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_quickcontrols2fusion.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_quickcontrols2fusion_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_quickcontrols2fusionstyleimpl.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_quickcontrols2fusionstyleimpl_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_quickcontrols2imagine.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_quickcontrols2imagine_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_quickcontrols2imaginestyleimpl.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_quickcontrols2impl.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_quickcontrols2impl_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_quickcontrols2material.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_quickcontrols2material_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_quickcontrols2materialstyleimpl.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_quickcontrols2materialstyleimpl_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_quickcontrols2universal.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_quickcontrols2universal_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_quickcontrols2universalstyleimpl.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_quickcontrols2universalstyleimpl_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_quickcontrols2windowsstyleimpl.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_quickcontrolstestutilsprivate_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_quickdialogs2.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_quickdialogs2_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_quickdialogs2quickimpl.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_quickdialogs2quickimpl_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_quickdialogs2utils.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_quickdialogs2utils_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_quickeffects.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_quickeffects_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_quicklayouts.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_quicklayouts_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_quickparticles_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_quickshapes_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_quickshapesdesignhelpers_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_quicktemplates2.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_quicktemplates2_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_quicktestutilsprivate_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_quicktimeline.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_quicktimeline_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_quicktimelineblendtrees.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_quicktimelineblendtrees_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_quickvectorimage.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_quickvectorimage_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_quickvectorimagegenerator_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_quickvectorimagehelpers.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_quickvectorimagehelpers_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_quickwidgets.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_quickwidgets_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_shadertools.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_shadertools_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_spatialaudio.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_spatialaudio_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_sql.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_sql_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_svg.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_svg_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_svgwidgets.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_testinternals_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_testlib.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_testlib_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_tools_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_uiplugin.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_uitools.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_uitools_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_widgets.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_widgets_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_xml.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_xml_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_zlib_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\features\qt_functions.prf C:\Qt\6.10.0\mingw_64\mkspecs\features\qt_config.prf C:\Qt\6.10.0\mingw_64\mkspecs\win32-g++\qmake.conf C:\Qt\6.10.0\mingw_64\mkspecs\features\spec_post.prf .qmake.stash C:\Qt\6.10.0\mingw_64\mkspecs\features\exclusive_builds.prf C:\Qt\6.10.0\mingw_64\mkspecs\features\toolchain.prf C:\Qt\6.10.0\mingw_64\mkspecs\features\default_pre.prf C:\Qt\6.10.0\mingw_64\mkspecs\features\win32\default_pre.prf C:\Qt\6.10.0\mingw_64\mkspecs\features\resolve_config.prf C:\Qt\6.10.0\mingw_64\mkspecs\features\exclusive_builds_post.prf C:\Qt\6.10.0\mingw_64\mkspecs\features\default_post.prf C:\Qt\6.10.0\mingw_64\mkspecs\features\build_pass.prf C:\Qt\6.10.0\mingw_64\mkspecs\features\qml_debug.prf C:\Qt\6.10.0\mingw_64\mkspecs\features\precompile_header.prf C:\Qt\6.10.0\mingw_64\mkspecs\features\warn_on.prf C:\Qt\6.10.0\mingw_64\mkspecs\features\permissions.prf C:\Qt\6.10.0\mingw_64\mkspecs\features\qt.prf C:\Qt\6.10.0\mingw_64\mkspecs\features\resources_functions.prf C:\Qt\6.10.0\mingw_64\mkspecs\features\resources.prf C:\Qt\6.10.0\mingw_64\mkspecs\features\moc.prf C:\Qt\6.10.0\mingw_64\mkspecs\features\win32\opengl.prf C:\Qt\6.10.0\mingw_64\mkspecs\features\uic.prf C:\Qt\6.10.0\mingw_64\mkspecs\features\qmake_use.prf C:\Qt\6.10.0\mingw_64\mkspecs\features\file_copies.prf C:\Qt\6.10.0\mingw_64\mkspecs\features\win32\windows.prf C:\Qt\6.10.0\mingw_64\mkspecs\features\testcase_targets.prf C:\Qt\6.10.0\mingw_64\mkspecs\features\exceptions.prf C:\Qt\6.10.0\mingw_64\mkspecs\features\yacc.prf C:\Qt\6.10.0\mingw_64\mkspecs\features\lex.prf ..\..\ShopManagement.pro ..\..\resources.qrc C:\Qt\6.10.0\mingw_64\lib\Qt6Widgets.prl C:\Qt\6.10.0\mingw_64\lib\Qt6Gui.prl C:\Qt\6.10.0\mingw_64\lib\Qt6Core.prl C:\Qt\6.10.0\mingw_64\lib\Qt6EntryPoint.prl   ..\..\resources.qrc C:\Qt\6.10.0\mingw_64\mkspecs\features\data\dummy.cpp ..\..\include\Cart.h ..\..\include\CartItem.h ..\..\include\Category.h ..\..\include\Customer.h ..\..\include\DataStructures.h ..\..\include\FileManager.h ..\..\include\Invoice.h ..\..\include\Order.h ..\..\include\OrderItem.h ..\..\include\Product.h ..\..\include\Promotion.h ..\..\include\Review.h ..\..\include\ShopSystem.h ..\..\include\Size.h ..\..\include\Staff.h ..\..\include\User.h ..\..\Widgets\MainWindow.h ..\..\Widgets\StartupWidget.h ..\..\Widgets\LoginWidget.h ..\..\Widgets\RegisterWidget.h ..\..\Widgets\IntroWidget.h ..\..\Widgets\Customer\CustomerDashboard.h ..\..\Widgets\Customer\ViewProductsWidget.h ..\..\Widgets\Customer\ViewCartWidget.h ..\..\Widgets\Customer\OrderWidget.h ..\..\Widgets\Customer\OrderHistoryWidget.h ..\..\Widgets\Customer\PromotionsWidget.h ..\..\Widgets\Customer\ReviewsWidget.h ..\..\Widgets\Customer\AccountSettingsWidget.h ..\..\Widgets\Staff\StaffDashboard.h ..\..\Widgets\Staff\EditCategoriesWidget.h ..\..\Widgets\Staff\EditProductsWidget.h ..\..\Widgets\Staff\EditPromotionsWidget.h ..\..\Widgets\Staff\EditReviewsWidget.h ..\..\Widgets\Staff\CustomersManagementWidget.h ..\..\Widgets\Staff\ShopAnalysisWidget.h ..\..\Widgets\Staff\AccountSettingWidget.h  ..\..\main.cpp ..\..\src\Cart.cpp ..\..\src\CartItem.cpp ..\..\src\Category.cpp ..\..\src\Customer.cpp ..\..\src\FileManager.cpp ..\..\src\Invoice.cpp ..\..\src\Order.cpp ..\..\src\OrderItem.cpp ..\..\src\Product.cpp ..\..\src\Promotion.cpp ..\..\src\Review.cpp ..\..\src\ShopSystem.cpp ..\..\src\Size.cpp ..\..\src\Staff.cpp ..\..\src\User.cpp ..\..\Widgets\MainWindow.cpp ..\..\Widgets\StartupWidget.cpp ..\..\Widgets\LoginWidget.cpp ..\..\Widgets\RegisterWidget.cpp ..\..\Widgets\IntroWidget.cpp ..\..\Widgets\Customer\CustomerDashboard.cpp ..\..\Widgets\Customer\ViewProductsWidget.cpp ..\..\Widgets\Customer\ViewCartWidget.cpp ..\..\Widgets\Customer\OrderWidget.cpp ..\..\Widgets\Customer\OrderHistoryWidget.cpp ..\..\Widgets\Customer\PromotionsWidget.cpp ..\..\Widgets\Customer\ReviewsWidget.cpp ..\..\Widgets\Customer\AccountSettingsWidget.cpp ..\..\Widgets\Staff\StaffDashboard.cpp ..\..\Widgets\Staff\EditCategoriesWidget.cpp ..\..\Widgets\Staff\EditProductsWidget.cpp ..\..\Widgets\Staff\EditPromotionsWidget.cpp ..\..\Widgets\Staff\EditReviewsWidget.cpp ..\..\Widgets\Staff\CustomersManagementWidget.cpp ..\..\Widgets\Staff\ShopAnalysisWidget.cpp ..\..\Widgets\Staff\AccountSettingWidget.cpp ..\..\Widgets\MainWindow.ui ..\..\Widgets\StartupWidget.ui ..\..\Widgets\LoginWidget.ui ..\..\Widgets\RegisterWidget.ui ..\..\Widgets\IntroWidget.ui ..\..\Widgets\Customer\CustomerDashboard.ui ..\..\Widgets\Customer\ViewProductsWidget.ui ..\..\Widgets\Customer\ViewCartWidget.ui ..\..\Widgets\Customer\OrderWidget.ui ..\..\Widgets\Customer\OrderHistoryWidget.ui ..\..\Widgets\Customer\PromotionsWidget.ui ..\..\Widgets\Customer\ReviewsWidget.ui ..\..\Widgets\Customer\AccountSettingsWidget.ui ..\..\Widgets\Staff\StaffDashboard.ui ..\..\Widgets\Staff\EditCategoriesWidget.ui ..\..\Widgets\Staff\EditProductsWidget.ui ..\..\Widgets\Staff\EditPromotionsWidget.ui ..\..\Widgets\Staff\EditReviewsWidget.ui ..\..\Widgets\Staff\CustomersManagementWidget.ui ..\..\Widgets\Staff\ShopAnalysisWidget.ui ..\..\Widgets\Staff\AccountSettingWidget.ui    
 
 clean: compiler_clean 
 	-$(DEL_FILE) debug\main.o debug\Cart.o debug\CartItem.o debug\Category.o debug\Customer.o debug\FileManager.o debug\Invoice.o debug\Order.o debug\OrderItem.o debug\Product.o debug\Promotion.o debug\Review.o debug\ShopSystem.o debug\Size.o debug\Staff.o debug\User.o debug\MainWindow.o debug\StartupWidget.o debug\LoginWidget.o debug\RegisterWidget.o debug\IntroWidget.o debug\CustomerDashboard.o debug\ViewProductsWidget.o debug\ViewCartWidget.o debug\OrderWidget.o debug\OrderHistoryWidget.o debug\PromotionsWidget.o debug\ReviewsWidget.o debug\AccountSettingsWidget.o debug\StaffDashboard.o debug\EditCategoriesWidget.o debug\EditProductsWidget.o debug\EditPromotionsWidget.o debug\EditReviewsWidget.o debug\CustomersManagementWidget.o debug\ShopAnalysisWidget.o debug\AccountSettingWidget.o debug\qrc_resources.o debug\moc_MainWindow.o debug\moc_StartupWidget.o debug\moc_LoginWidget.o debug\moc_RegisterWidget.o debug\moc_IntroWidget.o debug\moc_CustomerDashboard.o debug\moc_ViewProductsWidget.o debug\moc_ViewCartWidget.o debug\moc_OrderWidget.o debug\moc_OrderHistoryWidget.o debug\moc_PromotionsWidget.o debug\moc_ReviewsWidget.o debug\moc_AccountSettingsWidget.o debug\moc_StaffDashboard.o debug\moc_EditCategoriesWidget.o debug\moc_EditProductsWidget.o debug\moc_EditPromotionsWidget.o debug\moc_EditReviewsWidget.o debug\moc_CustomersManagementWidget.o debug\moc_ShopAnalysisWidget.o debug\moc_AccountSettingWidget.o
@@ -530,6 +531,7 @@ debug/moc_MainWindow.cpp: ../../Widgets/MainWindow.h \
 		../../Widgets/LoginWidget.h \
 		../../Widgets/Customer/CustomerDashboard.h \
 		../../../../../ShopManagement/include/ShopSystem.h \
+		../../../../../ShopManagement/include/DataStructures.h \
 		../../../../../ShopManagement/include/Product.h \
 		../../../../../ShopManagement/include/Size.h \
 		../../../../../ShopManagement/include/Customer.h \
@@ -1605,6 +1607,7 @@ debug/moc_CustomerDashboard.cpp: ../../Widgets/Customer/CustomerDashboard.h \
 		C:/Qt/6.10.0/mingw_64/include/QtCore/qlocale.h \
 		C:/Qt/6.10.0/mingw_64/include/QtGui/qguiapplication_platform.h \
 		../../../../../ShopManagement/include/ShopSystem.h \
+		../../../../../ShopManagement/include/DataStructures.h \
 		../../../../../ShopManagement/include/Product.h \
 		../../../../../ShopManagement/include/Size.h \
 		../../../../../ShopManagement/include/Customer.h \
@@ -1850,6 +1853,7 @@ debug/moc_ViewProductsWidget.cpp: ../../Widgets/Customer/ViewProductsWidget.h \
 		C:/Qt/6.10.0/mingw_64/include/QtCore/qlocale.h \
 		C:/Qt/6.10.0/mingw_64/include/QtGui/qguiapplication_platform.h \
 		../../../../../ShopManagement/include/ShopSystem.h \
+		../../../../../ShopManagement/include/DataStructures.h \
 		../../../../../ShopManagement/include/Product.h \
 		../../../../../ShopManagement/include/Size.h \
 		../../../../../ShopManagement/include/Customer.h \
@@ -2084,6 +2088,7 @@ debug/moc_ViewCartWidget.cpp: ../../Widgets/Customer/ViewCartWidget.h \
 		C:/Qt/6.10.0/mingw_64/include/QtCore/qlocale.h \
 		C:/Qt/6.10.0/mingw_64/include/QtGui/qguiapplication_platform.h \
 		../../../../../ShopManagement/include/ShopSystem.h \
+		../../../../../ShopManagement/include/DataStructures.h \
 		../../../../../ShopManagement/include/Product.h \
 		../../../../../ShopManagement/include/Size.h \
 		../../../../../ShopManagement/include/Customer.h \
@@ -2318,6 +2323,7 @@ debug/moc_OrderWidget.cpp: ../../Widgets/Customer/OrderWidget.h \
 		C:/Qt/6.10.0/mingw_64/include/QtCore/qlocale.h \
 		C:/Qt/6.10.0/mingw_64/include/QtGui/qguiapplication_platform.h \
 		../../../../../ShopManagement/include/ShopSystem.h \
+		../../../../../ShopManagement/include/DataStructures.h \
 		../../../../../ShopManagement/include/Product.h \
 		../../../../../ShopManagement/include/Size.h \
 		../../../../../ShopManagement/include/Customer.h \
@@ -2552,6 +2558,7 @@ debug/moc_OrderHistoryWidget.cpp: ../../Widgets/Customer/OrderHistoryWidget.h \
 		C:/Qt/6.10.0/mingw_64/include/QtCore/qlocale.h \
 		C:/Qt/6.10.0/mingw_64/include/QtGui/qguiapplication_platform.h \
 		../../../../../ShopManagement/include/ShopSystem.h \
+		../../../../../ShopManagement/include/DataStructures.h \
 		../../../../../ShopManagement/include/Product.h \
 		../../../../../ShopManagement/include/Size.h \
 		../../../../../ShopManagement/include/Customer.h \
@@ -2786,6 +2793,7 @@ debug/moc_PromotionsWidget.cpp: ../../Widgets/Customer/PromotionsWidget.h \
 		C:/Qt/6.10.0/mingw_64/include/QtCore/qlocale.h \
 		C:/Qt/6.10.0/mingw_64/include/QtGui/qguiapplication_platform.h \
 		../../../../../ShopManagement/include/ShopSystem.h \
+		../../../../../ShopManagement/include/DataStructures.h \
 		../../../../../ShopManagement/include/Product.h \
 		../../../../../ShopManagement/include/Size.h \
 		../../../../../ShopManagement/include/Customer.h \
@@ -3020,6 +3028,7 @@ debug/moc_ReviewsWidget.cpp: ../../Widgets/Customer/ReviewsWidget.h \
 		C:/Qt/6.10.0/mingw_64/include/QtCore/qlocale.h \
 		C:/Qt/6.10.0/mingw_64/include/QtGui/qguiapplication_platform.h \
 		../../../../../ShopManagement/include/ShopSystem.h \
+		../../../../../ShopManagement/include/DataStructures.h \
 		../../../../../ShopManagement/include/Product.h \
 		../../../../../ShopManagement/include/Size.h \
 		../../../../../ShopManagement/include/Customer.h \
@@ -3258,6 +3267,7 @@ debug/moc_AccountSettingsWidget.cpp: ../../Widgets/Customer/AccountSettingsWidge
 		C:/Qt/6.10.0/mingw_64/include/QtCore/qlocale.h \
 		C:/Qt/6.10.0/mingw_64/include/QtGui/qguiapplication_platform.h \
 		../../../../../ShopManagement/include/ShopSystem.h \
+		../../../../../ShopManagement/include/DataStructures.h \
 		../../../../../ShopManagement/include/Product.h \
 		../../../../../ShopManagement/include/Size.h \
 		../../../../../ShopManagement/include/Customer.h \
@@ -3492,6 +3502,7 @@ debug/moc_StaffDashboard.cpp: ../../Widgets/Staff/StaffDashboard.h \
 		C:/Qt/6.10.0/mingw_64/include/QtCore/qlocale.h \
 		C:/Qt/6.10.0/mingw_64/include/QtGui/qguiapplication_platform.h \
 		../../../../../ShopManagement/include/ShopSystem.h \
+		../../../../../ShopManagement/include/DataStructures.h \
 		../../../../../ShopManagement/include/Product.h \
 		../../../../../ShopManagement/include/Size.h \
 		../../../../../ShopManagement/include/Customer.h \
@@ -3741,6 +3752,7 @@ debug/moc_EditCategoriesWidget.cpp: ../../Widgets/Staff/EditCategoriesWidget.h \
 		C:/Qt/6.10.0/mingw_64/include/QtCore/qlocale.h \
 		C:/Qt/6.10.0/mingw_64/include/QtGui/qguiapplication_platform.h \
 		../../../../../ShopManagement/include/ShopSystem.h \
+		../../../../../ShopManagement/include/DataStructures.h \
 		../../../../../ShopManagement/include/Product.h \
 		../../../../../ShopManagement/include/Size.h \
 		../../../../../ShopManagement/include/Customer.h \
@@ -3975,6 +3987,7 @@ debug/moc_EditProductsWidget.cpp: ../../Widgets/Staff/EditProductsWidget.h \
 		C:/Qt/6.10.0/mingw_64/include/QtCore/qlocale.h \
 		C:/Qt/6.10.0/mingw_64/include/QtGui/qguiapplication_platform.h \
 		../../../../../ShopManagement/include/ShopSystem.h \
+		../../../../../ShopManagement/include/DataStructures.h \
 		../../../../../ShopManagement/include/Product.h \
 		../../../../../ShopManagement/include/Size.h \
 		../../../../../ShopManagement/include/Customer.h \
@@ -4209,6 +4222,7 @@ debug/moc_EditPromotionsWidget.cpp: ../../Widgets/Staff/EditPromotionsWidget.h \
 		C:/Qt/6.10.0/mingw_64/include/QtCore/qlocale.h \
 		C:/Qt/6.10.0/mingw_64/include/QtGui/qguiapplication_platform.h \
 		../../../../../ShopManagement/include/ShopSystem.h \
+		../../../../../ShopManagement/include/DataStructures.h \
 		../../../../../ShopManagement/include/Product.h \
 		../../../../../ShopManagement/include/Size.h \
 		../../../../../ShopManagement/include/Customer.h \
@@ -4443,6 +4457,7 @@ debug/moc_EditReviewsWidget.cpp: ../../Widgets/Staff/EditReviewsWidget.h \
 		C:/Qt/6.10.0/mingw_64/include/QtCore/qlocale.h \
 		C:/Qt/6.10.0/mingw_64/include/QtGui/qguiapplication_platform.h \
 		../../../../../ShopManagement/include/ShopSystem.h \
+		../../../../../ShopManagement/include/DataStructures.h \
 		../../../../../ShopManagement/include/Product.h \
 		../../../../../ShopManagement/include/Size.h \
 		../../../../../ShopManagement/include/Customer.h \
@@ -4677,6 +4692,7 @@ debug/moc_CustomersManagementWidget.cpp: ../../Widgets/Staff/CustomersManagement
 		C:/Qt/6.10.0/mingw_64/include/QtCore/qlocale.h \
 		C:/Qt/6.10.0/mingw_64/include/QtGui/qguiapplication_platform.h \
 		../../../../../ShopManagement/include/ShopSystem.h \
+		../../../../../ShopManagement/include/DataStructures.h \
 		../../../../../ShopManagement/include/Product.h \
 		../../../../../ShopManagement/include/Size.h \
 		../../../../../ShopManagement/include/Customer.h \
@@ -4911,6 +4927,7 @@ debug/moc_ShopAnalysisWidget.cpp: ../../Widgets/Staff/ShopAnalysisWidget.h \
 		C:/Qt/6.10.0/mingw_64/include/QtCore/qlocale.h \
 		C:/Qt/6.10.0/mingw_64/include/QtGui/qguiapplication_platform.h \
 		../../../../../ShopManagement/include/ShopSystem.h \
+		../../../../../ShopManagement/include/DataStructures.h \
 		../../../../../ShopManagement/include/Product.h \
 		../../../../../ShopManagement/include/Size.h \
 		../../../../../ShopManagement/include/Customer.h \
@@ -5145,6 +5162,7 @@ debug/moc_AccountSettingWidget.cpp: ../../Widgets/Staff/AccountSettingWidget.h \
 		C:/Qt/6.10.0/mingw_64/include/QtCore/qlocale.h \
 		C:/Qt/6.10.0/mingw_64/include/QtGui/qguiapplication_platform.h \
 		../../../../../ShopManagement/include/ShopSystem.h \
+		../../../../../ShopManagement/include/DataStructures.h \
 		../../../../../ShopManagement/include/Product.h \
 		../../../../../ShopManagement/include/Size.h \
 		../../../../../ShopManagement/include/Customer.h \
@@ -5507,6 +5525,7 @@ debug/main.o: ../../main.cpp ../../Widgets/MainWindow.h \
 		../../Widgets/LoginWidget.h \
 		../../Widgets/Customer/CustomerDashboard.h \
 		../../../../../ShopManagement/include/ShopSystem.h \
+		../../../../../ShopManagement/include/DataStructures.h \
 		../../../../../ShopManagement/include/Product.h \
 		../../../../../ShopManagement/include/Size.h \
 		../../../../../ShopManagement/include/Customer.h \
@@ -5553,6 +5572,7 @@ debug/main.o: ../../main.cpp ../../Widgets/MainWindow.h \
 		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QApplication \
 		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qapplication.h \
 		../../include/ShopSystem.h \
+		../../include/DataStructures.h \
 		../../include/Product.h \
 		../../include/Size.h \
 		../../include/Customer.h \
@@ -5569,6 +5589,7 @@ debug/main.o: ../../main.cpp ../../Widgets/MainWindow.h \
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\main.o ..\..\main.cpp
 
 debug/Cart.o: ../../src/Cart.cpp ../../include/Cart.h \
+		../../include/DataStructures.h \
 		../../include/CartItem.h \
 		../../include/Product.h \
 		../../include/Size.h
@@ -5576,6 +5597,7 @@ debug/Cart.o: ../../src/Cart.cpp ../../include/Cart.h \
 
 debug/CartItem.o: ../../src/CartItem.cpp ../../include/CartItem.h \
 		../../include/Product.h \
+		../../include/DataStructures.h \
 		../../include/Size.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\CartItem.o ..\..\src\CartItem.cpp
 
@@ -5584,6 +5606,7 @@ debug/Category.o: ../../src/Category.cpp ../../include/Category.h
 
 debug/Customer.o: ../../src/Customer.cpp ../../include/Customer.h \
 		../../include/User.h \
+		../../include/DataStructures.h \
 		../../include/ShopSystem.h \
 		../../include/Product.h \
 		../../include/Size.h \
@@ -5599,6 +5622,7 @@ debug/Customer.o: ../../src/Customer.cpp ../../include/Customer.h \
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\Customer.o ..\..\src\Customer.cpp
 
 debug/FileManager.o: ../../src/FileManager.cpp ../../include/FileManager.h \
+		../../include/DataStructures.h \
 		../../include/Customer.h \
 		../../include/User.h \
 		../../include/Staff.h \
@@ -5617,6 +5641,7 @@ debug/Invoice.o: ../../src/Invoice.cpp ../../include/Invoice.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\Invoice.o ..\..\src\Invoice.cpp
 
 debug/Order.o: ../../src/Order.cpp ../../include/Order.h \
+		../../include/DataStructures.h \
 		../../include/OrderItem.h \
 		../../include/Product.h \
 		../../include/Size.h
@@ -5624,10 +5649,12 @@ debug/Order.o: ../../src/Order.cpp ../../include/Order.h \
 
 debug/OrderItem.o: ../../src/OrderItem.cpp ../../include/OrderItem.h \
 		../../include/Product.h \
+		../../include/DataStructures.h \
 		../../include/Size.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\OrderItem.o ..\..\src\OrderItem.cpp
 
 debug/Product.o: ../../src/Product.cpp ../../include/Product.h \
+		../../include/DataStructures.h \
 		../../include/Size.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\Product.o ..\..\src\Product.cpp
 
@@ -5638,6 +5665,7 @@ debug/Review.o: ../../src/Review.cpp ../../include/Review.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\Review.o ..\..\src\Review.cpp
 
 debug/ShopSystem.o: ../../src/ShopSystem.cpp ../../include/ShopSystem.h \
+		../../include/DataStructures.h \
 		../../include/Product.h \
 		../../include/Size.h \
 		../../include/Customer.h \
@@ -5965,6 +5993,7 @@ debug/MainWindow.o: ../../Widgets/MainWindow.cpp ../../Widgets/MainWindow.h \
 		../../Widgets/LoginWidget.h \
 		../../Widgets/Customer/CustomerDashboard.h \
 		../../../../../ShopManagement/include/ShopSystem.h \
+		../../../../../ShopManagement/include/DataStructures.h \
 		../../../../../ShopManagement/include/Product.h \
 		../../../../../ShopManagement/include/Size.h \
 		../../../../../ShopManagement/include/Customer.h \
@@ -6007,16 +6036,6 @@ debug/MainWindow.o: ../../Widgets/MainWindow.cpp ../../Widgets/MainWindow.h \
 		C:/Qt/6.10.0/mingw_64/include/QtGui/QShowEvent \
 		../../Widgets/RegisterWidget.h \
 		ui_MainWindow.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/QVariant \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QApplication \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qapplication.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QStackedWidget \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qstackedwidget.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QVBoxLayout \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qboxlayout.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qlayout.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qlayoutitem.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qgridlayout.h \
 		../../Widgets/StartupWidget.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\MainWindow.o ..\..\Widgets\MainWindow.cpp
 
@@ -6237,25 +6256,8 @@ debug/StartupWidget.o: ../../Widgets/StartupWidget.cpp ../../Widgets/StartupWidg
 		C:/Qt/6.10.0/mingw_64/include/QtGui/qpen.h \
 		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QWidget \
 		ui_StartupWidget.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/QVariant \
 		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QApplication \
 		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qapplication.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QFrame \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QGridLayout \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qgridlayout.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qlayout.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qlayoutitem.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qboxlayout.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QHBoxLayout \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QLabel \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qlabel.h \
-		C:/Qt/6.10.0/mingw_64/include/QtGui/qpicture.h \
-		C:/Qt/6.10.0/mingw_64/include/QtGui/qtextdocument.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QPushButton \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qpushbutton.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qabstractbutton.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QSpacerItem \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QVBoxLayout \
 		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QGraphicsDropShadowEffect \
 		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qgraphicseffect.h \
 		C:/Qt/6.10.0/mingw_64/include/QtGui/QPixmap
@@ -6461,35 +6463,8 @@ debug/LoginWidget.o: ../../Widgets/LoginWidget.cpp ../../Widgets/LoginWidget.h \
 		C:/Qt/6.10.0/mingw_64/include/QtCore/qlocale.h \
 		C:/Qt/6.10.0/mingw_64/include/QtGui/qguiapplication_platform.h \
 		ui_LoginWidget.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/QVariant \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QApplication \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qapplication.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QFrame \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qframe.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QGridLayout \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qgridlayout.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qlayout.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qlayoutitem.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qboxlayout.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QHBoxLayout \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QLabel \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qlabel.h \
-		C:/Qt/6.10.0/mingw_64/include/QtGui/qpicture.h \
-		C:/Qt/6.10.0/mingw_64/include/QtGui/qtextdocument.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QLineEdit \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qlineedit.h \
-		C:/Qt/6.10.0/mingw_64/include/QtGui/qtextcursor.h \
-		C:/Qt/6.10.0/mingw_64/include/QtGui/qtextformat.h \
-		C:/Qt/6.10.0/mingw_64/include/QtGui/qpen.h \
-		C:/Qt/6.10.0/mingw_64/include/QtGui/qtextoption.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QPushButton \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qpushbutton.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qabstractbutton.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QSpacerItem \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QToolButton \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qtoolbutton.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QVBoxLayout \
 		../../../../../ShopManagement/include/ShopSystem.h \
+		../../../../../ShopManagement/include/DataStructures.h \
 		../../../../../ShopManagement/include/Product.h \
 		../../../../../ShopManagement/include/Size.h \
 		../../../../../ShopManagement/include/Customer.h \
@@ -6517,9 +6492,17 @@ debug/LoginWidget.o: ../../Widgets/LoginWidget.cpp ../../Widgets/LoginWidget.h \
 		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qtabbar.h \
 		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qtabwidget.h \
 		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qrubberband.h \
+		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qframe.h \
 		C:/Qt/6.10.0/mingw_64/include/QtCore/qabstractitemmodel.h \
 		C:/Qt/6.10.0/mingw_64/include/QtGui/QPainter \
-		C:/Qt/6.10.0/mingw_64/include/QtGui/qpainter.h
+		C:/Qt/6.10.0/mingw_64/include/QtGui/qpainter.h \
+		C:/Qt/6.10.0/mingw_64/include/QtGui/qtextoption.h \
+		C:/Qt/6.10.0/mingw_64/include/QtGui/qpen.h \
+		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QHBoxLayout \
+		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qboxlayout.h \
+		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qlayout.h \
+		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qlayoutitem.h \
+		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qgridlayout.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\LoginWidget.o ..\..\Widgets\LoginWidget.cpp
 
 debug/RegisterWidget.o: ../../Widgets/RegisterWidget.cpp ../../Widgets/RegisterWidget.h \
@@ -6722,33 +6705,8 @@ debug/RegisterWidget.o: ../../Widgets/RegisterWidget.cpp ../../Widgets/RegisterW
 		C:/Qt/6.10.0/mingw_64/include/QtCore/qlocale.h \
 		C:/Qt/6.10.0/mingw_64/include/QtGui/qguiapplication_platform.h \
 		ui_RegisterWidget.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/QVariant \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QApplication \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qapplication.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QFrame \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qframe.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QGridLayout \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qgridlayout.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qlayout.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qlayoutitem.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qboxlayout.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QHBoxLayout \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QLabel \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qlabel.h \
-		C:/Qt/6.10.0/mingw_64/include/QtGui/qpicture.h \
-		C:/Qt/6.10.0/mingw_64/include/QtGui/qtextdocument.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QLineEdit \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qlineedit.h \
-		C:/Qt/6.10.0/mingw_64/include/QtGui/qtextcursor.h \
-		C:/Qt/6.10.0/mingw_64/include/QtGui/qtextformat.h \
-		C:/Qt/6.10.0/mingw_64/include/QtGui/qpen.h \
-		C:/Qt/6.10.0/mingw_64/include/QtGui/qtextoption.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QPushButton \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qpushbutton.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qabstractbutton.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QSpacerItem \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QVBoxLayout \
 		../../../../../ShopManagement/include/ShopSystem.h \
+		../../../../../ShopManagement/include/DataStructures.h \
 		../../../../../ShopManagement/include/Product.h \
 		../../../../../ShopManagement/include/Size.h \
 		../../../../../ShopManagement/include/Customer.h \
@@ -6776,9 +6734,12 @@ debug/RegisterWidget.o: ../../Widgets/RegisterWidget.cpp ../../Widgets/RegisterW
 		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qtabbar.h \
 		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qtabwidget.h \
 		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qrubberband.h \
+		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qframe.h \
 		C:/Qt/6.10.0/mingw_64/include/QtCore/qabstractitemmodel.h \
 		C:/Qt/6.10.0/mingw_64/include/QtGui/QPainter \
 		C:/Qt/6.10.0/mingw_64/include/QtGui/qpainter.h \
+		C:/Qt/6.10.0/mingw_64/include/QtGui/qtextoption.h \
+		C:/Qt/6.10.0/mingw_64/include/QtGui/qpen.h \
 		C:/Qt/6.10.0/mingw_64/include/QtCore/QRegularExpression \
 		C:/Qt/6.10.0/mingw_64/include/QtCore/QTimer \
 		C:/Qt/6.10.0/mingw_64/include/QtCore/qtimer.h
@@ -6985,21 +6946,6 @@ debug/IntroWidget.o: ../../Widgets/IntroWidget.cpp ../../Widgets/IntroWidget.h \
 		C:/Qt/6.10.0/mingw_64/include/QtGui/qguiapplication_platform.h \
 		C:/Qt/6.10.0/mingw_64/include/QtGui/QKeyEvent \
 		ui_IntroWidget.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/QVariant \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QApplication \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qapplication.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QGridLayout \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qgridlayout.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qlayout.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qlayoutitem.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qboxlayout.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QLabel \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qlabel.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qframe.h \
-		C:/Qt/6.10.0/mingw_64/include/QtGui/qpicture.h \
-		C:/Qt/6.10.0/mingw_64/include/QtGui/qtextdocument.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QSpacerItem \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QVBoxLayout \
 		C:/Qt/6.10.0/mingw_64/include/QtGui/QPixmap
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\IntroWidget.o ..\..\Widgets\IntroWidget.cpp
 
@@ -7203,6 +7149,7 @@ debug/CustomerDashboard.o: ../../Widgets/Customer/CustomerDashboard.cpp ../../Wi
 		C:/Qt/6.10.0/mingw_64/include/QtCore/qlocale.h \
 		C:/Qt/6.10.0/mingw_64/include/QtGui/qguiapplication_platform.h \
 		../../../../../ShopManagement/include/ShopSystem.h \
+		../../../../../ShopManagement/include/DataStructures.h \
 		../../../../../ShopManagement/include/Product.h \
 		../../../../../ShopManagement/include/Size.h \
 		../../../../../ShopManagement/include/Customer.h \
@@ -7245,27 +7192,6 @@ debug/CustomerDashboard.o: ../../Widgets/Customer/CustomerDashboard.cpp ../../Wi
 		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qdialogbuttonbox.h \
 		../../Widgets/Customer/AccountSettingsWidget.h \
 		ui_CustomerDashboard.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/QVariant \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QApplication \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qapplication.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QFrame \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QGridLayout \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qgridlayout.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qlayout.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qlayoutitem.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qboxlayout.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QHBoxLayout \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QLabel \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qlabel.h \
-		C:/Qt/6.10.0/mingw_64/include/QtGui/qpicture.h \
-		C:/Qt/6.10.0/mingw_64/include/QtGui/qtextdocument.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QPushButton \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qpushbutton.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qabstractbutton.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QSpacerItem \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QStackedWidget \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qstackedwidget.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QVBoxLayout \
 		C:/Qt/6.10.0/mingw_64/include/QtGui/QPixmap
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\CustomerDashboard.o ..\..\Widgets\Customer\CustomerDashboard.cpp
 
@@ -7469,6 +7395,7 @@ debug/ViewProductsWidget.o: ../../Widgets/Customer/ViewProductsWidget.cpp ../../
 		C:/Qt/6.10.0/mingw_64/include/QtCore/qlocale.h \
 		C:/Qt/6.10.0/mingw_64/include/QtGui/qguiapplication_platform.h \
 		../../../../../ShopManagement/include/ShopSystem.h \
+		../../../../../ShopManagement/include/DataStructures.h \
 		../../../../../ShopManagement/include/Product.h \
 		../../../../../ShopManagement/include/Size.h \
 		../../../../../ShopManagement/include/Customer.h \
@@ -7500,50 +7427,16 @@ debug/ViewProductsWidget.o: ../../Widgets/Customer/ViewProductsWidget.cpp ../../
 		C:/Qt/6.10.0/mingw_64/include/QtGui/qtextoption.h \
 		C:/Qt/6.10.0/mingw_64/include/QtGui/qpen.h \
 		ui_ViewProductsWidget.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/QVariant \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QApplication \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qapplication.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QComboBox \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qcombobox.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qabstractitemdelegate.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QFormLayout \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qformlayout.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QLayout \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qlayout.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qlayoutitem.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qboxlayout.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qgridlayout.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QFrame \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QHBoxLayout \
+		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QMessageBox \
+		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qmessagebox.h \
+		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qdialog.h \
+		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qdialogbuttonbox.h \
 		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QHeaderView \
 		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qheaderview.h \
 		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qabstractitemview.h \
 		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qabstractscrollarea.h \
 		C:/Qt/6.10.0/mingw_64/include/QtCore/qitemselectionmodel.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QLabel \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qlabel.h \
-		C:/Qt/6.10.0/mingw_64/include/QtGui/qpicture.h \
-		C:/Qt/6.10.0/mingw_64/include/QtGui/qtextdocument.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QLineEdit \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qlineedit.h \
-		C:/Qt/6.10.0/mingw_64/include/QtGui/qtextcursor.h \
-		C:/Qt/6.10.0/mingw_64/include/QtGui/qtextformat.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QPushButton \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qpushbutton.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qabstractbutton.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QSpacerItem \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QSpinBox \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qspinbox.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QStackedWidget \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qstackedwidget.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QTableWidget \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qtablewidget.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qtableview.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QVBoxLayout \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QMessageBox \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qmessagebox.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qdialog.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qdialogbuttonbox.h \
+		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qabstractitemdelegate.h \
 		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QGraphicsDropShadowEffect \
 		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qgraphicseffect.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\ViewProductsWidget.o ..\..\Widgets\Customer\ViewProductsWidget.cpp
@@ -7748,6 +7641,7 @@ debug/ViewCartWidget.o: ../../Widgets/Customer/ViewCartWidget.cpp ../../Widgets/
 		C:/Qt/6.10.0/mingw_64/include/QtCore/qlocale.h \
 		C:/Qt/6.10.0/mingw_64/include/QtGui/qguiapplication_platform.h \
 		../../../../../ShopManagement/include/ShopSystem.h \
+		../../../../../ShopManagement/include/DataStructures.h \
 		../../../../../ShopManagement/include/Product.h \
 		../../../../../ShopManagement/include/Size.h \
 		../../../../../ShopManagement/include/Customer.h \
@@ -7779,37 +7673,16 @@ debug/ViewCartWidget.o: ../../Widgets/Customer/ViewCartWidget.cpp ../../Widgets/
 		C:/Qt/6.10.0/mingw_64/include/QtGui/qtextoption.h \
 		C:/Qt/6.10.0/mingw_64/include/QtGui/qpen.h \
 		ui_ViewCartWidget.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/QVariant \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QApplication \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qapplication.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QFrame \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QHBoxLayout \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qboxlayout.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qlayout.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qlayoutitem.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qgridlayout.h \
+		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QMessageBox \
+		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qmessagebox.h \
+		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qdialog.h \
+		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qdialogbuttonbox.h \
 		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QHeaderView \
 		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qheaderview.h \
 		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qabstractitemview.h \
 		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qabstractscrollarea.h \
 		C:/Qt/6.10.0/mingw_64/include/QtCore/qitemselectionmodel.h \
 		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qabstractitemdelegate.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QLabel \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qlabel.h \
-		C:/Qt/6.10.0/mingw_64/include/QtGui/qpicture.h \
-		C:/Qt/6.10.0/mingw_64/include/QtGui/qtextdocument.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QPushButton \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qpushbutton.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qabstractbutton.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QSpacerItem \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QTableWidget \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qtablewidget.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qtableview.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QVBoxLayout \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QMessageBox \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qmessagebox.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qdialog.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qdialogbuttonbox.h \
 		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QGraphicsDropShadowEffect \
 		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qgraphicseffect.h \
 		C:/Qt/6.10.0/mingw_64/include/QtCore/QLocale
@@ -8015,6 +7888,7 @@ debug/OrderWidget.o: ../../Widgets/Customer/OrderWidget.cpp ../../Widgets/Custom
 		C:/Qt/6.10.0/mingw_64/include/QtCore/qlocale.h \
 		C:/Qt/6.10.0/mingw_64/include/QtGui/qguiapplication_platform.h \
 		../../../../../ShopManagement/include/ShopSystem.h \
+		../../../../../ShopManagement/include/DataStructures.h \
 		../../../../../ShopManagement/include/Product.h \
 		../../../../../ShopManagement/include/Size.h \
 		../../../../../ShopManagement/include/Customer.h \
@@ -8046,41 +7920,16 @@ debug/OrderWidget.o: ../../Widgets/Customer/OrderWidget.cpp ../../Widgets/Custom
 		C:/Qt/6.10.0/mingw_64/include/QtGui/qtextoption.h \
 		C:/Qt/6.10.0/mingw_64/include/QtGui/qpen.h \
 		ui_OrderWidget.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/QVariant \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QApplication \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qapplication.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QComboBox \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qcombobox.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qabstractitemdelegate.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QFrame \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QHBoxLayout \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qboxlayout.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qlayout.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qlayoutitem.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qgridlayout.h \
+		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QMessageBox \
+		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qmessagebox.h \
+		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qdialog.h \
+		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qdialogbuttonbox.h \
 		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QHeaderView \
 		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qheaderview.h \
 		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qabstractitemview.h \
 		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qabstractscrollarea.h \
 		C:/Qt/6.10.0/mingw_64/include/QtCore/qitemselectionmodel.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QLabel \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qlabel.h \
-		C:/Qt/6.10.0/mingw_64/include/QtGui/qpicture.h \
-		C:/Qt/6.10.0/mingw_64/include/QtGui/qtextdocument.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QPushButton \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qpushbutton.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qabstractbutton.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QSpacerItem \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QSpinBox \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qspinbox.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QTableWidget \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qtablewidget.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qtableview.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QVBoxLayout \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QMessageBox \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qmessagebox.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qdialog.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qdialogbuttonbox.h \
+		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qabstractitemdelegate.h \
 		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QGraphicsDropShadowEffect \
 		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qgraphicseffect.h \
 		C:/Qt/6.10.0/mingw_64/include/QtCore/QLocale \
@@ -8289,6 +8138,7 @@ debug/OrderHistoryWidget.o: ../../Widgets/Customer/OrderHistoryWidget.cpp ../../
 		C:/Qt/6.10.0/mingw_64/include/QtCore/qlocale.h \
 		C:/Qt/6.10.0/mingw_64/include/QtGui/qguiapplication_platform.h \
 		../../../../../ShopManagement/include/ShopSystem.h \
+		../../../../../ShopManagement/include/DataStructures.h \
 		../../../../../ShopManagement/include/Product.h \
 		../../../../../ShopManagement/include/Size.h \
 		../../../../../ShopManagement/include/Customer.h \
@@ -8320,29 +8170,6 @@ debug/OrderHistoryWidget.o: ../../Widgets/Customer/OrderHistoryWidget.cpp ../../
 		C:/Qt/6.10.0/mingw_64/include/QtGui/qtextoption.h \
 		C:/Qt/6.10.0/mingw_64/include/QtGui/qpen.h \
 		ui_OrderHistoryWidget.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/QVariant \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QApplication \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qapplication.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QComboBox \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qcombobox.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qabstractitemdelegate.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QHBoxLayout \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qboxlayout.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qlayout.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qlayoutitem.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qgridlayout.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QLabel \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qlabel.h \
-		C:/Qt/6.10.0/mingw_64/include/QtGui/qpicture.h \
-		C:/Qt/6.10.0/mingw_64/include/QtGui/qtextdocument.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QPushButton \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qpushbutton.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qabstractbutton.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QScrollArea \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qscrollarea.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qabstractscrollarea.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QSpacerItem \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QVBoxLayout \
 		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QMessageBox \
 		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qmessagebox.h \
 		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qdialog.h \
@@ -8353,11 +8180,17 @@ debug/OrderHistoryWidget.o: ../../Widgets/Customer/OrderHistoryWidget.cpp ../../
 		C:/Qt/6.10.0/mingw_64/include/QtCore/QDateTime \
 		C:/Qt/6.10.0/mingw_64/include/QtCore/qdatetime.h \
 		C:/Qt/6.10.0/mingw_64/include/QtCore/qcalendar.h \
+		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QLabel \
+		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qlabel.h \
+		C:/Qt/6.10.0/mingw_64/include/QtGui/qpicture.h \
+		C:/Qt/6.10.0/mingw_64/include/QtGui/qtextdocument.h \
 		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QTableWidget \
 		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qtablewidget.h \
 		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qtableview.h \
 		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qabstractitemview.h \
+		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qabstractscrollarea.h \
 		C:/Qt/6.10.0/mingw_64/include/QtCore/qitemselectionmodel.h \
+		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qabstractitemdelegate.h \
 		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QHeaderView \
 		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qheaderview.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\OrderHistoryWidget.o ..\..\Widgets\Customer\OrderHistoryWidget.cpp
@@ -8562,6 +8395,7 @@ debug/PromotionsWidget.o: ../../Widgets/Customer/PromotionsWidget.cpp ../../Widg
 		C:/Qt/6.10.0/mingw_64/include/QtCore/qlocale.h \
 		C:/Qt/6.10.0/mingw_64/include/QtGui/qguiapplication_platform.h \
 		../../../../../ShopManagement/include/ShopSystem.h \
+		../../../../../ShopManagement/include/DataStructures.h \
 		../../../../../ShopManagement/include/Product.h \
 		../../../../../ShopManagement/include/Size.h \
 		../../../../../ShopManagement/include/Customer.h \
@@ -8593,28 +8427,12 @@ debug/PromotionsWidget.o: ../../Widgets/Customer/PromotionsWidget.cpp ../../Widg
 		C:/Qt/6.10.0/mingw_64/include/QtGui/qtextoption.h \
 		C:/Qt/6.10.0/mingw_64/include/QtGui/qpen.h \
 		ui_PromotionsWidget.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/QVariant \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QApplication \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qapplication.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QHBoxLayout \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qboxlayout.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qlayout.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qlayoutitem.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qgridlayout.h \
+		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QGraphicsDropShadowEffect \
+		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qgraphicseffect.h \
 		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QLabel \
 		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qlabel.h \
 		C:/Qt/6.10.0/mingw_64/include/QtGui/qpicture.h \
-		C:/Qt/6.10.0/mingw_64/include/QtGui/qtextdocument.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QPushButton \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qpushbutton.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qabstractbutton.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QScrollArea \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qscrollarea.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qabstractscrollarea.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QSpacerItem \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QVBoxLayout \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QGraphicsDropShadowEffect \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qgraphicseffect.h
+		C:/Qt/6.10.0/mingw_64/include/QtGui/qtextdocument.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\PromotionsWidget.o ..\..\Widgets\Customer\PromotionsWidget.cpp
 
 debug/ReviewsWidget.o: ../../Widgets/Customer/ReviewsWidget.cpp ../../Widgets/Customer/ReviewsWidget.h \
@@ -8817,6 +8635,7 @@ debug/ReviewsWidget.o: ../../Widgets/Customer/ReviewsWidget.cpp ../../Widgets/Cu
 		C:/Qt/6.10.0/mingw_64/include/QtCore/qlocale.h \
 		C:/Qt/6.10.0/mingw_64/include/QtGui/qguiapplication_platform.h \
 		../../../../../ShopManagement/include/ShopSystem.h \
+		../../../../../ShopManagement/include/DataStructures.h \
 		../../../../../ShopManagement/include/Product.h \
 		../../../../../ShopManagement/include/Size.h \
 		../../../../../ShopManagement/include/Customer.h \
@@ -8852,49 +8671,13 @@ debug/ReviewsWidget.o: ../../Widgets/Customer/ReviewsWidget.cpp ../../Widgets/Cu
 		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qdialog.h \
 		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qdialogbuttonbox.h \
 		ui_ReviewsWidget.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/QVariant \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QApplication \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qapplication.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QComboBox \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qcombobox.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qabstractitemdelegate.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QFrame \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QHBoxLayout \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qboxlayout.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qlayout.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qlayoutitem.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qgridlayout.h \
+		../../../../../ShopManagement/include/FileManager.h \
 		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QHeaderView \
 		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qheaderview.h \
 		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qabstractitemview.h \
 		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qabstractscrollarea.h \
 		C:/Qt/6.10.0/mingw_64/include/QtCore/qitemselectionmodel.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QLabel \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qlabel.h \
-		C:/Qt/6.10.0/mingw_64/include/QtGui/qpicture.h \
-		C:/Qt/6.10.0/mingw_64/include/QtGui/qtextdocument.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QLineEdit \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qlineedit.h \
-		C:/Qt/6.10.0/mingw_64/include/QtGui/qtextcursor.h \
-		C:/Qt/6.10.0/mingw_64/include/QtGui/qtextformat.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QPushButton \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qpushbutton.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qabstractbutton.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QScrollArea \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qscrollarea.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QSpacerItem \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QSpinBox \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qspinbox.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QStackedWidget \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qstackedwidget.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QTabWidget \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QTableWidget \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qtablewidget.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qtableview.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QTextEdit \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qtextedit.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QVBoxLayout \
-		../../../../../ShopManagement/include/FileManager.h \
+		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qabstractitemdelegate.h \
 		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QGraphicsDropShadowEffect \
 		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qgraphicseffect.h \
 		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QScrollBar \
@@ -9102,6 +8885,7 @@ debug/AccountSettingsWidget.o: ../../Widgets/Customer/AccountSettingsWidget.cpp 
 		C:/Qt/6.10.0/mingw_64/include/QtCore/qlocale.h \
 		C:/Qt/6.10.0/mingw_64/include/QtGui/qguiapplication_platform.h \
 		../../../../../ShopManagement/include/ShopSystem.h \
+		../../../../../ShopManagement/include/DataStructures.h \
 		../../../../../ShopManagement/include/Product.h \
 		../../../../../ShopManagement/include/Size.h \
 		../../../../../ShopManagement/include/Customer.h \
@@ -9133,28 +8917,6 @@ debug/AccountSettingsWidget.o: ../../Widgets/Customer/AccountSettingsWidget.cpp 
 		C:/Qt/6.10.0/mingw_64/include/QtGui/qtextoption.h \
 		C:/Qt/6.10.0/mingw_64/include/QtGui/qpen.h \
 		ui_AccountSettingsWidget.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/QVariant \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QApplication \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qapplication.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QFrame \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QHBoxLayout \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qboxlayout.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qlayout.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qlayoutitem.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qgridlayout.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QLabel \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qlabel.h \
-		C:/Qt/6.10.0/mingw_64/include/QtGui/qpicture.h \
-		C:/Qt/6.10.0/mingw_64/include/QtGui/qtextdocument.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QLineEdit \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qlineedit.h \
-		C:/Qt/6.10.0/mingw_64/include/QtGui/qtextcursor.h \
-		C:/Qt/6.10.0/mingw_64/include/QtGui/qtextformat.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QPushButton \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qpushbutton.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qabstractbutton.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QSpacerItem \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QVBoxLayout \
 		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QMessageBox \
 		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qmessagebox.h \
 		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qdialog.h \
@@ -9363,6 +9125,7 @@ debug/StaffDashboard.o: ../../Widgets/Staff/StaffDashboard.cpp ../../Widgets/Sta
 		C:/Qt/6.10.0/mingw_64/include/QtCore/qlocale.h \
 		C:/Qt/6.10.0/mingw_64/include/QtGui/qguiapplication_platform.h \
 		../../../../../ShopManagement/include/ShopSystem.h \
+		../../../../../ShopManagement/include/DataStructures.h \
 		../../../../../ShopManagement/include/Product.h \
 		../../../../../ShopManagement/include/Size.h \
 		../../../../../ShopManagement/include/Customer.h \
@@ -9409,26 +9172,6 @@ debug/StaffDashboard.o: ../../Widgets/Staff/StaffDashboard.cpp ../../Widgets/Sta
 		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qabstractitemdelegate.h \
 		C:/Qt/6.10.0/mingw_64/include/QtGui/QShowEvent \
 		ui_StaffDashboard.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/QVariant \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QApplication \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qapplication.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QGridLayout \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qgridlayout.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qlayout.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qlayoutitem.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qboxlayout.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QHBoxLayout \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QLabel \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qlabel.h \
-		C:/Qt/6.10.0/mingw_64/include/QtGui/qpicture.h \
-		C:/Qt/6.10.0/mingw_64/include/QtGui/qtextdocument.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QPushButton \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qpushbutton.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qabstractbutton.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QSpacerItem \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QStackedWidget \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qstackedwidget.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QVBoxLayout \
 		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QMessageBox \
 		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qmessagebox.h \
 		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qdialog.h \
@@ -9638,6 +9381,7 @@ debug/EditCategoriesWidget.o: ../../Widgets/Staff/EditCategoriesWidget.cpp ../..
 		C:/Qt/6.10.0/mingw_64/include/QtCore/qlocale.h \
 		C:/Qt/6.10.0/mingw_64/include/QtGui/qguiapplication_platform.h \
 		../../../../../ShopManagement/include/ShopSystem.h \
+		../../../../../ShopManagement/include/DataStructures.h \
 		../../../../../ShopManagement/include/Product.h \
 		../../../../../ShopManagement/include/Size.h \
 		../../../../../ShopManagement/include/Customer.h \
@@ -9669,45 +9413,16 @@ debug/EditCategoriesWidget.o: ../../Widgets/Staff/EditCategoriesWidget.cpp ../..
 		C:/Qt/6.10.0/mingw_64/include/QtGui/qtextoption.h \
 		C:/Qt/6.10.0/mingw_64/include/QtGui/qpen.h \
 		ui_EditCategoriesWidget.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/QVariant \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QApplication \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qapplication.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QFrame \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QGroupBox \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qgroupbox.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QHBoxLayout \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qboxlayout.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qlayout.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qlayoutitem.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qgridlayout.h \
+		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QMessageBox \
+		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qmessagebox.h \
+		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qdialog.h \
+		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qdialogbuttonbox.h \
 		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QHeaderView \
 		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qheaderview.h \
 		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qabstractitemview.h \
 		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qabstractscrollarea.h \
 		C:/Qt/6.10.0/mingw_64/include/QtCore/qitemselectionmodel.h \
 		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qabstractitemdelegate.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QLabel \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qlabel.h \
-		C:/Qt/6.10.0/mingw_64/include/QtGui/qpicture.h \
-		C:/Qt/6.10.0/mingw_64/include/QtGui/qtextdocument.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QLineEdit \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qlineedit.h \
-		C:/Qt/6.10.0/mingw_64/include/QtGui/qtextcursor.h \
-		C:/Qt/6.10.0/mingw_64/include/QtGui/qtextformat.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QPushButton \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qpushbutton.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qabstractbutton.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QSpacerItem \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QStackedWidget \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qstackedwidget.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QTableWidget \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qtablewidget.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qtableview.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QVBoxLayout \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QMessageBox \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qmessagebox.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qdialog.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qdialogbuttonbox.h \
 		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QGraphicsDropShadowEffect \
 		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qgraphicseffect.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\EditCategoriesWidget.o ..\..\Widgets\Staff\EditCategoriesWidget.cpp
@@ -9912,6 +9627,7 @@ debug/EditProductsWidget.o: ../../Widgets/Staff/EditProductsWidget.cpp ../../Wid
 		C:/Qt/6.10.0/mingw_64/include/QtCore/qlocale.h \
 		C:/Qt/6.10.0/mingw_64/include/QtGui/qguiapplication_platform.h \
 		../../../../../ShopManagement/include/ShopSystem.h \
+		../../../../../ShopManagement/include/DataStructures.h \
 		../../../../../ShopManagement/include/Product.h \
 		../../../../../ShopManagement/include/Size.h \
 		../../../../../ShopManagement/include/Customer.h \
@@ -9943,54 +9659,16 @@ debug/EditProductsWidget.o: ../../Widgets/Staff/EditProductsWidget.cpp ../../Wid
 		C:/Qt/6.10.0/mingw_64/include/QtGui/qtextoption.h \
 		C:/Qt/6.10.0/mingw_64/include/QtGui/qpen.h \
 		ui_EditProductsWidget.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/QVariant \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QApplication \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qapplication.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QComboBox \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qcombobox.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qabstractitemdelegate.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QFormLayout \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qformlayout.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QLayout \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qlayout.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qlayoutitem.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qboxlayout.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qgridlayout.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QFrame \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QGroupBox \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qgroupbox.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QHBoxLayout \
+		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QMessageBox \
+		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qmessagebox.h \
+		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qdialog.h \
+		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qdialogbuttonbox.h \
 		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QHeaderView \
 		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qheaderview.h \
 		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qabstractitemview.h \
 		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qabstractscrollarea.h \
 		C:/Qt/6.10.0/mingw_64/include/QtCore/qitemselectionmodel.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QLabel \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qlabel.h \
-		C:/Qt/6.10.0/mingw_64/include/QtGui/qpicture.h \
-		C:/Qt/6.10.0/mingw_64/include/QtGui/qtextdocument.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QLineEdit \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qlineedit.h \
-		C:/Qt/6.10.0/mingw_64/include/QtGui/qtextcursor.h \
-		C:/Qt/6.10.0/mingw_64/include/QtGui/qtextformat.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QPushButton \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qpushbutton.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qabstractbutton.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QSpacerItem \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QSpinBox \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qspinbox.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QStackedWidget \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qstackedwidget.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QTableWidget \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qtablewidget.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qtableview.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QTextEdit \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qtextedit.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QVBoxLayout \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QMessageBox \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qmessagebox.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qdialog.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qdialogbuttonbox.h \
+		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qabstractitemdelegate.h \
 		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QGraphicsDropShadowEffect \
 		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qgraphicseffect.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\EditProductsWidget.o ..\..\Widgets\Staff\EditProductsWidget.cpp
@@ -10195,6 +9873,7 @@ debug/EditPromotionsWidget.o: ../../Widgets/Staff/EditPromotionsWidget.cpp ../..
 		C:/Qt/6.10.0/mingw_64/include/QtCore/qlocale.h \
 		C:/Qt/6.10.0/mingw_64/include/QtGui/qguiapplication_platform.h \
 		../../../../../ShopManagement/include/ShopSystem.h \
+		../../../../../ShopManagement/include/DataStructures.h \
 		../../../../../ShopManagement/include/Product.h \
 		../../../../../ShopManagement/include/Size.h \
 		../../../../../ShopManagement/include/Customer.h \
@@ -10226,45 +9905,16 @@ debug/EditPromotionsWidget.o: ../../Widgets/Staff/EditPromotionsWidget.cpp ../..
 		C:/Qt/6.10.0/mingw_64/include/QtGui/qtextoption.h \
 		C:/Qt/6.10.0/mingw_64/include/QtGui/qpen.h \
 		ui_EditPromotionsWidget.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/QVariant \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QApplication \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qapplication.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QDoubleSpinBox \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qspinbox.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QFrame \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QGroupBox \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qgroupbox.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QHBoxLayout \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qboxlayout.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qlayout.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qlayoutitem.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qgridlayout.h \
+		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QMessageBox \
+		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qmessagebox.h \
+		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qdialog.h \
+		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qdialogbuttonbox.h \
 		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QHeaderView \
 		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qheaderview.h \
 		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qabstractitemview.h \
 		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qabstractscrollarea.h \
 		C:/Qt/6.10.0/mingw_64/include/QtCore/qitemselectionmodel.h \
 		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qabstractitemdelegate.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QLabel \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qlabel.h \
-		C:/Qt/6.10.0/mingw_64/include/QtGui/qpicture.h \
-		C:/Qt/6.10.0/mingw_64/include/QtGui/qtextdocument.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QLineEdit \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qlineedit.h \
-		C:/Qt/6.10.0/mingw_64/include/QtGui/qtextcursor.h \
-		C:/Qt/6.10.0/mingw_64/include/QtGui/qtextformat.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QPushButton \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qpushbutton.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qabstractbutton.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QSpacerItem \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QTableWidget \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qtablewidget.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qtableview.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QVBoxLayout \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QMessageBox \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qmessagebox.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qdialog.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qdialogbuttonbox.h \
 		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QGraphicsDropShadowEffect \
 		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qgraphicseffect.h \
 		C:/Qt/6.10.0/mingw_64/include/QtCore/QLocale
@@ -10470,6 +10120,7 @@ debug/EditReviewsWidget.o: ../../Widgets/Staff/EditReviewsWidget.cpp ../../Widge
 		C:/Qt/6.10.0/mingw_64/include/QtCore/qlocale.h \
 		C:/Qt/6.10.0/mingw_64/include/QtGui/qguiapplication_platform.h \
 		../../../../../ShopManagement/include/ShopSystem.h \
+		../../../../../ShopManagement/include/DataStructures.h \
 		../../../../../ShopManagement/include/Product.h \
 		../../../../../ShopManagement/include/Size.h \
 		../../../../../ShopManagement/include/Customer.h \
@@ -10501,51 +10152,16 @@ debug/EditReviewsWidget.o: ../../Widgets/Staff/EditReviewsWidget.cpp ../../Widge
 		C:/Qt/6.10.0/mingw_64/include/QtGui/qtextoption.h \
 		C:/Qt/6.10.0/mingw_64/include/QtGui/qpen.h \
 		ui_EditReviewsWidget.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/QVariant \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QApplication \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qapplication.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QComboBox \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qcombobox.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qabstractitemdelegate.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QFrame \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QGroupBox \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qgroupbox.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QHBoxLayout \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qboxlayout.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qlayout.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qlayoutitem.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qgridlayout.h \
+		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QMessageBox \
+		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qmessagebox.h \
+		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qdialog.h \
+		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qdialogbuttonbox.h \
 		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QHeaderView \
 		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qheaderview.h \
 		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qabstractitemview.h \
 		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qabstractscrollarea.h \
 		C:/Qt/6.10.0/mingw_64/include/QtCore/qitemselectionmodel.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QLabel \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qlabel.h \
-		C:/Qt/6.10.0/mingw_64/include/QtGui/qpicture.h \
-		C:/Qt/6.10.0/mingw_64/include/QtGui/qtextdocument.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QLineEdit \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qlineedit.h \
-		C:/Qt/6.10.0/mingw_64/include/QtGui/qtextcursor.h \
-		C:/Qt/6.10.0/mingw_64/include/QtGui/qtextformat.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QPushButton \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qpushbutton.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qabstractbutton.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QScrollArea \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qscrollarea.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QSpacerItem \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QStackedWidget \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qstackedwidget.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QTableWidget \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qtablewidget.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qtableview.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QTextEdit \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qtextedit.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QVBoxLayout \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QMessageBox \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qmessagebox.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qdialog.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qdialogbuttonbox.h \
+		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qabstractitemdelegate.h \
 		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QGraphicsDropShadowEffect \
 		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qgraphicseffect.h \
 		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QScrollBar \
@@ -10753,6 +10369,7 @@ debug/CustomersManagementWidget.o: ../../Widgets/Staff/CustomersManagementWidget
 		C:/Qt/6.10.0/mingw_64/include/QtCore/qlocale.h \
 		C:/Qt/6.10.0/mingw_64/include/QtGui/qguiapplication_platform.h \
 		../../../../../ShopManagement/include/ShopSystem.h \
+		../../../../../ShopManagement/include/DataStructures.h \
 		../../../../../ShopManagement/include/Product.h \
 		../../../../../ShopManagement/include/Size.h \
 		../../../../../ShopManagement/include/Customer.h \
@@ -10784,44 +10401,6 @@ debug/CustomersManagementWidget.o: ../../Widgets/Staff/CustomersManagementWidget
 		C:/Qt/6.10.0/mingw_64/include/QtGui/qtextoption.h \
 		C:/Qt/6.10.0/mingw_64/include/QtGui/qpen.h \
 		ui_CustomersManagementWidget.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/QVariant \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QApplication \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qapplication.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QComboBox \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qcombobox.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qabstractitemdelegate.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QFrame \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QGroupBox \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qgroupbox.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QHBoxLayout \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qboxlayout.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qlayout.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qlayoutitem.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qgridlayout.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QHeaderView \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qheaderview.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qabstractitemview.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qabstractscrollarea.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qitemselectionmodel.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QLabel \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qlabel.h \
-		C:/Qt/6.10.0/mingw_64/include/QtGui/qpicture.h \
-		C:/Qt/6.10.0/mingw_64/include/QtGui/qtextdocument.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QLineEdit \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qlineedit.h \
-		C:/Qt/6.10.0/mingw_64/include/QtGui/qtextcursor.h \
-		C:/Qt/6.10.0/mingw_64/include/QtGui/qtextformat.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QPushButton \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qpushbutton.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qabstractbutton.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QScrollArea \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qscrollarea.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QSpacerItem \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QTabWidget \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QTableWidget \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qtablewidget.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qtableview.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QVBoxLayout \
 		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QMessageBox \
 		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qmessagebox.h \
 		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qdialog.h \
@@ -11036,6 +10615,7 @@ debug/ShopAnalysisWidget.o: ../../Widgets/Staff/ShopAnalysisWidget.cpp ../../Wid
 		C:/Qt/6.10.0/mingw_64/include/QtCore/qlocale.h \
 		C:/Qt/6.10.0/mingw_64/include/QtGui/qguiapplication_platform.h \
 		../../../../../ShopManagement/include/ShopSystem.h \
+		../../../../../ShopManagement/include/DataStructures.h \
 		../../../../../ShopManagement/include/Product.h \
 		../../../../../ShopManagement/include/Size.h \
 		../../../../../ShopManagement/include/Customer.h \
@@ -11067,44 +10647,18 @@ debug/ShopAnalysisWidget.o: ../../Widgets/Staff/ShopAnalysisWidget.cpp ../../Wid
 		C:/Qt/6.10.0/mingw_64/include/QtGui/qtextoption.h \
 		C:/Qt/6.10.0/mingw_64/include/QtGui/qpen.h \
 		ui_ShopAnalysisWidget.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/QVariant \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QApplication \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qapplication.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QComboBox \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qcombobox.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qabstractitemdelegate.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QFrame \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QGroupBox \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qgroupbox.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QHBoxLayout \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qboxlayout.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qlayout.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qlayoutitem.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qgridlayout.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QHeaderView \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qheaderview.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qabstractitemview.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qabstractscrollarea.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qitemselectionmodel.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QLabel \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qlabel.h \
-		C:/Qt/6.10.0/mingw_64/include/QtGui/qpicture.h \
-		C:/Qt/6.10.0/mingw_64/include/QtGui/qtextdocument.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QPushButton \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qpushbutton.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qabstractbutton.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QSpacerItem \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QTabWidget \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QTableWidget \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qtablewidget.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qtableview.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QVBoxLayout \
 		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QGraphicsDropShadowEffect \
 		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qgraphicseffect.h \
 		C:/Qt/6.10.0/mingw_64/include/QtCore/QDateTime \
 		C:/Qt/6.10.0/mingw_64/include/QtCore/qdatetime.h \
 		C:/Qt/6.10.0/mingw_64/include/QtCore/qcalendar.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/QLocale
+		C:/Qt/6.10.0/mingw_64/include/QtCore/QLocale \
+		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QHeaderView \
+		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qheaderview.h \
+		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qabstractitemview.h \
+		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qabstractscrollarea.h \
+		C:/Qt/6.10.0/mingw_64/include/QtCore/qitemselectionmodel.h \
+		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qabstractitemdelegate.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\ShopAnalysisWidget.o ..\..\Widgets\Staff\ShopAnalysisWidget.cpp
 
 debug/AccountSettingWidget.o: ../../Widgets/Staff/AccountSettingWidget.cpp ../../Widgets/Staff/AccountSettingWidget.h \
@@ -11307,6 +10861,7 @@ debug/AccountSettingWidget.o: ../../Widgets/Staff/AccountSettingWidget.cpp ../..
 		C:/Qt/6.10.0/mingw_64/include/QtCore/qlocale.h \
 		C:/Qt/6.10.0/mingw_64/include/QtGui/qguiapplication_platform.h \
 		../../../../../ShopManagement/include/ShopSystem.h \
+		../../../../../ShopManagement/include/DataStructures.h \
 		../../../../../ShopManagement/include/Product.h \
 		../../../../../ShopManagement/include/Size.h \
 		../../../../../ShopManagement/include/Customer.h \
@@ -11341,36 +10896,6 @@ debug/AccountSettingWidget.o: ../../Widgets/Staff/AccountSettingWidget.cpp ../..
 		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qrubberband.h \
 		C:/Qt/6.10.0/mingw_64/include/QtGui/QShowEvent \
 		ui_AccountSettingWidget.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/QVariant \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QApplication \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qapplication.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QComboBox \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qcombobox.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QFrame \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QGroupBox \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qgroupbox.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QHBoxLayout \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qboxlayout.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qlayout.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qlayoutitem.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qgridlayout.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QLabel \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qlabel.h \
-		C:/Qt/6.10.0/mingw_64/include/QtGui/qpicture.h \
-		C:/Qt/6.10.0/mingw_64/include/QtGui/qtextdocument.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QLineEdit \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qlineedit.h \
-		C:/Qt/6.10.0/mingw_64/include/QtGui/qtextcursor.h \
-		C:/Qt/6.10.0/mingw_64/include/QtGui/qtextformat.h \
-		C:/Qt/6.10.0/mingw_64/include/QtGui/qpen.h \
-		C:/Qt/6.10.0/mingw_64/include/QtGui/qtextoption.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QListWidget \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QPushButton \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qpushbutton.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qabstractbutton.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QSpacerItem \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QTabWidget \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QVBoxLayout \
 		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QMessageBox \
 		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qmessagebox.h \
 		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qdialog.h \

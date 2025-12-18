@@ -29,8 +29,7 @@ private:
     ShopSystem* system;
 
     void setupStyle();
-    // Hàm tạo thẻ khuyến mãi
-    void createPromoCard(const Promotion& promo);
+    void createPromoCard(const Promotion& promo); // Hàm tạo thẻ khuyến mãi
 };
 
 #endif

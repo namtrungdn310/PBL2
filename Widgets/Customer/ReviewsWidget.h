@@ -37,11 +37,11 @@ private:
 
     void setupStyle();
     void loadCategories();
-    void displayProductList(const vector<Product>& list);
+    void displayProductList(const MyVector<Product>& list);
     void showProductDetail(Product* p);
     void loadReviewsForProduct(int prodId);
 
-    pair<double, int> calculateRating(int prodId);
+    Pair<double, int> calculateRating(int prodId);
     QString getStarString(int rating);
 };
 

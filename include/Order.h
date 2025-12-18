@@ -2,7 +2,7 @@
 #define ORDER_H
 
 #include <string>
-#include <vector>
+#include "DataStructures.h"
 #include <ctime>
 #include "OrderItem.h"
 using namespace std;
@@ -17,7 +17,7 @@ private:
     double pointsDiscount;     
     double totalAmount;        
     int customerId;
-    vector<OrderItem> items;
+    MyVector<OrderItem> items;
 
 public:
     Order();
@@ -28,7 +28,7 @@ public:
     string getStatus() const { return status; }
     double getTotalAmount() const { return totalAmount; } 
     int getCustomerId() const { return customerId; }
-    const vector<OrderItem>& getItems() const { return items; }
+    const MyVector<OrderItem>& getItems() const { return items; }
     double getSubtotal() const { return subtotal; }
     double getPromotionDiscount() const { return promotionDiscount; }
     double getPointsDiscount() const { return pointsDiscount; }

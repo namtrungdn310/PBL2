@@ -34,13 +34,13 @@ private:
 
     void setupStyle();
     void loadCategories();
-    void displayProducts(const vector<Product>& list);
+    void displayProducts(const MyVector<Product>& list);
 
     void loadReviewsForProduct(int prodId);
 
     void createReviewCard(const Review& review);
 
-    pair<double, int> calculateRating(int prodId);
+    Pair<double, int> calculateRating(int prodId);
     QString getStarString(int rating);
 };
 

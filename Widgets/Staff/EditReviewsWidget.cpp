@@ -54,8 +54,8 @@ void EditReviewsWidget::loadCategories() {
     }
 }
 
-pair<double, int> EditReviewsWidget::calculateRating(int prodId) {
-    vector<Review> reviews = system->getReviewsForProduct(prodId);
+Pair<double, int> EditReviewsWidget::calculateRating(int prodId) {
+    MyVector<Review> reviews = system->getReviewsForProduct(prodId);
     if (reviews.empty()) return {0.0, 0};
 
     double sum = 0;
@@ -84,11 +84,11 @@ void EditReviewsWidget::on_btnFilter_clicked() {
     int catId = ui->cboCategoryFilter->currentData().toInt();
     string kw = ui->txtSearch->text().toStdString();
 
-    vector<Product> result = system->searchProducts(catId, kw, 0, -1, SORT_DEFAULT);
+    MyVector<Product> result = system->searchProducts(catId, kw, 0, -1, SORT_DEFAULT);
     displayProducts(result);
 }
 
-void EditReviewsWidget::displayProducts(const vector<Product>& list) {
+void EditReviewsWidget::displayProducts(const MyVector<Product>& list) {
     ui->tblProducts->setRowCount(0);
     for(const auto& p : list) {
         int r = ui->tblProducts->rowCount();
@@ -102,7 +102,7 @@ void EditReviewsWidget::displayProducts(const vector<Product>& list) {
         ui->tblProducts->item(r, 1)->setData(Qt::UserRole, p.getProductId());
 
         // Rating
-        pair<double, int> rateData = calculateRating(p.getProductId());
+        Pair<double, int> rateData = calculateRating(p.getProductId());
         QString rateStr;
         if (rateData.second > 0) {
             rateStr = QString::number(rateData.first, 'f', 1) + " ★ (" + QString::number(rateData.second) + ")";
@@ -137,10 +137,10 @@ void EditReviewsWidget::loadReviewsForProduct(int prodId) {
     QLayout* layout = ui->scrollContent->layout();
     QLayoutItem* item;
     while ((item = layout->takeAt(0)) != nullptr) { delete item->widget(); delete item; }
-    vector<Review> allReviews = system->getReviewsForProduct(prodId);
+    MyVector<Review> allReviews = system->getReviewsForProduct(prodId);
 
-    vector<Review> customerReviews;
-    vector<Review> staffReplies;
+    MyVector<Review> customerReviews;
+    MyVector<Review> staffReplies;
 
     for (const auto& r : allReviews) {
         if (r.getRating() > 0) customerReviews.push_back(r);
@@ -270,7 +270,7 @@ void EditReviewsWidget::loadReviewsForProduct(int prodId) {
                 if (reply == QMessageBox::Yes) {
                     system->removeReview(r.getReviewId());
                     string pfix = "Replying to " + r.getCustomerName() + ":";
-                    vector<Review> tempAll = system->getReviews();
+                    MyVector<Review> tempAll = system->getReviews();
                     for(const auto& tr : tempAll) {
                         if(tr.getProductId() == r.getProductId() && tr.getRating() == 0 && tr.getComment().find(pfix) == 0) {
                             system->removeReview(tr.getReviewId());

@@ -2,17 +2,17 @@
 #define CUSTOMER_H
 
 #include "User.h"
-#include <vector>
+#include "DataStructures.h"
 #include <string>
 
-class ShopSystem; // Forward declaration
+class ShopSystem;
 
 class Customer : public User {
 private:
     string address;
     string phone;
     int loyaltyPoints;
-    vector<int> usedPromoIDs;
+    MyVector<int> usedPromoIDs;
 
 public:
     Customer();
@@ -28,20 +28,16 @@ public:
     void setLoyaltyPoints(int points) { loyaltyPoints = points; }
     void addLoyaltyPoints(int points) { loyaltyPoints += points; }
     
-    // --- LOGIC MỚI CHO QT ---
     bool updateProfile(const string& name, const string& email, const string& addr, const string& phone);
     
-    // Tính toán giảm giá điểm
     double calculatePointDiscount(int pointsToUse);
     void deductPoints(int pointsToUse);
 
-    // Hàm tạo đơn hàng (Thay thế checkout)
-    // Trả về OrderID vừa tạo
     int placeOrder(ShopSystem& system, int promoId, int pointsToUse, const string& paymentMethod);
 
     void addUsedPromo(int promoId);
     bool hasUsedPromo(int promoId) const;
-    const vector<int>& getUsedPromoIDs() const { return usedPromoIDs; }
-    void setUsedPromoIDs(const vector<int>& promoIDs) { usedPromoIDs = promoIDs; }
+    const MyVector<int>& getUsedPromoIDs() const { return usedPromoIDs; }
+    void setUsedPromoIDs(const MyVector<int>& promoIDs) { usedPromoIDs = promoIDs; }
 };
 #endif

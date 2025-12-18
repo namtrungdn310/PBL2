@@ -1,8 +1,7 @@
 #ifndef SHOPSYSTEM_H
 #define SHOPSYSTEM_H
 
-#include <vector>
-#include <map>
+#include "DataStructures.h"
 #include "Product.h"
 #include "Customer.h"
 #include "Staff.h"
@@ -13,8 +12,7 @@
 #include "Review.h"
 #include "Invoice.h"
 
-#include <algorithm>
-#include <cctype>
+#include <string>
 
 using namespace std;
 
@@ -27,16 +25,17 @@ enum SortOption {
 class ShopSystem {
 private:
     static ShopSystem* instance;
-    
-    vector<Product> products;
-    vector<Customer> customers;
-    vector<Staff> staffMembers;
-    vector<Order> orders;
-    vector<Promotion> promotions;
-    vector<Category> categories;
-    vector<Review> reviews;
-    vector<Invoice> invoices;
-    map<int, vector<CartItem>> savedUserCarts;
+    MyVector<Product> products;
+    MyVector<Customer> customers;
+    MyVector<Staff> staffMembers;
+    MyVector<Order> orders;
+    MyVector<Promotion> promotions;
+    MyVector<Category> categories;
+    MyVector<Review> reviews;
+    MyVector<Invoice> invoices;
+
+    MyMap<int, MyVector<CartItem>> savedUserCarts;
+
     Customer* currentCustomer;
     Staff* currentStaff;
     Cart currentCart;
@@ -49,62 +48,71 @@ private:
     int lastInvoiceId;
     int lastPromoId;
     int lastReviewId;
-    ShopSystem(); 
-    
+
+    ShopSystem();
+
 public:
-    static ShopSystem* getInstance();
     ShopSystem(const ShopSystem&) = delete;
-    ShopSystem& operator=(const ShopSystem&) = delete;
+    void operator=(const ShopSystem&) = delete;
     ~ShopSystem();
 
-    const vector<Product>& getProducts() const { return products; }
-    vector<Product>& getProducts() { return products; }
-    const vector<Customer>& getCustomers() const { return customers; }
-    vector<Customer>& getCustomers() { return customers; }
-    const vector<Staff>& getStaffList() const { return staffMembers; }
-    const vector<Order>& getOrders() const { return orders; }
-    const vector<Promotion>& getPromotions() const { return promotions; }
-    const vector<Category>& getCategories() const { return categories; }
-    const vector<Review>& getReviews() const { return reviews; }
-    const vector<Invoice>& getInvoices() const { return invoices; }
-    vector<Promotion>& getPromotions();
-    Product* findProduct(int productId);
-    Customer* findCustomer(int userId);
-    Customer* findCustomerByEmail(const string& email);
-    Staff* findStaff(int userId);
-    Order* findOrder(int orderId);
-    string getCategoryName(int catId) const;
-    vector<Review> getReviewsForProduct(int productId) const;
+    static ShopSystem* getInstance();
 
-    int getAvailableStock(int productId, const string& sizeName);
+    // Product
     void addProduct(const Product& product);
     void removeProduct(int productId);
-    void addCustomer(const Customer& customer);
+    Product* findProduct(int productId);
+    MyVector<Product> searchProducts(int categoryId, string keyword, long long minPrice, long long maxPrice, SortOption sortOption);
+    MyVector<Product>& getProducts() { return products; }
+    int getAvailableStock(int productId, const string& sizeName);
+    // User
+    void addCustomer(const Customer& c);
+    Customer* findCustomer(int userId);
+    Customer* findCustomerByEmail(const string& email);
+    MyVector<Customer>& getCustomers() { return customers; }
     void deleteCurrentCustomer();
+
     void addStaff(const Staff& s);
     void removeStaff(int staffId);
-    void updateStaff(const Staff& s); // Hàm cập nhật thông tin
-    void addOrder(const Order& order);
-    void addInvoice(const Invoice& invoice);
-    void addReview(const Review& review);
-    void addPromotion(const Promotion& promo);
-    void removePromotion(int promoId);
-    void addCategory(const Category& category);
+    Staff* findStaff(int userId);
+    void updateStaff(const Staff& s);
+    MyVector<Staff>& getStaffMembers() { return staffMembers; }
+
+    // Order
+    void addOrder(const Order& order) { orders.push_back(order); }
+    Order* findOrder(int orderId);
+    MyVector<Order>& getOrders() { return orders; }
     void staffConfirmCancelOrder(int orderId);
     void staffConfirmCompleteOrder(int orderId);
-    void removeReview(int reviewId);
-    vector<Product> searchProducts(int categoryId, string keyword, long long minPrice, long long maxPrice, SortOption sortOption);
-    static string toLowerStr(string str) {
-        transform(str.begin(), str.end(), str.begin(), ::tolower);
-        return str;
-    }
 
+    // Invoice
+    void addInvoice(const Invoice& inv) { invoices.push_back(inv); }
+    MyVector<Invoice>& getInvoices() { return invoices; }
+
+    // Category
+    void addCategory(const Category& c) { categories.push_back(c); }
+    MyVector<Category>& getCategories() { return categories; }
+    void removeCategory(int catId);
+    string getCategoryName(int catId) const;
+
+    // Promotion
+    void addPromotion(const Promotion& p) { promotions.push_back(p); }
+    MyVector<Promotion>& getPromotions();
+    void removePromotion(int promoId);
+
+    // Review
+    void addReview(const Review& r) { reviews.push_back(r); }
+    MyVector<Review>& getReviews() { return reviews; }
+    void removeReview(int reviewId);
+    MyVector<Review> getReviewsForProduct(int productId) const;
+
+    // System
     bool loginCustomer(const string& email, const string& password);
     bool loginStaff(const string& email, const string& password);
     void logout();
     Customer* getCurrentCustomer() { return currentCustomer; }
     Staff* getCurrentStaff() { return currentStaff; }
-    
+
     Cart& getCurrentCart() { return currentCart; }
     void clearCurrentCart() { currentCart.clearCart(); }
     string validateCartStock();
@@ -112,12 +120,14 @@ public:
     void loadAllData();
     void saveAllData();
 
+    // Stats / Helpers
     int getTotalUsers() const { return customers.size() + staffMembers.size(); }
     int registerNewCustomer(const string& name, const string& email, const string& pass, const string& address, const string& phone);
     int getTotalProducts() const { return products.size(); }
     int countTotalInCarts(int productId, const string& sizeName);
     int getTotalCustomers() const { return customers.size(); }
     int getTotalOrders() const { return orders.size(); }
+
     int getNewOrderId();
     int getNewUserId();
     int getNewProductId();
@@ -129,6 +139,6 @@ public:
     double getTotalRevenue() const;
     double getRevenueThisMonth() const;
     double getMonthlyRevenueTarget() const { return monthlyRevenueTarget; }
-    void setMonthlyRevenueTarget(double target) { monthlyRevenueTarget = target; }  
 };
+
 #endif

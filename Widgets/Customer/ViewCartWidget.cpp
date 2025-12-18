@@ -145,14 +145,11 @@ void ViewCartWidget::setupStyle() {
         "QWidget { color: #333; font-family: 'Segoe UI'; }"
         "QWidget#ViewCartWidget { background: qlineargradient(x1:0, y1:0, x2:1, y2:1, stop:0 #D6F0FD, stop:1 #B3E5FC); }"
         "QFrame#mainCard { background-color: #FFFFFF; border-radius: 20px; }"
-
         "QLabel#lblTitle { font-size: 24px; font-weight: 800; color: #1565C0; margin-bottom: 10px; }"
         "QLabel#lblSummaryTitle { font-size: 18px; font-weight: bold; color: #555; margin-bottom: 20px; }"
         "QLabel#lblTotalLabel { font-size: 14px; color: #777; font-weight: 600; }"
         "QLabel#lblTotalMoney { font-size: 22px; font-weight: 800; color: #E65100; margin-bottom: 30px; margin-top: 5px; }"
-
         "Line#lineSeparator { border: 1px solid #EEEEEE; }"
-
         "QTableWidget { "
         "   background-color: #FFFFFF; "
         "   border: 1px solid #E0E0E0; "
@@ -163,29 +160,22 @@ void ViewCartWidget::setupStyle() {
         "   selection-color: #FFFFFF; "
         "   outline: 0; "
         "}"
-
         "QTableWidget::item:focus { outline: none; border: none; }"
-
         "QPushButton:focus { outline: none; }"
         "QTableWidget::item:selected { "
         "   background-color: #64B5F6; "
         "   color: white; "
         "}"
-
         "QHeaderView::section { "
         "   background-color: #F9FAFB; border: none; font-weight: bold; color: #555; padding: 8px; "
         "}"
-
         "QPushButton { border-radius: 20px; padding: 10px; font-weight: bold; font-size: 13px; }"
         "QPushButton#btnCheckout { background-color: #1976D2; color: white; margin-bottom: 10px; padding: 12px; font-size: 14px; }"
         "QPushButton#btnCheckout:hover { background-color: #1565C0; }"
-
         "QPushButton#btnRemove, QPushButton#btnDecrease { background-color: #FFF; border: 1px solid #E57373; color: #E57373; margin-bottom: 8px; }"
         "QPushButton#btnRemove:hover, QPushButton#btnDecrease:hover { background-color: #FFEBEE; }"
-
         "QPushButton#btnBack { background-color: transparent; color: #757575; border: none; }"
         "QPushButton#btnBack:hover { color: #333; text-decoration: underline; }"
-
         "QMessageBox { "
         "   background-color: #34495E; "
         "   border: 2px solid #1976D2; "

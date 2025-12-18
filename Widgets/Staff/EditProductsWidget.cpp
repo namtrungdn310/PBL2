@@ -78,11 +78,11 @@ void EditProductsWidget::populateSizeCombo() {
 void EditProductsWidget::on_btnFilter_clicked() {
     int catId = ui->cboCategoryFilter->currentData().toInt();
     string kw = ui->txtSearch->text().toStdString();
-    vector<Product> result = system->searchProducts(catId, kw, 0, -1, SORT_DEFAULT);
+    MyVector<Product> result = system->searchProducts(catId, kw, 0, -1, SORT_DEFAULT);
     displayProducts(result);
 }
 
-void EditProductsWidget::displayProducts(const vector<Product>& list) {
+void EditProductsWidget::displayProducts(const MyVector<Product>& list) {
     ui->tblProducts->setRowCount(0);
     for(const auto& p : list) {
         int r = ui->tblProducts->rowCount();

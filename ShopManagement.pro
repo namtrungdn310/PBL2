@@ -42,6 +42,7 @@ SOURCES += \
 
 HEADERS += \
     include/Cart.h include/CartItem.h include/Category.h include/Customer.h \
+    include/DataStructures.h \
     include/FileManager.h include/Invoice.h include/Order.h include/OrderItem.h \
     include/Product.h include/Promotion.h include/Review.h include/ShopSystem.h \
     include/Size.h include/Staff.h include/User.h \

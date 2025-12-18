@@ -1,22 +1,22 @@
 #ifndef CART_H
 #define CART_H
 
-#include <vector>
+#include "DataStructures.h"
 #include "CartItem.h"
 using namespace std;
 
 class Cart {
 private:
     int customerId;
-    vector<CartItem> items;
+    MyVector<CartItem> items;
 
 public:
     Cart();
     explicit Cart(int custId);
 
     int getCustomerId() const { return customerId; }
-    const vector<CartItem>& getItems() const { return items; }  
-    vector<CartItem>& getItems() { return items; }
+    const MyVector<CartItem>& getItems() const { return items; }
+    MyVector<CartItem>& getItems() { return items; }
 
     void addItem(int prodId, const string& size, int qty, const Product& product); 
     void removeItem(int itemIndex);

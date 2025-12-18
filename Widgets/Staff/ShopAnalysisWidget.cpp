@@ -17,7 +17,6 @@ ShopAnalysisWidget::ShopAnalysisWidget(QWidget *parent) :
     system = ShopSystem::getInstance();
     this->setObjectName("ShopAnalysisWidget");
 
-    // Cấu hình bảng
     auto setupTable = [](QTableWidget* t) {
         t->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
         t->setEditTriggers(QAbstractItemView::NoEditTriggers);
@@ -30,7 +29,6 @@ ShopAnalysisWidget::ShopAnalysisWidget(QWidget *parent) :
     setupTable(ui->tblVIP);
     setupTable(ui->tblDailyRevenue);
 
-    // Riêng bảng Low Stock chỉnh cột
     ui->tblLowStock->horizontalHeader()->setSectionResizeMode(0, QHeaderView::Fixed);
     ui->tblLowStock->setColumnWidth(0, 50);
 
@@ -61,23 +59,20 @@ void ShopAnalysisWidget::on_cboFilter_currentIndexChanged(int index) {
     refreshData();
 }
 
-// Helper: Kiểm tra đơn hàng theo bộ lọc
 bool ShopAnalysisWidget::isOrderInPeriod(const Order& o) {
     if (ui->cboFilter->currentText() == "All Time") return true;
-
-    // Lọc "This Month"
     QDate orderDate = QDateTime::fromSecsSinceEpoch(o.getOrderDate()).date();
     QDate current = QDate::currentDate();
     return (orderDate.month() == current.month() && orderDate.year() == current.year());
 }
 
-// --- 1. TÍNH KPI ---
+// kpi
 void ShopAnalysisWidget::calculateKPIs() {
     double totalRev = 0;
     int totalOrders = 0;
     int itemsSold = 0;
     int cancelled = 0;
-    int totalAll = 0; // Tính cả đơn hủy để tính %
+    int totalAll = 0;
 
     for (const auto& o : system->getOrders()) {
         if (!isOrderInPeriod(o)) continue;
@@ -93,7 +88,6 @@ void ShopAnalysisWidget::calculateKPIs() {
         }
     }
 
-    // Hiển thị
     ui->lblValRevenue->setText(formatMoney(totalRev));
     ui->lblValOrders->setText(QString::number(totalOrders));
     ui->lblValItems->setText(QString::number(itemsSold));
@@ -102,11 +96,10 @@ void ShopAnalysisWidget::calculateKPIs() {
     ui->lblValCancel->setText(QString::number(rate, 'f', 1) + "%");
 }
 
-// --- 2. SẢN PHẨM (BEST SELLERS & LOW STOCK) ---
+// best seller, low stock
 void ShopAnalysisWidget::loadProductPerformance() {
-    // A. Best Sellers
-    map<int, int> qtyMap; // ProdID -> Qty
-    map<int, double> revMap; // ProdID -> Revenue
+    map<int, int> qtyMap;
+    map<int, double> revMap;
 
     for (const auto& o : system->getOrders()) {
         if (o.getStatus() != "Completed") continue;
@@ -118,20 +111,18 @@ void ShopAnalysisWidget::loadProductPerformance() {
         }
     }
 
-    // Chuyển sang Vector để sort
     struct ProdStat { int id; int qty; double rev; };
     vector<ProdStat> list;
     for(auto const& [id, qty] : qtyMap) {
         list.push_back({id, qty, revMap[id]});
     }
 
-    // Sort giảm dần theo số lượng
     sort(list.begin(), list.end(), [](const ProdStat& a, const ProdStat& b){
         return a.qty > b.qty;
     });
 
     ui->tblBestSellers->setRowCount(0);
-    // Chỉ lấy Top 10
+
     int limit = min((int)list.size(), 10);
     for(int i=0; i<limit; ++i) {
         Product* p = system->findProduct(list[i].id);
@@ -144,7 +135,6 @@ void ShopAnalysisWidget::loadProductPerformance() {
         ui->tblBestSellers->setItem(r, 2, new QTableWidgetItem(formatMoney(list[i].rev)));
     }
 
-    // B. Low Stock (Dưới 10) - Không phụ thuộc thời gian lọc
     ui->tblLowStock->setRowCount(0);
     for(const auto& p : system->getProducts()) {
         if (p.getTotalStock() < 10) {
@@ -154,14 +144,14 @@ void ShopAnalysisWidget::loadProductPerformance() {
             ui->tblLowStock->setItem(r, 1, new QTableWidgetItem(QString::fromStdString(p.getName())));
 
             QTableWidgetItem* stockItem = new QTableWidgetItem(QString::number(p.getTotalStock()));
-            stockItem->setForeground(QBrush(QColor("#D32F2F"))); // Màu đỏ báo động
+            stockItem->setForeground(QBrush(QColor("#D32F2F")));
             stockItem->setFont(QFont("Segoe UI", 9, QFont::Bold));
             ui->tblLowStock->setItem(r, 2, stockItem);
         }
     }
 }
 
-// --- 3. KHÁCH HÀNG VIP ---
+// customer vip (top 20)
 void ShopAnalysisWidget::loadCustomerInsights() {
     map<int, double> spentMap;
     map<int, int> orderCountMap;
@@ -181,11 +171,11 @@ void ShopAnalysisWidget::loadCustomerInsights() {
     }
 
     sort(list.begin(), list.end(), [](const CustStat& a, const CustStat& b){
-        return a.spent > b.spent; // Chi tiêu cao nhất xếp trước
+        return a.spent > b.spent;
     });
 
     ui->tblVIP->setRowCount(0);
-    int limit = min((int)list.size(), 20); // Top 20
+    int limit = min((int)list.size(), 20);
     for(int i=0; i<limit; ++i) {
         Customer* c = system->findCustomer(list[i].id);
         QString name = c ? QString::fromStdString(c->getName()) : "Unknown";
@@ -199,22 +189,20 @@ void ShopAnalysisWidget::loadCustomerInsights() {
     }
 }
 
-// --- 4. DOANH THU THEO NGÀY ---
+// doanh thu theo ngày
 void ShopAnalysisWidget::loadDailyRevenue() {
-    map<QString, pair<double, int>> dailyMap; // Date -> {Revenue, Count}
+    map<QString, Pair<double, int>> dailyMap;
 
     for (const auto& o : system->getOrders()) {
         if (o.getStatus() != "Completed") continue;
         if (!isOrderInPeriod(o)) continue;
 
-        // Key: yyyy-MM-dd để sort đúng
         QString key = QDateTime::fromSecsSinceEpoch(o.getOrderDate()).toString("yyyy-MM-dd");
         dailyMap[key].first += o.getTotalAmount();
         dailyMap[key].second++;
     }
 
     ui->tblDailyRevenue->setRowCount(0);
-    // Map tự sort key từ bé đến lớn -> Ngày cũ lên trước
     for(auto const& [dateRaw, val] : dailyMap) {
         QString dateDisplay = QDate::fromString(dateRaw, "yyyy-MM-dd").toString("dd/MM/yyyy");
 
@@ -238,34 +226,26 @@ void ShopAnalysisWidget::setupStyle() {
         "QWidget { color: #333; font-family: 'Segoe UI'; }"
         "QWidget#ShopAnalysisWidget { background: qlineargradient(x1:0, y1:0, x2:1, y2:1, stop:0 #D6F0FD, stop:1 #B3E5FC); }"
         "QFrame#mainCard { background-color: #FFFFFF; border-radius: 20px; border: 1px solid #E0E0E0; }"
-
         "QLabel#lblTitle { font-size: 22px; font-weight: 900; color: #1565C0; }"
         "QLabel#lblFilter { font-weight: bold; color: #555; }"
-
-        // KPI Title & Value
         "QLabel#lblKpiTitle1, QLabel#lblKpiTitle2, QLabel#lblKpiTitle3, QLabel#lblKpiTitle4 { font-size: 11px; font-weight: bold; color: #555; margin-bottom: 5px; }"
         "QLabel#lblValRevenue { font-size: 16px; font-weight: 900; color: #1976D2; }"
         "QLabel#lblValOrders { font-size: 20px; font-weight: 900; color: #2E7D32; }"
         "QLabel#lblValItems { font-size: 20px; font-weight: 900; color: #E65100; }"
         "QLabel#lblValCancel { font-size: 20px; font-weight: 900; color: #C62828; }"
-
-        // Tab Widget
         "QTabWidget::pane { border: 1px solid #DDD; border-radius: 5px; background: #FAFAFA; }"
         "QTabBar::tab { background: #E0E0E0; color: #555; padding: 8px 20px; border-top-left-radius: 5px; border-top-right-radius: 5px; margin-right: 2px; font-weight: bold; }"
         "QTabBar::tab:selected { background: #FFFFFF; color: #1565C0; border-bottom: 2px solid #1565C0; }"
-
-        // Table
         "QTableWidget { border: 1px solid #DDD; background: #FFFFFF; gridline-color: #F0F0F0; color: #333; outline: 0; }"
         "QTableWidget::item:selected { background-color: #E3F2FD; color: #1565C0; }"
         "QHeaderView::section { background: #F5F7F9; border: none; font-weight: bold; color: #1565C0; padding: 5px; border-bottom: 1px solid #DDD; }"
-
-        // ComboBox (Fix mũi tên)
         "QComboBox { background: #FFF; border: 1px solid #DDD; border-radius: 5px; padding: 5px; min-width: 100px; }"
         "QComboBox:focus { border: 2px solid #1976D2; }"
         "QComboBox QAbstractItemView { background: #FFF; selection-background-color: #1976D2; selection-color: #FFF; border: 1px solid #DDD; outline: 0; }"
-
-        // Button
         "QPushButton#btnBack { background-color: #FFFFFF; border: 2px solid #EF5350; color: #D32F2F; border-radius: 15px; padding: 5px 15px; font-weight: bold; }"
         "QPushButton#btnBack:hover { background-color: #FFEBEE; }"
+        "QMessageBox QLabel { color: #FFFFFF; font-size: 14px; font-weight: bold; }"
+        "QMessageBox QPushButton { background-color: #1976D2; color: white; border-radius: 5px; padding: 5px 15px; min-width: 60px; }"
+        "QMessageBox QPushButton:hover { background-color: #1565C0; }"
         );
 }

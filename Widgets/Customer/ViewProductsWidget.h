@@ -37,7 +37,7 @@ private:
 
     void setupStyle();
     void loadCategories();
-    void displayProducts(const vector<Product>& list);
+    void displayProducts(const MyVector<Product>& list);
     void showProductDetails(Product* p);
 };
 

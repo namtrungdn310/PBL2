@@ -37,8 +37,8 @@ private slots:
     void on_btnReviews_clicked();
     void showOrderPage();
     void showCartPage();
-    void on_btnSetting_clicked(); // Nút Setting
-    void goHome();                // Hàm quay về Home
+    void on_btnSetting_clicked();
+    void goHome();
 
 private:
     Ui::CustomerDashboard *ui;

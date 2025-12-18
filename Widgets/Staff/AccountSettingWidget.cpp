@@ -58,7 +58,7 @@ void AccountSettingWidget::refreshData() {
 
 void AccountSettingWidget::loadStaffList() {
     ui->lstStaff->clear();
-    for(const auto& s : system->getStaffList()) {
+    for(const auto& s : system->getStaffMembers()) {
         QString label = QString::number(s.getUserId()) + " - " + QString::fromStdString(s.getName());
         QListWidgetItem* item = new QListWidgetItem(label);
         item->setData(Qt::UserRole, s.getUserId());
@@ -118,7 +118,7 @@ void AccountSettingWidget::on_lstStaff_itemClicked(QListWidgetItem *item) {
     ui->lblEditId->setText("Change ID: " + QString::number(id));
     ui->btnSaveStaff->setText("Update");
 
-    for(const auto& s : system->getStaffList()) {
+    for(const auto& s : system->getStaffMembers()) {
         if(s.getUserId() == id) {
             ui->txtEditName->setText(QString::fromStdString(s.getName()));
             ui->txtEditEmail->setText(QString::fromStdString(s.getEmail()));
@@ -132,7 +132,7 @@ void AccountSettingWidget::on_lstStaff_itemClicked(QListWidgetItem *item) {
 
 int AccountSettingWidget::getNextStaffId() {
     int maxId = 0;
-    for(const auto& s : system->getStaffList()) {
+    for(const auto& s : system->getStaffMembers()) {
         if(s.getUserId() > maxId) maxId = s.getUserId();
     }
     return maxId + 1;
@@ -173,7 +173,7 @@ void AccountSettingWidget::on_btnSaveStaff_clicked() {
         }
     } else {
         string finalPass = "";
-        for(const auto& s : system->getStaffList()) {
+        for(const auto& s : system->getStaffMembers()) {
             if(s.getUserId() == currentEditingId) {
                 finalPass = s.getPassword();
                 break;
@@ -220,37 +220,31 @@ void AccountSettingWidget::setupStyle() {
         "QWidget { font-family: 'Segoe UI'; font-size: 14px; }"
         "QWidget#AccountSettingWidget { background: qlineargradient(x1:0, y1:0, x2:1, y2:1, stop:0 #D6F0FD, stop:1 #B3E5FC); }"
         "QFrame#mainCard { background-color: #FFFFFF; border-radius: 15px; }"
-
         "QLineEdit, QComboBox { "
         "   background-color: #FFFFFF; border: 1px solid #BDC3C7; border-radius: 8px; padding: 10px; color: #333333; font-size: 14px; "
         "}"
         "QLineEdit:focus, QComboBox:focus { border: 2px solid #1976D2; }"
-
         "QComboBox::drop-down { border: 0px; }"
         "QComboBox QAbstractItemView { background-color: #FFFFFF; color: #333333; selection-background-color: #E3F2FD; selection-color: #1976D2; outline: 0; }"
-
         "QLabel { color: #555555; font-weight: 600; }"
         "QLabel#lblEditId { color: #1976D2; font-weight: bold; }"
         "QLabel#lblName { color: #333; font-size: 24px; font-weight: 800; margin-top: 15px; }"
-
         "QLabel#lblRole { font-size: 16px; font-weight: bold; color: #1976D2; background: #E3F2FD; padding: 8px 15px; border-radius: 15px; }"
-
         "QPushButton { background-color: #1976D2; color: white; border-radius: 8px; padding: 10px 20px; font-weight: bold; }"
         "QPushButton:hover { background-color: #1565C0; }"
-
         "QPushButton#btnBack { background-color: transparent; border: none; color: #555; font-size: 15px; font-weight: bold; text-align: left; padding: 0px; }"
         "QPushButton#btnBack:hover { color: #1976D2; }"
-
         "QPushButton#btnDeleteStaff { background-color: #FFEBEE; color: #C62828; border: 1px solid #EF5350; }"
         "QPushButton#btnDeleteStaff:hover { background-color: #FFCDD2; }"
-
         "QTabWidget::pane { border: 1px solid #DDD; background: #FFF; border-radius: 10px; }"
         "QTabBar::tab { background: #F8F9FA; color: #666; padding: 10px 20px; border-top-left-radius: 5px; border-top-right-radius: 5px; margin-right: 2px; }"
         "QTabBar::tab:selected { background: #FFF; color: #1976D2; font-weight: bold; border-bottom: 2px solid #1976D2; }"
-
         "QListWidget { border: 1px solid #DDD; border-radius: 8px; padding: 5px; outline: 0; }"
         "QListWidget::item { padding: 10px; border-radius: 5px; color: #333; margin-bottom: 2px; }"
         "QListWidget::item:selected { background: #E3F2FD; color: #1565C0; font-weight: bold; }"
         "QLabel#lblAvatar { background-color: #1976D2; color: white; font-size: 70px; font-weight: bold; border-radius: 90px; }"
+        "QMessageBox QLabel { color: #FFFFFF; font-size: 14px; font-weight: bold; }"
+        "QMessageBox QPushButton { background-color: #1976D2; color: white; border-radius: 5px; padding: 5px 15px; min-width: 60px; }"
+        "QMessageBox QPushButton:hover { background-color: #1565C0; }"
         );
 }

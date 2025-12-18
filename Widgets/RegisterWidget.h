@@ -29,10 +29,9 @@ private slots:
 private:
     Ui::RegisterWidget *ui;
 
-    // Validation helpers
     bool validateInputs();
     bool isValidEmail(const QString &email);
     void clearAllFields();
 };
 
-#endif // REGISTERWIDGET_H
+#endif

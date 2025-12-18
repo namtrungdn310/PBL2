@@ -15,13 +15,12 @@ public:
     explicit AccountSettingsWidget(QWidget *parent = nullptr);
     ~AccountSettingsWidget();
 
-    void loadUserData(); // Nạp thông tin hiện tại lên giao diện
+    void loadUserData();
     void paintEvent(QPaintEvent *event) override;
 
 signals:
-    void backSignal();      // Quay về Dashboard
-    void accountDeleted();  // Tài khoản đã xóa -> Quay về Startup
-
+    void backSignal();
+    void accountDeleted();
 private slots:
     void on_btnConfirm_clicked();
     void on_btnDelete_clicked();
@@ -34,4 +33,4 @@ private:
     void setupStyle();
 };
 
-#endif // ACCOUNTSETTINGSWIDGET_H
+#endif

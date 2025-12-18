@@ -134,7 +134,7 @@ void EditPromotionsWidget::on_btnSave_clicked() {
         QMessageBox::warning(this, "Error", "Invalid input!");
         return;
     }
-    vector<Promotion>& promos = system->getPromotions();
+    MyVector<Promotion>& promos = system->getPromotions();
     for(auto& p : promos) {
         if (p.getPromoId() == currentSelectedId) {
             p.setName(name.toStdString());
