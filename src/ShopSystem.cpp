@@ -24,9 +24,13 @@ void ShopSystem::removeProduct(int productId) {
     }
 }
 
-Product* ShopSystem::findProduct(int productId) {
-    for (size_t i = 0; i < products.size(); i++) {
-        if (products[i].getProductId() == productId) return &products[i];
+Product* ShopSystem::findProduct(int productId) { //tìm kiếm nhị phân
+    auto getId = [](const Product& p) { return p.getProductId(); };
+
+    int index = Algorithms::binarySearch(products, productId, (int(*)(const Product&))getId);
+
+    if (index != -1) {
+        return &products[index];
     }
     return nullptr;
 }
@@ -137,7 +141,7 @@ int ShopSystem::registerNewCustomer(const string& name, const string& email, con
     return 0;
 }
 
-void ShopSystem::loadAllData() {
+void ShopSystem::loadAllData() { // sắp xếp sản phẩm tăng dần ID: quick sort
     FileManager::createDataFolder();
     FileManager::initializeDataFiles();
     categories = FileManager::readCategories("data/categories.txt");
@@ -148,6 +152,10 @@ void ShopSystem::loadAllData() {
     reviews = FileManager::readReviews("data/reviews.txt");
     invoices = FileManager::readInvoices("data/invoices.txt");
     products = FileManager::readProducts("data/products.txt");
+
+    Algorithms::sort(products, [](const Product& a, const Product& b) {
+        return a.getProductId() < b.getProductId();
+    });
 
     lastUserId = 0;
     for (size_t i = 0; i < customers.size(); i++) {
@@ -267,11 +275,11 @@ int ShopSystem::getAvailableStock(int productId, const string& sizeName) {
     return (realStock - inCart > 0) ? (realStock - inCart) : 0;
 }
 
+
 MyVector<Product> ShopSystem::searchProducts(int categoryId, string keyword, long long minPrice, long long maxPrice, SortOption sortOption) {
     MyVector<Product> result;
     QString qKeyword = QString::fromStdString(keyword);
-
-    for (size_t i = 0; i < products.size(); i++) {
+    for (size_t i = 0; i < products.size(); i++) { // tìm kiếm tuyến tính sản phẩm
         const Product& p = products[i];
         bool catOk = (categoryId == 0) || (p.getCategoryId() == categoryId);
 
@@ -292,10 +300,14 @@ MyVector<Product> ShopSystem::searchProducts(int categoryId, string keyword, lon
         }
     }
 
-    if (sortOption == PRICE_ASC) {
-        Algorithms::sort(result, [](const Product& a, const Product& b) { return a.getPrice() < b.getPrice(); });
+    if (sortOption == PRICE_ASC) { // quick sort
+        Algorithms::sort(result, [](const Product& a, const Product& b) {
+            return a.getPrice() < b.getPrice();
+        });
     } else if (sortOption == PRICE_DESC) {
-        Algorithms::sort(result, [](const Product& a, const Product& b) { return a.getPrice() > b.getPrice(); });
+        Algorithms::sort(result, [](const Product& a, const Product& b) {
+            return a.getPrice() > b.getPrice();
+        });
     }
 
     return result;

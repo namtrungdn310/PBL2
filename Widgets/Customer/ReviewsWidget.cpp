@@ -167,6 +167,9 @@ void ReviewsWidget::loadReviewsForProduct(int prodId) {
         delete item;
     }
     MyVector<Review> allReviews = system->getReviewsForProduct(prodId);
+    Algorithms::sort(allReviews, [](const Review& a, const Review& b) {
+        return a.getRating() > b.getRating(); // giảm dần
+    });
     Customer* currentCust = system->getCurrentCustomer();
 
     MyVector<Review> customerReviews;
